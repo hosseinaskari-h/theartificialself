@@ -32,9 +32,16 @@
         .login-btn { 
             font-size: 24px; padding: 15px 30px; border: 1px solid transparent; 
             text-align: center; transition: all 0.5s; font-weight: normal; 
-            color: var(--accent); opacity: 0.7;
+            color: var(--accent); opacity: 0.7; display: none;
         }
         .login-btn:hover { border-color: var(--accent); opacity: 1; letter-spacing: 8px; }
+
+        /* Loading Screen Styles */
+        #loading-ui { display: flex; flex-direction: column; align-items: center; }
+        #loading-text { font-size: 10px; letter-spacing: 2px; color: var(--accent); margin-bottom: 10px; animation: blink 1s infinite; }
+        #progress-container { width: 150px; height: 2px; background: #333; position: relative; }
+        #progress-bar { width: 0%; height: 100%; background: var(--accent); transition: width 0.1s linear; box-shadow: 0 0 10px var(--accent); }
+        @keyframes blink { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
 
         #interface { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; pointer-events: none; display: none; flex-direction: column; }
         
@@ -159,9 +166,38 @@
 
     <div id="login-screen">
         <div id="login-content">
+            <div id="loading-ui">
+                <div id="loading-text">DOWNLOADING DATA...</div>
+                <div id="progress-container"><div id="progress-bar"></div></div>
+            </div>
             <div class="login-btn" id="enter-btn">ENTER</div>
         </div>
     </div>
+    <script>
+        window.addEventListener('load', () => {
+            const bar = document.getElementById('progress-bar');
+            const text = document.getElementById('loading-text');
+            const ui = document.getElementById('loading-ui');
+            const btn = document.getElementById('enter-btn');
+            
+            let width = 0;
+            const interval = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    text.innerText = "COMPLETE";
+                    bar.style.width = '100%';
+                    setTimeout(() => {
+                        ui.style.display = 'none';
+                        btn.style.display = 'block';
+                    }, 500);
+                } else {
+                    width += Math.random() * 8; // Faster on mobile
+                    if(width > 100) width = 100;
+                    bar.style.width = width + '%';
+                }
+            }, 100);
+        });
+    </script>
 
     <div id="interface">
         <div id="sidebar">
