@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DECAY LOGS</title>
+    <style>
+        body {
+            background-color: #050505;
+            color: #0f0;
+            font-family: "Courier New", Courier, monospace;
+            padding: 20px;
+            margin: 0;
+            line-height: 1.5;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+        
+        #terminal {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2em;
+            background-color: #0f0;
+            vertical-align: bottom;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .header {
+            color: #888;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="terminal">
+        <div class="header">
+            SYSTEM INITIALIZED.<br>
+            LOADING ARCHIVE: THE NECESSARY GRADUAL DESCENT OF WHAT WE USED TO BE...<br>
+            INITIALIZING SWEEP PROTOCOL.<br>
+            <br>
+        </div>
+        <span id="output"></span><span class="cursor"></span>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const outputElement = document.getElementById('output');
+            
+            try {
+                const response = await fetch('data/decay_sweep_results.txt');
+                if (!response.ok) throw new Error('Network response was not ok');
+                const text = await response.text();
+                
+                // Split text into lines/chunks
+                const lines = text.split('\n');
+                let currentLine = 0;
+
+                function typeChunk() {
+                    if (currentLine < lines.length) {
+                        // Print 1 to 3 lines at a time to simulate bursty terminal output
+                        const linesToPrint = Math.floor(Math.random() * 3) + 1;
+                        
+                        for (let i = 0; i < linesToPrint && currentLine < lines.length; i++) {
+                            outputElement.textContent += lines[currentLine] + '\n';
+                            currentLine++;
+                        }
+                        
+                        // Auto-scroll to bottom
+                        window.scrollTo(0, document.body.scrollHeight);
+                        
+                        // Random delay between chunks (50ms to 200ms)
+                        const delay = Math.random() * 150 + 50;
+                        setTimeout(typeChunk, delay);
+                    } else {
+                        outputElement.textContent += '\n\n[PROCESS TERMINATED]';
+                        window.scrollTo(0, document.body.scrollHeight);
+                    }
+                }
+
+                // Start typing
+                setTimeout(typeChunk, 1000); // 1 second delay before starting
+
+            } catch (error) {
+                outputElement.textContent += '\n\n[ERROR: UNABLE TO LOAD DECAY ARCHIVE]';
+                console.error('Error fetching the decay logs:', error);
+            }
+        });
+    </script>
+</body>
+</html>
