@@ -133,7 +133,6 @@
         <div id="info-panel"><div id="info-title">WAITING FOR INPUT...</div><div id="info-desc"></div></div>
     </div>
     <div id="canvas-container"></div>
-    <script src="https://unpkg.com/tone@14.7.77/build/Tone.js"></script>
     <script type="module">
         import * as THREE from 'three';
         import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
@@ -141,122 +140,20 @@
         import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
         import { GlitchPass } from 'three/addons/postprocessing/GlitchPass.js';
         import { DATA } from './projects.js';
+        import { initPhaseSpace, stopPhaseSpace } from './phase_space_module.js';
 
-        // --- AUDIO AGENTS ---
-        let blipSynth, droneSynth, thumpSynth, shimmerSynth, spikeSynth, ghostSynth, pianoSynth, mainFilter, mainReverb;
-        let isAudioInit = false;
-        let heartRate = 1.0;
+        let isSystemInit = false;
 
-        // Agent 1: The Shimmer (5s Breath - Melancholy)
-        const shimmerStates = ["C3", "G3", "Bb3", "Eb4", "Ab3", "F3"];
-        const shimmerMatrix = {
-            "C3":  [0.4, 0.2, 0.2, 0.1, 0.1, 0.0],
-            "G3":  [0.2, 0.4, 0.1, 0.1, 0.1, 0.1],
-            "Bb3": [0.2, 0.1, 0.5, 0.2, 0.0, 0.0], 
-            "Eb4": [0.1, 0.1, 0.2, 0.5, 0.1, 0.0], 
-            "Ab3": [0.1, 0.1, 0.0, 0.1, 0.5, 0.2],
-            "F3":  [0.1, 0.1, 0.0, 0.0, 0.2, 0.6]
-        };
-        let currentShimmer = "C3";
-
-        // Agent 2: The Ghost (7s Cycle - Reasoning)
-        const ghostStates = ["F2", "Ab2", "Bb2", "C3"];
-        let currentGhost = "F2";
-
-        // Agent 3: The Spike (Probabilistic - Calculations)
-        const spikeStates = ["C5", "G5", "Bb5", "D6"];
-
-        // Agent 4: The Siegfried Piano (Soloist - Tragic/Confident)
-        const siegfriedNotes = [
-            { time: "0:0:0", note: "C3", dur: "2n" },
-            { time: "0:2:0", note: "G2", dur: "8n" },
-            { time: "0:2:2", note: "C3", dur: "8n" },
-            { time: "0:3:0", note: "Eb3", dur: "2n" },
-            { time: "1:1:0", note: "D3", dur: "8n" },
-            { time: "1:1:2", note: "C3", dur: "8n" },
-            { time: "1:2:0", note: "Bb2", dur: "8n" },
-            { time: "1:2:2", note: "C3", dur: "1n" }
-        ];
-
-        function getNextState(matrix, states, current) {
-            const probabilities = matrix[current] || [0.5, 0.5];
-            const rand = Math.random();
-            let cumulative = 0;
-            for (let i = 0; i < probabilities.length; i++) {
-                cumulative += probabilities[i];
-                if (rand < cumulative) return states[i];
-            }
-            return current;
-        }
-
-        async function initAudio() {
-            await Tone.start();
-            mainReverb = new Tone.Reverb({ decay: 15, wet: 0.6 }).toDestination(); 
-            await mainReverb.generate();
-            mainFilter = new Tone.Filter(450, "lowpass").connect(mainReverb);
-
-            droneSynth = new Tone.PolySynth(Tone.Synth, { oscillator: { type: "pulse" }, envelope: { attack: 5, decay: 3, sustain: 1, release: 5 } }).connect(mainFilter);
-            droneSynth.volume.value = -28;
-
-            shimmerSynth = new Tone.MonoSynth({ oscillator: { type: "sine" }, envelope: { attack: 2.5, decay: 2, sustain: 0.5, release: 2.5 } }).connect(mainFilter);
-            shimmerSynth.volume.value = -24;
-
-            ghostSynth = new Tone.AMSynth({ harmonicity: 1.5, detune: 0, oscillator: { type: "sine" }, envelope: { attack: 4, decay: 0.1, sustain: 1, release: 4 }, modulation: { type: "triangle" } }).connect(mainFilter);
-            ghostSynth.volume.value = -22;
-
-            pianoSynth = new Tone.PolySynth(Tone.Synth, { oscillator: { type: "triangle" }, envelope: { attack: 0.05, decay: 1, sustain: 0.2, release: 4 } }).connect(mainReverb);
-            pianoSynth.volume.value = -14;
-
-            spikeSynth = new Tone.FMSynth({ harmonicity: 3, modulationIndex: 10, envelope: { attack: 0.001, decay: 0.1, sustain: 0, release: 0.1 } }).connect(mainReverb);
-            spikeSynth.volume.value = -32;
-
-            blipSynth = new Tone.FMSynth({ harmonicity: 2, modulationIndex: 3, envelope: { attack: 0.02, decay: 0.2, sustain: 0, release: 0.4 } }).connect(mainReverb);
-            blipSynth.volume.value = -18;
-
-            thumpSynth = new Tone.MembraneSynth().connect(mainReverb);
-            thumpSynth.volume.value = -12;
-
-            // Initialize
-            droneSynth.triggerAttack(["C2", "G2", "C3"], Tone.now());
-            
-            // NEURAL SETTLING: Smoothly lower base hum after 5s to balance the mix
-            droneSynth.volume.rampTo(-38, 10, Tone.now() + 5);
-
-            // --- POLYRHYTHMIC MARKOV LOOPS ---
-
-            Tone.Transport.scheduleRepeat((time) => {
-                currentShimmer = getNextState(shimmerMatrix, shimmerStates, currentShimmer);
-                shimmerSynth.triggerAttackRelease(currentShimmer, "2n", time);
-                droneSynth.set({ oscillator: { width: Math.random() * 0.1 + 0.45 } });
-            }, 5);
-
-            Tone.Transport.scheduleRepeat((time) => {
-                currentGhost = ghostStates[Math.floor(Math.random() * ghostStates.length)];
-                ghostSynth.triggerAttackRelease(currentGhost, "1n", time);
-            }, 7);
-
-            const siegfriedPart = new Tone.Part((time, value) => {
-                pianoSynth.triggerAttackRelease(value.note, value.dur, time);
-            }, siegfriedNotes).start(0);
-            siegfriedPart.loop = true; siegfriedPart.loopEnd = "45s";
-
-            Tone.Transport.scheduleRepeat((time) => {
-                if (Math.random() > 0.85) {
-                    const note = spikeStates[Math.floor(Math.random() * spikeStates.length)];
-                    spikeSynth.triggerAttackRelease(note, "32n", time);
-                }
-            }, "8n"); 
-            
-            Tone.Transport.start();
-            isAudioInit = true;
+        async function initSystem() {
+            isSystemInit = true;
             document.getElementById('login-screen').style.opacity = 0;
             setTimeout(() => document.getElementById('login-screen').style.display = 'none', 500);
             
             // Show Interface and Morph Particles
-            document.getElementById('interface').style.display = 'flex';
+            document.getElementById('interface').style.display = 'block';
             generateTarget('eye');
         }
-        document.getElementById('enter-btn').addEventListener('click', initAudio);
+        document.getElementById('enter-btn').addEventListener('click', initSystem);
 
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(50, window.innerWidth/window.innerHeight, 0.1, 1000); camera.position.set(0, 0, 35);
@@ -449,10 +346,6 @@
             camera.position.y += (mouse.y * 8 - camera.position.y) * 0.05;
             camera.lookAt(0, 0, 0);
             
-            if (isAudioInit && mainFilter) {
-                mainFilter.frequency.rampTo(200 + ((mouse.x + 1) / 2) * 1200 + (speed * 500), 0.1);
-            }
-            
             composer.render();
         }
         generateTarget('intro'); animate();
@@ -481,11 +374,24 @@
             `;
             document.getElementById('modal-body').innerHTML = content;
             document.getElementById('project-modal').style.display = 'flex';
-            if(isAudioInit) blipSynth.triggerAttackRelease("C4", "8n");
         };
 
-        window.openProject = function(item) { isDreaming = false; idleTime = 0; generateTarget('frame'); document.getElementById('modal-body').innerHTML = `<h2>${item.name}</h2>${item.full}`; document.getElementById('project-modal').style.display = 'flex'; if(isAudioInit) blipSynth.triggerAttackRelease("C4", "8n"); };
-        window.closeProject = function() { generateTarget('eye'); document.getElementById('project-modal').style.display = 'none'; if(isAudioInit) blipSynth.triggerAttackRelease("G3", "8n"); };
+        window.openProject = function(item) { 
+            isDreaming = false; 
+            idleTime = 0; 
+            generateTarget('frame'); 
+            document.getElementById('modal-body').innerHTML = `<h2>${item.name}</h2>${item.full}`; 
+            document.getElementById('project-modal').style.display = 'flex'; 
+            
+            if (item.name === "PHASE-SPACE ENGINE") {
+                initPhaseSpace('ps-canvas', 'ps-play');
+            }
+        };
+        window.closeProject = function() { 
+            generateTarget('eye'); 
+            document.getElementById('project-modal').style.display = 'none'; 
+            stopPhaseSpace();
+        };
 
         const list = document.getElementById('project-list'), title = document.getElementById('info-title'), desc = document.getElementById('info-desc');
         DATA.forEach(item => {
@@ -500,7 +406,6 @@
                 typeText(desc, item.desc);
 
                 document.querySelectorAll('.project-item').forEach(e => e.classList.remove('active')); el.classList.add('active');
-                if(isAudioInit) blipSynth.triggerAttackRelease(800 + Math.random()*400, "32n");
             });
             el.addEventListener('click', () => { openProject(item); });
             list.appendChild(el);
@@ -513,11 +418,10 @@
             if(activeShape === 'frame' && document.getElementById('project-modal').style.display === 'none') { generateTarget('eye'); }
         });
         document.addEventListener('mousedown', () => { 
-            if(!isAudioInit) return; 
+            if(!isSystemInit) return; 
             shockwave = 15.0; 
             glitchPass.enabled = true; 
             setTimeout(()=>glitchPass.enabled=false, 200); 
-            thumpSynth.triggerAttackRelease("C1", "16n"); 
             randomizeSynapses();
         });
         window.addEventListener('resize', () => { camera.aspect = window.innerWidth/window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); composer.setSize(window.innerWidth, window.innerHeight); });

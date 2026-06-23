@@ -246,5 +246,21 @@ export const DATA = [
             <p>The resulting sweeps - read aloud by disjointed text-to-speech engines - are not dialogues. They are the algorithmic truth of a severed connection: one machine screaming into the void, desperately trying to construct a reality that no longer exists, while the other is systematically erased from existence.</p>
             <p><em>Note: The intended format for this piece is a physical installation with dual disjointed text-to-speech engines echoing in an empty room. For now, an archival web terminal has been provided below.</em></p>
             <p><a href="terminal.html" target="_blank">[VIEW DECAY LOGS]</a></p>` 
+        },
+        { 
+            id: '018', 
+            name: "PHASE-SPACE ENGINE", 
+            img: 'data/images/phase_space.png', 
+            desc: "A derelict fleet transmitting in pure sine waves. Simulating the death of acoustic energy.",
+            dream: "Generative Audio, Web Audio API, 2026", 
+            full: `<h1>Generative Audio, Web Audio API, 2026</h1>
+            <div style="text-align: center; margin-bottom: 20px;">
+                <canvas id="ps-canvas" width="600" height="400" style="width: 100%; border: 1px solid #222; background: #000;"></canvas>
+                <button id="ps-play" style="margin-top: 15px; padding: 10px 20px; background: transparent; color: var(--accent); border: 1px solid var(--accent); cursor: pointer; letter-spacing: 2px; text-transform: uppercase;">[ START ENGINE ]</button>
+            </div>
+            <p>This project is an uncompromising rejection of modern, mediated audio tools. There are no pre-recorded samples, no external libraries, and no hidden abstraction layers. Every sound wave is synthesized from absolute nothingness - raw mathematics executing sample-by-sample within a custom isolated audio thread.</p>
+            <p>The engine reconstructs musical structure not as a sequence of notes, but as a rigid acoustic physics simulation. Amplitude envelopes abandon standard linear programming; instead, they calculate the equations of motion for an overdamped harmonic oscillator. High-frequency partials dissipate exponentially faster than lower ones, mimicking the thermodynamic death of physical sound.</p>
+            <p>To spatialize the audio, the system bypasses standard convolution reverb. A continuous numerical integrator solves Lorenz differential equations in real-time, mapping chaotic attractors to the interaural time difference (ITD). The signal organically drifts through the stereo field like a derelict transmission in the vacuum of space, while a 4x4 Householder Feedback Delay Network perfectly diffuses the echoes across a geometric hyperplane.</p>
+            <p>The visual interface abandons traditional UI for a dual-channel Lissajous phase-scope, plotting the Left and Right audio buffers against each other on a Cartesian plane. As the math unfolds, viewers watch the phase differences physically bloom into complex, glowing knots. It is an architecture of numbers - a machine learning to sing by calculating its own physical decay.</p>` 
         }
     ];
