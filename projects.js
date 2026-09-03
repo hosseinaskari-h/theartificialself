@@ -366,5 +366,45 @@ export const DATA = [
     <p>That's the sentence this facility is built to make legible. Present, and capable of reading the gauge. Everything else (the particular grey of the sky that morning, the forty years of knowing what this kind of low usually means, the child being trained, the cold, the grief that has no object because there's no one to direct it at) none of it is absent because it was denied. It's absent because the rule was never written in a vocabulary that could hold it. The rule takes three words. It was never going to take more, not out of refusal, but because three words was what the junction needed, and the junction is what the rule was built around, and the person is what the junction found.</p>
     <p>The valve has a maintenance schedule. The person operating the valve does not, except insofar as the person is also, in this one respect, a kind of valve: something that wears, that trains its replacement before it's worn out, the line of replacements stretching back further than the channel's first working day and forward for as long as the fields need water. Which is to say forever. Which is to say there is no exit condition here either, just like the last facility, except this time the reason no one built an exit condition isn't indifference.</p>
     <p>It's that the question of an exit was never the kind of thing a rule about gates and grain levels could contain. Not forbidden. Not unthinkable. Just outside the three words. Always outside the three words.</p>`
+        },
+        {
+            id: '021',
+            name: "Do Language Models Experience Time Like Humans or Flies?",
+            img: 'data/images/llm_time_flies.jpg',
+            desc: "Does the language we speak dictate how we perceive reality? Cognitive linguistics has spent decades debating the Sapir-Whorf hypothesis through the lens of time.",
+            dream: "What does time look like without language? In biological wetware, diurnal time forms an intact, closed periodic circle.",
+            full: `<img src="data/images/llm_time_flies.jpg" alt="Language Models and Time">
+    <h1>Do Language Models Experience Time Like Humans or Flies?</h1>
+    <p><a href="data/pdf/llm_time_flies_report.pdf" target="_blank">[VIEW FULL REPORT]</a></p>
+
+    <h2>The Question</h2>
+    <p>Does the language we speak dictate how we perceive reality? Cognitive linguistics has spent decades debating the <strong>Sapir-Whorf hypothesis</strong> through the lens of <strong>time</strong>. Because time has no physical substance—you cannot see, hold, or measure a second with your hands—human minds are forced to borrow spatial metaphors to talk about it.</p>
+    <p>In landmark cognitive science experiments, Lera Boroditsky showed that English speakers construct horizontal timelines (future is <em>ahead</em>), Mandarin speakers frequently scaffold time vertically (<em>shàng</em> / <em>xià</em>—last month is the "upper" month, next month is the "lower" month), and Arabic speakers map chronologies from right to left.</p>
+    <p>Recently, AI researchers proposed the <strong>Platonic Representation Hypothesis</strong>, arguing that neural networks converge toward a single, language-independent statistical model of reality.</p>
+    <p>I wanted to test this directly: <strong>Do neural networks discover a single, neutral geometry of time, or do they absorb and rebuild the distinct cultural-spatial metaphors of the languages they are trained on? And what does time look like to an organism with zero language?</strong></p>
+
+    <hr style="border: 1px dashed black; margin: 30px 0;">
+    <h2>What I Found Across 5 Experiments</h2>
+
+    <p><strong>1. Machines Reconstruct Boroditsky’s Metaphors:</strong><br>
+    Without being programmed with metaphor theory, English GPT-2 spontaneously constructs a strongly horizontal timeline (<i>ρ</i> = +0.274, <i>p</i> &lt; 0.0001). In contrast, Chinese GPT-2 exhibits prominent vertical alignment peaks (up to 2.58&times; vertical preference), reflecting Mandarin linguistic scaffolding.</p>
+
+    <p><strong>2. The Platonic vs. Whorfian Gradient:</strong><br>
+    Using Gromov-Wasserstein optimal transport, I mapped how words translate across topological spaces. Concrete physical nouns (<em>sun, water, stone, blood</em>) achieve high cross-lingual geometric convergence (<i>d<sub>GW</sub></i> &approx; 0.009). Abstract temporal concepts (<em>destiny, tomorrow, ancient, eternity</em>), however, undergo significant geometric warping (+0.0079 distortion gap). AI shares a common physical grounding, but human culture fragments its abstract reasoning.</p>
+
+    <p><strong>3. Space Causally Hacks Time:</strong><br>
+    By injecting spatial vectors directly into Layer 7 using PyTorch forward hooks, I found that spatial hidden states act as causal steering levers over temporal predictions (<i>β</i> = -0.027 in Chinese, <i>β</i> = +0.009 in English). Nudging an internal vector "upward" causally biases the model toward predicting earlier events—mirroring human cognitive priming.</p>
+
+    <p><strong>4. Script Direction Flips the Arrow of Time:</strong><br>
+    In English GPT-2 (left-to-right writing), future points to the Right (+0.143). In Arabic GPT-2 (<code>aragpt2-base</code>, right-to-left writing), this completely flips: future points to the <strong>Left</strong> (+0.073). The machine’s internal arrow of time mirrors the physical scanning direction of the text.</p>
+
+    <p><strong>5. The Biological Reality Check (The Fruit Fly Connectome):</strong><br>
+    What does time look like without language? I extracted all 111 verified circadian pacemaker and compass neurons from the 139,248-neuron <strong>FlyWire whole-brain connectome</strong> of <em>Drosophila melanogaster</em>. In biological wetware, diurnal time forms an intact, closed periodic circle (<i>S<sup>1</sup></i>, Circularity <i>C</i> = 14.58), where 23:00 smoothly connects back to midnight.<br>
+    Language models, however, flatten the 24-hour day into a broken linear ray (<i>R<sup>1</sup></i>, <i>C</i> = 0.31 to 0.46).</p>
+
+    <hr style="border: 1px dashed black; margin: 30px 0;">
+    <h2>The Takeaway</h2>
+    <p>Linear timelines are not an intrinsic property of intelligence or the universe. They are an <strong>anthropocentric linguistic construct</strong>, reinforced by the 1D, left-to-right or right-to-left nature of reading and writing sentences.</p>
+    <p>Far from being neutral black boxes, modern language models are sensitive mathematical mirrors of human linguistic relativity.</p>`
         }
     ];
