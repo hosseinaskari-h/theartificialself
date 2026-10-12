@@ -23,7 +23,7 @@
       "url": "https://theartificialself.com/",
       "jobTitle": "Computational Artist & Researcher",
       "sameAs": [
-        "https://github.com/stuxneo"
+        "https://github.com/hosseinaskari-h"
       ]
     }
     </script>
@@ -188,10 +188,6 @@
             display: grid;
             grid-template-columns: minmax(0, 1fr) minmax(320px, 36vw);
             min-height: 70vh;
-        }
-        @media (max-width: 860px) {
-            .layout { grid-template-columns: 1fr; }
-            aside.preview { display: none; }
         }
 
         table { width: 100%; border-collapse: collapse; }
@@ -423,6 +419,19 @@
         }
         footer .col b { display: block; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 6px; opacity: 0.6; }
         footer a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+
+        @media (max-width: 860px) {
+            .layout {
+                display: block !important;
+                grid-template-columns: 1fr !important;
+            }
+            aside.preview {
+                display: none !important;
+            }
+            td.spec, th.spec {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -434,7 +443,7 @@
             <div class="nav-links">
                 <a href="data/pdf/cv.pdf" target="_blank">[ CV (PDF) ]</a>
                 <a href="#about">[ BIOGRAPHY ]</a>
-                <a href="https://github.com/stuxneo" target="_blank">[ GITHUB ]</a>
+                <a href="https://github.com/hosseinaskari-h" target="_blank">[ GITHUB ]</a>
                 <a href="mailto:hosseinaskari.h@gmail.com">[ CONTACT ]</a>
             </div>
         </div>
@@ -791,8 +800,12 @@
             const id = row.dataset.id;
             const item = PROJECTS.find(p => p.id === id);
             
-            row.addEventListener('mouseenter', () => renderArtifact(item));
-            row.addEventListener('focus', () => renderArtifact(item));
+            row.addEventListener('mouseenter', () => {
+                if (window.innerWidth > 860) renderArtifact(item);
+            });
+            row.addEventListener('focus', () => {
+                if (window.innerWidth > 860) renderArtifact(item);
+            });
             row.addEventListener('click', (e) => {
                 if (!e.target.closest('a')) {
                     window.location.href = 'projects/' + item.slug + '.html';
@@ -800,9 +813,18 @@
             });
         });
 
-        // Set default preview to latest major project (e.g. 021)
-        const defaultItem = PROJECTS.find(p => p.id === '021') || PROJECTS[PROJECTS.length - 1];
-        renderArtifact(defaultItem);
+        // Set default preview to latest major project (e.g. 021) only on desktop screens
+        if (window.innerWidth > 860) {
+            const defaultItem = PROJECTS.find(p => p.id === '021') || PROJECTS[PROJECTS.length - 1];
+            renderArtifact(defaultItem);
+        }
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 860 && !preview.classList.contains('on')) {
+                const defaultItem = PROJECTS.find(p => p.id === '021') || PROJECTS[PROJECTS.length - 1];
+                renderArtifact(defaultItem);
+            }
+        });
 
         // Filter & Search
         const filterInput = document.getElementById('filter');

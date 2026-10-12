@@ -167,8 +167,10 @@
         }
         .pager a, .pager div {
             padding: 14px 20px; text-decoration: none; color: var(--ink);
+            -webkit-tap-highlight-color: transparent;
         }
         .pager a:hover { background: var(--ink); color: var(--paper); }
+        .pager a:active { background: var(--ink); color: var(--paper); }
         .pager .prev { border-right: var(--hair) solid var(--rule); text-align: left; }
         .pager .index-link { border-right: var(--hair) solid var(--rule); text-align: center; font-weight: 700; }
         .pager .next { text-align: right; }
@@ -176,24 +178,38 @@
 
         @media (max-width: 640px) {
             .pager {
-                grid-template-columns: 1fr 1fr;
+                display: flex;
+                flex-direction: column;
+                margin-top: 40px;
+            }
+            .pager a, .pager div {
+                display: flex;
+                align-items: center;
+                min-height: 48px;
+                padding: 14px 16px;
+                font-size: 11px;
+                box-sizing: border-box;
+                border-right: none;
+                border-bottom: var(--hair) solid var(--rule);
             }
             .pager .prev {
-                border-right: var(--hair) solid var(--rule);
-                border-bottom: var(--hair) solid var(--rule);
-                padding: 12px 10px;
-                font-size: 10px;
-            }
-            .pager .next {
-                border-bottom: var(--hair) solid var(--rule);
-                padding: 12px 10px;
-                font-size: 10px;
+                justify-content: flex-start;
+                text-align: left;
             }
             .pager .index-link {
-                grid-column: 1 / -1;
-                border-right: none;
-                padding: 12px 10px;
+                justify-content: center;
                 text-align: center;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                background: #fbfbfb;
+            }
+            .pager .next {
+                justify-content: flex-end;
+                text-align: right;
+                border-bottom: none;
+            }
+            .pager > :last-child {
+                border-bottom: none !important;
             }
         }
 
