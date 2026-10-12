@@ -420,6 +420,11 @@
         footer .col b { display: block; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 6px; opacity: 0.6; }
         footer a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
 
+        /* Mobile Accordion Drawer (Option 1) */
+        .mobile-accordion-row {
+            display: none;
+        }
+
         @media (max-width: 860px) {
             .layout {
                 display: block !important;
@@ -430,6 +435,144 @@
             }
             td.spec, th.spec {
                 display: none;
+            }
+
+            .mobile-accordion-row {
+                display: table-row;
+            }
+            .mobile-accordion-cell {
+                padding: 0 !important;
+                border-bottom: 2px solid var(--rule) !important;
+                background: #fbfbfb;
+            }
+            .mobile-accordion-wrap {
+                padding: 16px 14px 22px;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                border-top: var(--hair) solid var(--rule);
+                background: #fafafa;
+                animation: accSlideDown 150ms ease-out;
+            }
+            @keyframes accSlideDown {
+                from { opacity: 0; transform: translateY(-4px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .mobile-accordion-bar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-family: var(--mono);
+                font-size: 10px;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                padding-bottom: 8px;
+                border-bottom: var(--hair) solid var(--rule);
+            }
+            .acc-badge {
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                opacity: 0.65;
+            }
+            .acc-close-btn {
+                background: transparent;
+                border: 0;
+                padding: 4px 6px;
+                font-family: var(--mono);
+                font-size: 10px;
+                font-weight: 700;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                cursor: pointer;
+                color: var(--ink);
+            }
+            .acc-close-btn:active {
+                background: var(--ink);
+                color: var(--paper);
+            }
+            .mobile-accordion-art {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                padding: 4px 0;
+            }
+            .mobile-accordion-art .artifact {
+                opacity: 1 !important;
+                margin: 0;
+                width: 100%;
+                max-width: 280px;
+                aspect-ratio: 1 / 1;
+                background: #eee;
+                border: var(--hair) solid var(--rule);
+            }
+            .mobile-accordion-details {
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+            }
+            .acc-meta {
+                font-family: var(--mono);
+                font-size: 10px;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                opacity: 0.7;
+            }
+            .acc-title {
+                font-family: var(--sans);
+                font-weight: 700;
+                font-size: 16px;
+                letter-spacing: -0.02em;
+                line-height: 1.25;
+                text-transform: uppercase;
+                margin-top: 2px;
+            }
+            .acc-desc {
+                font-family: var(--mono);
+                font-size: 12px;
+                line-height: 1.6;
+                color: #222;
+                margin: 4px 0 8px;
+            }
+            .acc-open-btn {
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 13px 16px;
+                background: var(--ink);
+                color: var(--paper);
+                text-align: center;
+                font-family: var(--mono);
+                font-size: 11px;
+                font-weight: 700;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                text-decoration: none;
+                border: var(--hair) solid var(--rule);
+                -webkit-tap-highlight-color: transparent;
+                transition: background 100ms linear, color 100ms linear;
+            }
+            .acc-open-btn:active {
+                background: var(--paper);
+                color: var(--ink);
+            }
+
+            /* Visual indicator on row */
+            tbody tr td.year::after {
+                content: " +";
+                opacity: 0.45;
+                font-weight: 700;
+            }
+            tbody tr.expanded-row td.year::after {
+                content: " −";
+                opacity: 1;
+                font-weight: 700;
+            }
+            tbody tr.expanded-row {
+                background: var(--ink) !important;
+                color: var(--paper) !important;
+            }
+            tbody tr.expanded-row td a {
+                color: var(--paper) !important;
             }
         }
     </style>
@@ -732,13 +875,15 @@
         const pd = document.getElementById('pd');
         const pvLink = document.getElementById('pv-link');
 
-        function renderArtifact(item) {
+        function buildArtifactNode(item) {
             const recipe = RECIPES[item.id];
-            if (!recipe) return;
+            if (!recipe) return null;
 
-            artifact.innerHTML = '';
+            const art = document.createElement('div');
+            art.className = 'artifact';
             const [a, b] = recipe.palette;
-            artifact.style.background = b;
+            art.style.background = b;
+            art.style.opacity = '1';
 
             recipe.layers.forEach((l) => {
                 const el = document.createElement('div');
@@ -771,14 +916,27 @@
                     el.style.background = `conic-gradient(from 0deg at 50% 50%, ${a} 0 25%, transparent 25% 50%, ${a} 50% 75%, transparent 75%)`;
                 }
 
-                artifact.appendChild(el);
+                art.appendChild(el);
             });
 
             // Bottom-Left Archival Badge (Exact Match with Reference Screenshots)
             const label = document.createElement('div');
             label.style.cssText = `position:absolute;left:8px;bottom:6px;font:10px/1 var(--mono);letter-spacing:.2em;background:${b};color:${a};padding:4px 6px;border:1px solid ${a};z-index:10;font-weight:bold;`;
             label.textContent = item.id;
-            artifact.appendChild(label);
+            art.appendChild(label);
+
+            return art;
+        }
+
+        function renderArtifact(item) {
+            const artNode = buildArtifactNode(item);
+            if (!artNode) return;
+
+            artifact.innerHTML = '';
+            artifact.style.background = artNode.style.background;
+            while (artNode.firstChild) {
+                artifact.appendChild(artNode.firstChild);
+            }
 
             pt.textContent = item.name;
             pm.textContent = `${item.id} · ${item.year} · ${item.medium}`;
@@ -794,6 +952,111 @@
             });
         }
 
+        // Mobile Inline Accordion Drawer (Option 1)
+        let openAccordionId = null;
+        let accordionRowEl = null;
+
+        function closeMobileAccordion() {
+            if (accordionRowEl && accordionRowEl.parentNode) {
+                accordionRowEl.parentNode.removeChild(accordionRowEl);
+            }
+            accordionRowEl = null;
+            if (openAccordionId) {
+                const prevRow = document.querySelector(`#tbody tr[data-id="${openAccordionId}"]`);
+                if (prevRow) prevRow.classList.remove('expanded-row');
+                openAccordionId = null;
+            }
+        }
+
+        function openMobileAccordion(row, item) {
+            if (openAccordionId === item.id) {
+                closeMobileAccordion();
+                return;
+            }
+
+            closeMobileAccordion();
+
+            openAccordionId = item.id;
+            row.classList.add('expanded-row');
+
+            const colCount = document.querySelectorAll('thead th').length || 5;
+            accordionRowEl = document.createElement('tr');
+            accordionRowEl.className = 'mobile-accordion-row';
+
+            const td = document.createElement('td');
+            td.colSpan = colCount;
+            td.className = 'mobile-accordion-cell';
+
+            const wrap = document.createElement('div');
+            wrap.className = 'mobile-accordion-wrap';
+
+            const topBar = document.createElement('div');
+            topBar.className = 'mobile-accordion-bar';
+
+            const badge = document.createElement('span');
+            badge.className = 'acc-badge';
+            badge.textContent = `FONDS ${item.id} // PREVIEW`;
+
+            const closeBtn = document.createElement('button');
+            closeBtn.type = 'button';
+            closeBtn.className = 'acc-close-btn';
+            closeBtn.textContent = '[ CLOSE × ]';
+            closeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeMobileAccordion();
+            });
+
+            topBar.appendChild(badge);
+            topBar.appendChild(closeBtn);
+
+            const artContainer = document.createElement('div');
+            artContainer.className = 'mobile-accordion-art';
+            const artNode = buildArtifactNode(item);
+            if (artNode) artContainer.appendChild(artNode);
+
+            const details = document.createElement('div');
+            details.className = 'mobile-accordion-details';
+
+            const metaEl = document.createElement('div');
+            metaEl.className = 'acc-meta';
+            metaEl.textContent = `${item.id} · ${item.year} · ${item.medium}`;
+
+            const titleEl = document.createElement('div');
+            titleEl.className = 'acc-title';
+            titleEl.textContent = item.name;
+
+            const descEl = document.createElement('div');
+            descEl.className = 'acc-desc';
+            descEl.textContent = item.desc;
+
+            const openBtn = document.createElement('a');
+            openBtn.className = 'acc-open-btn';
+            openBtn.href = 'projects/' + item.slug + '.html';
+            openBtn.textContent = '[ OPEN PROJECT DOSSIER → ]';
+
+            details.appendChild(metaEl);
+            details.appendChild(titleEl);
+            details.appendChild(descEl);
+            details.appendChild(openBtn);
+
+            wrap.appendChild(topBar);
+            wrap.appendChild(artContainer);
+            wrap.appendChild(details);
+            td.appendChild(wrap);
+            accordionRowEl.appendChild(td);
+
+            row.after(accordionRowEl);
+
+            setTimeout(() => {
+                if (accordionRowEl) {
+                    const rect = accordionRowEl.getBoundingClientRect();
+                    if (rect.bottom > window.innerHeight) {
+                        accordionRowEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }
+                }
+            }, 60);
+        }
+
         // Row interactions
         const rows = document.querySelectorAll('#tbody tr');
         rows.forEach(row => {
@@ -807,8 +1070,23 @@
                 if (window.innerWidth > 860) renderArtifact(item);
             });
             row.addEventListener('click', (e) => {
-                if (!e.target.closest('a')) {
-                    window.location.href = 'projects/' + item.slug + '.html';
+                if (window.innerWidth <= 860) {
+                    // Mobile 2-step interaction:
+                    // If row is already open and user taps the title link, allow navigation
+                    if (openAccordionId === item.id && e.target.closest('a')) {
+                        return;
+                    }
+                    e.preventDefault();
+                    if (openAccordionId === item.id) {
+                        closeMobileAccordion();
+                    } else {
+                        openMobileAccordion(row, item);
+                    }
+                } else {
+                    // Desktop direct navigation
+                    if (!e.target.closest('a')) {
+                        window.location.href = 'projects/' + item.slug + '.html';
+                    }
                 }
             });
         });
@@ -820,9 +1098,12 @@
         }
 
         window.addEventListener('resize', () => {
-            if (window.innerWidth > 860 && !preview.classList.contains('on')) {
-                const defaultItem = PROJECTS.find(p => p.id === '021') || PROJECTS[PROJECTS.length - 1];
-                renderArtifact(defaultItem);
+            if (window.innerWidth > 860) {
+                closeMobileAccordion();
+                if (!preview.classList.contains('on')) {
+                    const defaultItem = PROJECTS.find(p => p.id === '021') || PROJECTS[PROJECTS.length - 1];
+                    renderArtifact(defaultItem);
+                }
             }
         });
 
@@ -832,6 +1113,7 @@
         let activeCategory = 'all';
 
         function applyFilter() {
+            closeMobileAccordion();
             const q = filterInput.value.trim().toLowerCase();
             let visible = 0;
 
@@ -880,6 +1162,7 @@
 
         document.querySelectorAll('thead th').forEach(th => {
             th.addEventListener('click', () => {
+                closeMobileAccordion();
                 const key = th.dataset.key;
                 if (!key) return;
 
