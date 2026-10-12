@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Do Language Models Experience Time Like Humans or Flies? — Hossein Askari / Archive</title>
+    <meta name="description" content="Does the language we speak dictate how we perceive reality? Cognitive linguistics has spent decades debating the Sapir-Whorf hypothesis through the lens of time.">
+    <meta name="author" content="Hossein Askari">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://theartificialself.com/projects/021-do-language-models-experience-time.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Do Language Models Experience Time Like Humans or Flies? — Hossein Askari">
+    <meta property="og:description" content="Does the language we speak dictate how we perceive reality? Cognitive linguistics has spent decades debating the Sapir-Whorf hypothesis through the lens of time.">
+    <meta property="og:url" content="https://theartificialself.com/projects/021-do-language-models-experience-time.html">
+    <meta property="og:image" content="https://theartificialself.com/data/images/llm_time_flies.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Do Language Models Experience Time Like Humans or Flies? — Hossein Askari">
+    <meta name="twitter:description" content="Does the language we speak dictate how we perceive reality? Cognitive linguistics has spent decades debating the Sapir-Whorf hypothesis through the lens of time.">
+    <meta name="twitter:image" content="https://theartificialself.com/data/images/llm_time_flies.jpg">
+
+    <style>
+        :root {
+            --ink: #000;
+            --paper: #fff;
+            --rule: #000;
+            --hair: 1px;
+            --mono: ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace;
+            --sans: 'Helvetica Neue', Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
+        }
+        * { box-sizing: border-box; border-radius: 0 !important; box-shadow: none !important; }
+        html, body { margin: 0; background: var(--paper); color: var(--ink); overflow-x: hidden; width: 100%; }
+        body { font-family: var(--mono); font-size: 13px; line-height: 1.4; -webkit-font-smoothing: antialiased; }
+        ::selection { background: #000; color: #fff; }
+
+        header.masthead {
+            position: sticky; top: 0; z-index: 100;
+            background: var(--paper);
+            border-bottom: var(--hair) solid var(--rule);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 20px;
+        }
+        .masthead a.brand {
+            font-family: var(--sans); font-weight: 700; font-size: 14px;
+            letter-spacing: -0.02em; text-transform: uppercase;
+            text-decoration: none; color: var(--ink);
+        }
+        .masthead a.brand span { font-weight: 300; }
+        .masthead .back-link {
+            font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;
+            text-decoration: none; color: var(--ink); font-weight: 600;
+        }
+        .masthead .back-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+        @media (max-width: 640px) {
+            header.masthead { padding: 10px 14px; }
+            .masthead a.brand { font-size: 11px; }
+            .masthead .back-link { font-size: 10px; }
+        }
+
+        .dossier-wrap {
+            max-width: 860px; margin: 0 auto; padding: 40px 20px 100px;
+        }
+
+        .archive-spec-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            border: var(--hair) solid var(--rule);
+            margin-bottom: 30px;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+        .spec-cell {
+            padding: 10px 14px; border-right: var(--hair) solid var(--rule);
+        }
+        .spec-cell:last-child { border-right: none; }
+        .spec-cell b { display: block; font-size: 9px; letter-spacing: 0.14em; opacity: 0.6; margin-bottom: 2px; }
+        .spec-cell span { font-weight: 600; letter-spacing: 0.04em; }
+
+        @media (max-width: 680px) {
+            .archive-spec-grid { grid-template-columns: 1fr 1fr; }
+            .spec-cell:nth-child(2) { border-right: none; }
+            .spec-cell:nth-child(1), .spec-cell:nth-child(2) { border-bottom: var(--hair) solid var(--rule); }
+        }
+        @media (max-width: 440px) {
+            .spec-cell { padding: 8px 10px; font-size: 10px; }
+            .spec-cell b { font-size: 8px; }
+            .spec-cell span { word-break: break-word; }
+        }
+
+        h1.project-title {
+            font-family: var(--sans); font-weight: 700;
+            font-size: clamp(28px, 5.5vw, 56px);
+            line-height: 0.95; letter-spacing: -0.04em;
+            text-transform: uppercase; margin: 0 0 20px;
+        }
+
+        .project-lead {
+            font-size: 14px; line-height: 1.6; margin-bottom: 35px;
+            padding-bottom: 25px; border-bottom: var(--hair) solid var(--rule);
+            color: #222;
+        }
+
+        .content {
+            font-family: var(--sans);
+        }
+        .content p {
+            font-size: 15px; line-height: 1.8; margin: 0 0 22px; color: #111;
+        }
+        .content h1, .content h2, .content h3 {
+            font-family: var(--sans); font-weight: 700;
+            text-transform: uppercase; letter-spacing: -0.02em;
+            margin: 40px 0 16px; color: var(--ink);
+        }
+        .content h1 { font-size: 20px; border-bottom: var(--hair) solid var(--rule); padding-bottom: 8px; }
+        .content h2 { font-size: 17px; border-bottom: var(--hair) solid var(--rule); padding-bottom: 6px; }
+        .content img {
+            width: 100%; height: auto; display: block;
+            border: var(--hair) solid var(--rule);
+            margin: 28px 0 16px;
+        }
+        .content hr {
+            border: 0; border-top: var(--hair) dashed var(--rule);
+            margin: 36px 0;
+        }
+        .content a {
+            color: var(--ink); text-decoration: underline; text-underline-offset: 3px; font-weight: 600;
+        }
+        .content a:hover { background: var(--ink); color: var(--paper); text-decoration: none; }
+        .content em { font-style: italic; }
+        .content strong { font-weight: 700; }
+        #ps-canvas { width: 100% !important; max-width: 600px; height: auto !important; aspect-ratio: 3 / 2; }
+
+        @media (max-width: 680px) {
+            .dossier-wrap { padding: 24px 14px 60px; }
+            h1.project-title { font-size: clamp(24px, 6.5vw, 42px); margin-bottom: 14px; }
+            .project-lead { font-size: 13px; margin-bottom: 24px; padding-bottom: 18px; }
+            .content p { font-size: 14px; line-height: 1.7; margin-bottom: 18px; }
+        }
+
+        /* Pager */
+        .pager {
+            display: grid; grid-template-columns: 1fr auto 1fr;
+            border: var(--hair) solid var(--rule);
+            margin-top: 60px;
+            font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+        }
+        .pager a, .pager div {
+            padding: 14px 20px; text-decoration: none; color: var(--ink);
+        }
+        .pager a:hover { background: var(--ink); color: var(--paper); }
+        .pager .prev { border-right: var(--hair) solid var(--rule); text-align: left; }
+        .pager .index-link { border-right: var(--hair) solid var(--rule); text-align: center; font-weight: 700; }
+        .pager .next { text-align: right; }
+        .pager .disabled { opacity: 0.3; pointer-events: none; }
+
+        @media (max-width: 640px) {
+            .pager {
+                grid-template-columns: 1fr 1fr;
+            }
+            .pager .prev {
+                border-right: var(--hair) solid var(--rule);
+                border-bottom: var(--hair) solid var(--rule);
+                padding: 12px 10px;
+                font-size: 10px;
+            }
+            .pager .next {
+                border-bottom: var(--hair) solid var(--rule);
+                padding: 12px 10px;
+                font-size: 10px;
+            }
+            .pager .index-link {
+                grid-column: 1 / -1;
+                border-right: none;
+                padding: 12px 10px;
+                text-align: center;
+            }
+        }
+
+        footer {
+            border-top: var(--hair) solid var(--rule);
+            padding: 30px 20px; font-size: 11px;
+            text-transform: uppercase; letter-spacing: 0.08em;
+            display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+            max-width: 860px; margin: 0 auto;
+        }
+        @media (max-width: 600px) {
+            footer {
+                flex-direction: column;
+                gap: 8px;
+                padding: 24px 14px 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="masthead">
+        <a href="../index.html" class="brand">HOSSEIN ASKARI <span>/</span> ARCHIVE</a>
+        <a href="../index.html" class="back-link">← Return to Index</a>
+    </header>
+
+    <main class="dossier-wrap">
+        <div class="archive-spec-grid">
+            <div class="spec-cell"><b>Fonds ID</b><span>021</span></div>
+            <div class="spec-cell"><b>Chronology</b><span>2026</span></div>
+            <div class="spec-cell"><b>Medium</b><span>Cognitive AI &amp; Connectomics Paper</span></div>
+            <div class="spec-cell"><b>Specification</b><span>111 Fly Pacemakers · 5 Experiments</span></div>
+        </div>
+
+        <h1 class="project-title">Do Language Models Experience Time Like Humans or Flies?</h1>
+        <div class="project-lead">Does the language we speak dictate how we perceive reality? Cognitive linguistics has spent decades debating the Sapir-Whorf hypothesis through the lens of time.</div>
+
+        <article class="content">
+            <img src="../data/images/llm_time_flies.jpg" alt="Language Models and Time">
+    <h1>Do Language Models Experience Time Like Humans or Flies?</h1>
+    <p><a href="../data/pdf/llm_time_flies_report.pdf" target="_blank">[VIEW FULL REPORT]</a></p>
+
+    <h2>The Question</h2>
+    <p>Does the language we speak dictate how we perceive reality? Cognitive linguistics has spent decades debating the <strong>Sapir-Whorf hypothesis</strong> through the lens of <strong>time</strong>. Because time has no physical substance—you cannot see, hold, or measure a second with your hands—human minds are forced to borrow spatial metaphors to talk about it.</p>
+    <p>In landmark cognitive science experiments, Lera Boroditsky showed that English speakers construct horizontal timelines (future is <em>ahead</em>), Mandarin speakers frequently scaffold time vertically (<em>shàng</em> / <em>xià</em>—last month is the "upper" month, next month is the "lower" month), and Arabic speakers map chronologies from right to left.</p>
+    <p>Recently, AI researchers proposed the <strong>Platonic Representation Hypothesis</strong>, arguing that neural networks converge toward a single, language-independent statistical model of reality.</p>
+    <p>I wanted to test this directly: <strong>Do neural networks discover a single, neutral geometry of time, or do they absorb and rebuild the distinct cultural-spatial metaphors of the languages they are trained on? And what does time look like to an organism with zero language?</strong></p>
+
+    <hr style="border: 1px dashed black; margin: 30px 0;">
+    <h2>What I Found Across 5 Experiments</h2>
+
+    <p><strong>1. Machines Reconstruct Boroditsky’s Metaphors:</strong><br>
+    Without being programmed with metaphor theory, English GPT-2 spontaneously constructs a strongly horizontal timeline (<i>ρ</i> = +0.274, <i>p</i> &lt; 0.0001). In contrast, Chinese GPT-2 exhibits prominent vertical alignment peaks (up to 2.58&times; vertical preference), reflecting Mandarin linguistic scaffolding.</p>
+
+    <p><strong>2. The Platonic vs. Whorfian Gradient:</strong><br>
+    Using Gromov-Wasserstein optimal transport, I mapped how words translate across topological spaces. Concrete physical nouns (<em>sun, water, stone, blood</em>) achieve high cross-lingual geometric convergence (<i>d<sub>GW</sub></i> &approx; 0.009). Abstract temporal concepts (<em>destiny, tomorrow, ancient, eternity</em>), however, undergo significant geometric warping (+0.0079 distortion gap). AI shares a common physical grounding, but human culture fragments its abstract reasoning.</p>
+
+    <p><strong>3. Space Causally Hacks Time:</strong><br>
+    By injecting spatial vectors directly into Layer 7 using PyTorch forward hooks, I found that spatial hidden states act as causal steering levers over temporal predictions (<i>β</i> = -0.027 in Chinese, <i>β</i> = +0.009 in English). Nudging an internal vector "upward" causally biases the model toward predicting earlier events—mirroring human cognitive priming.</p>
+
+    <p><strong>4. Script Direction Flips the Arrow of Time:</strong><br>
+    In English GPT-2 (left-to-right writing), future points to the Right (+0.143). In Arabic GPT-2 (<code>aragpt2-base</code>, right-to-left writing), this completely flips: future points to the <strong>Left</strong> (+0.073). The machine’s internal arrow of time mirrors the physical scanning direction of the text.</p>
+
+    <p><strong>5. The Biological Reality Check (The Fruit Fly Connectome):</strong><br>
+    What does time look like without language? I extracted all 111 verified circadian pacemaker and compass neurons from the 139,248-neuron <strong>FlyWire whole-brain connectome</strong> of <em>Drosophila melanogaster</em>. In biological wetware, diurnal time forms an intact, closed periodic circle (<i>S<sup>1</sup></i>, Circularity <i>C</i> = 14.58), where 23:00 smoothly connects back to midnight.<br>
+    Language models, however, flatten the 24-hour day into a broken linear ray (<i>R<sup>1</sup></i>, <i>C</i> = 0.31 to 0.46).</p>
+
+    <hr style="border: 1px dashed black; margin: 30px 0;">
+    <h2>The Takeaway</h2>
+    <p>Linear timelines are not an intrinsic property of intelligence or the universe. They are an <strong>anthropocentric linguistic construct</strong>, reinforced by the 1D, left-to-right or right-to-left nature of reading and writing sentences.</p>
+    <p>Far from being neutral black boxes, modern language models are sensitive mathematical mirrors of human linguistic relativity.</p>
+        </article>
+
+        <nav class="pager">
+            <a href="020-on-the-necessity-that-does-not-see.html" class="prev">← 020 On the Necessity That Does Not See</a>
+            <a href="../index.html" class="index-link">Archive Index</a>
+            <div class="next disabled">End of Fonds →</div>
+        </nav>
+    </main>
+
+    <footer>
+        <div>Hossein Askari</div>
+        <div>Holding 21 Works · 2021–2026</div>
+        <div><a href="../index.html" style="color:inherit">Return to Index ↑</a></div>
+    </footer>
+    
+</body>
+</html>

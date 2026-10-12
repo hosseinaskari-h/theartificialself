@@ -327,8 +327,8 @@ export async function initPhaseSpace(canvasId, btnId) {
         toggleBtn.addEventListener('click', async () => {
             if (!hasDataLoaded) {
                 toggleBtn.innerText = "[ DOWNLOADING DATA... ]";
-                try {
-                    const response = await fetch('data/veridis_macro_structure.json');
+                    const dataPath = window.location.pathname.includes('/projects/') ? '../data/veridis_macro_structure.json' : 'data/veridis_macro_structure.json';
+                    const response = await fetch(dataPath);
                     if (!response.ok) throw new Error("HTTP " + response.status);
                     const rawText = await response.text();
                     if (!parseMacroData(rawText)) throw new Error("Parse Error");

@@ -2,13 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=/" />
-    <title>Redirecting...</title>
-    <script>
-        window.location.href = "/";
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>404 — FONDS NOT FOUND / HOSSEIN ASKARI</title>
+    <style>
+        :root {
+            --ink: #000;
+            --paper: #fff;
+            --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+            --sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+        * { box-sizing: border-box; border-radius: 0 !important; }
+        body {
+            margin: 0; background: var(--paper); color: var(--ink);
+            font-family: var(--mono); font-size: 13px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            min-height: 100vh; padding: 20px; text-align: center;
+        }
+        h1 {
+            font-family: var(--sans); font-size: clamp(32px, 8vw, 96px);
+            font-weight: 700; letter-spacing: -0.05em; margin: 0 0 16px;
+            line-height: 0.9; text-transform: uppercase;
+        }
+        p { font-size: 14px; max-width: 500px; margin: 0 0 24px; line-height: 1.6; }
+        a {
+            display: inline-block; padding: 12px 20px;
+            background: var(--ink); color: var(--paper);
+            text-decoration: none; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        a:hover { background: var(--paper); color: var(--ink); outline: 1px solid var(--ink); }
+    </style>
 </head>
-<body style="background: #000; color: #fff; font-family: monospace; text-align: center; margin-top: 20%;">
-    <p>Redirecting to the main interface...</p>
+<body>
+    <h1>404 / Missing</h1>
+    <p>The requested fonds, document, or record is not registered in this archive index.</p>
+    <a href="/">← Return to Archive Index</a>
 </body>
 </html>

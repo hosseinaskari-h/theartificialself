@@ -1,0 +1,927 @@
+{
+  "001": {
+    "palette": [
+      "#000",
+      "#fff"
+    ],
+    "layers": [
+      {
+        "kind": "rings",
+        "cx": 240,
+        "cy": 220,
+        "count": 24,
+        "spacing": 14,
+        "opacity": 0.9
+      },
+      {
+        "kind": "dots",
+        "dot": 4,
+        "spacing": 14,
+        "inset": [
+          120,
+          80,
+          80,
+          120
+        ],
+        "opacity": 0.85
+      },
+      {
+        "kind": "disc",
+        "cx": 160,
+        "cy": 380,
+        "r": 240,
+        "opacity": 0.95
+      },
+      {
+        "kind": "stripes",
+        "ang": 45,
+        "width": 2,
+        "gap": 12,
+        "opacity": 0.4
+      }
+    ]
+  },
+  "002": {
+    "palette": [
+      "#fff",
+      "#0033ff"
+    ],
+    "layers": [
+      {
+        "kind": "rings",
+        "cx": 180,
+        "cy": 220,
+        "count": 20,
+        "spacing": 12,
+        "opacity": 0.8
+      },
+      {
+        "kind": "rings",
+        "cx": 420,
+        "cy": 340,
+        "count": 20,
+        "spacing": 12,
+        "opacity": 0.8
+      },
+      {
+        "kind": "dots",
+        "dot": 4,
+        "spacing": 14,
+        "inset": [
+          160,
+          120,
+          160,
+          120
+        ],
+        "opacity": 0.9
+      },
+      {
+        "kind": "disc",
+        "cx": 300,
+        "cy": 280,
+        "r": 160,
+        "opacity": 0.4,
+        "blend": "difference"
+      }
+    ]
+  },
+  "003": {
+    "palette": [
+      "#000",
+      "#ff3b00"
+    ],
+    "layers": [
+      {
+        "kind": "rings",
+        "cx": 380,
+        "cy": 300,
+        "count": 32,
+        "spacing": 9,
+        "opacity": 0.95
+      },
+      {
+        "kind": "dots",
+        "dot": 4,
+        "spacing": 15,
+        "inset": [
+          40,
+          180,
+          40,
+          180
+        ],
+        "opacity": 0.9
+      },
+      {
+        "kind": "disc",
+        "cx": 120,
+        "cy": 400,
+        "r": 260,
+        "opacity": 0.85
+      },
+      {
+        "kind": "stripes",
+        "ang": 0,
+        "width": 3,
+        "gap": 24,
+        "opacity": 0.5
+      }
+    ]
+  },
+  "004": {
+    "palette": [
+      "#fff",
+      "#111"
+    ],
+    "layers": [
+      {
+        "kind": "stripes",
+        "ang": 45,
+        "width": 3,
+        "gap": 10,
+        "opacity": 0.8
+      },
+      {
+        "kind": "rings",
+        "cx": 300,
+        "cy": 300,
+        "count": 22,
+        "spacing": 14,
+        "opacity": 0.75
+      },
+      {
+        "kind": "dots",
+        "dot": 5,
+        "spacing": 16,
+        "inset": [
+          80,
+          80,
+          80,
+          80
+        ],
+        "opacity": 0.85
+      },
+      {
+        "kind": "disc",
+        "cx": 400,
+        "cy": 200,
+        "r": 200,
+        "opacity": 0.9,
+        "blend": "difference"
+      }
+    ]
+  },
+  "005": {
+    "palette": [
+      "#000",
+      "#00b37a"
+    ],
+    "layers": [
+      {
+        "kind": "stripes",
+        "ang": 0,
+        "width": 14,
+        "gap": 36,
+        "opacity": 0.95
+      },
+      {
+        "kind": "rings",
+        "cx": 300,
+        "cy": 240,
+        "count": 18,
+        "spacing": 16,
+        "opacity": 0.7
+      },
+      {
+        "kind": "dots",
+        "dot": 4,
+        "spacing": 14,
+        "inset": [
+          60,
+          60,
+          60,
+          60
+        ],
+        "opacity": 0.85
+      },
+      {
+        "kind": "disc",
+        "cx": 300,
+        "cy": 240,
+        "r": 150,
+        "opacity": 0.6
+      }
+    ]
+  },
+  "006": {
+    "palette": [
+      "#000",
+      "#ffe600"
+    ],
+    "layers": [
+      {
+        "kind": "stripes",
+        "ang": 60,
+        "width": 2,
+        "gap": 14,
+        "opacity": 0.6
+      },
+      {
+        "kind": "stripes",
+        "ang": 120,
+        "width": 2,
+        "gap": 14,
+        "opacity": 0.6
+      },
+      {
+        "kind": "rings",
+        "cx": 360,
+        "cy": 240,
+        "count": 16,
+        "spacing": 18,
+        "opacity": 0.85
+      },
+      {
+        "kind": "dots",
+        "dot": 4,
+        "spacing": 16,
+        "inset": [
+          100,
+          100,
+          140,
+          100
+        ],
+        "opacity": 0.9
+      }
+    ]
+  },
+  "007": {
+    "palette": [
+      "#000",
+      "#00b37a"
+    ],
+    "layers": [
+      {
+        "kind": "rings",
+        "cx": 200,
+        "cy": 200,
+        "count": 14,
+        "spacing": 16,
+        "opacity": 0.75
+      },
+      {
+        "kind": "rings",
+        "cx": 420,
+        "cy": 380,
+        "count": 14,
+        "spacing": 16,
+        "opacity": 0.75
+      },
+      {
+        "kind": "dots",
+        "dot": 3,
+        "spacing": 12,
+        "inset": [
+          40,
+          40,
+          40,
+          40
+        ],
+        "opacity": 0.85
+      },
+      {
+        "kind": "disc",
+        "cx": 310,
+        "cy": 290,
+        "r": 180,
+        "opacity": 0.5,
+        "blend": "difference"
+      }
+    ]
+  },
+  "008": {
+    "palette": [
+      "#fff",
+      "#0033ff"
+    ],
+    "layers": [
+      {
+        "kind": "rings",
+        "cx": 300,
+        "cy": 300,
+        "count": 28,
+        "spacing": 11,
+        "opacity": 0.9
+      },
+      {
+        "kind": "stripes",
+        "ang": 135,
+        "width": 1.5,
+        "gap": 8,
+        "opacity": 0.6
+      },
+      {
+        "kind": "dots",
+        "dot": 3,
+        "spacing": 14,
+        "inset": [
+          180,
+          40,
+          180,
+          40
+        ],
+        "opacity": 0.9
+      },
+      {
+        "kind": "disc",
+        "cx": 300,
+        "cy": 300,
+        "r": 130,
+        "opacity": 0.5,
+        "blend": "difference"
+      }
+    ]
+  },
+  "009": {
+    "palette": [
+      "#000",
+      "#fff"
+    ],
+    "layers": [
+      {
+        "kind": "stripes",
+        "ang": 90,
+        "width": 1,
+        "gap": 20,
+        "opacity": 0.5
+      },
+      {
+        "kind": "stripes",
+        "ang": 0,
+        "width": 1,
+        "gap": 20,
+        "opacity": 0.5
+      },
+      {
+        "kind": "rings",
+        "cx": 300,
+        "cy": 300,
+        "count": 18,
+        "spacing": 18,
+        "opacity": 0.9
+      },
+      {
+        "kind": "dots",
+        "dot": 4,
+        "spacing": 16,
+        "inset": [
+          120,
+          120,
+          120,
+          120
+        ],
+        "opacity": 0.85
+      },
+      {
+        "kind": "disc",
+        "cx": 120,
+        "cy": 450,
+        "r": 280,
+        "opacity": 0.95
+      }
+    ]
+  },
+  "010": {
+    "palette": [
+      "#000",
+      "#ff3b00"
+    ],
+    "layers": [
+      {
+        "kind": "pinwheel",
+        "cx": 300,
+        "cy": 300,
+        "opacity": 0.85
+      },
+      {
+        "kind": "rings",
+        "cx": 300,
+        "cy": 300,
+        "count": 26,
+        "spacing": 12,
+        "opacity": 0.9
+      },
+      {
+        "kind": "dots",
+        "dot": 4,
+        "spacing": 14,
+        "inset": [
+          80,
+          80,
+          140,
+          80
+        ],
+        "opacity": 0.9
+      },
+      {
+        "kind": "disc",
+        "cx": 300,
+        "cy": 500,
+        "r": 260,
+        "opacity": 0.7,
+        "blend": "difference"
+      }
+    ]
+  },
+  "011": {
+    "palette": [
+      "#fff",
+      "#0033ff"
+    ],
+    "layers": [
+      {
+        "kind": "rings",
+        "cx": 300,
+        "cy": 450,
+        "count": 22,
+        "spacing": 16,
+        "opacity": 0.9
+      },
+      {
+        "kind": "dots",
+        "dot": 5,
+        "spacing": 18,
+        "inset": [
+          80,
+          160,
+          260,
+          160
+        ],
+        "opacity": 0.95
+      },
+      {
+        "kind": "stripes",
+        "ang": 0,
+        "width": 1.5,
+        "gap": 14,
+        "opacity": 0.4
+      },
+      {
+        "kind": "disc",
+        "cx": 300,
+        "cy": 120,
+        "r": 150,
+        "opacity": 0.5,
+        "blend": "difference"
+      }
+    ]
+  },
+  "012": {
+    "palette": [
+      "#111",
+      "#ff3b00"
+    ],
+    "layers": [
+      {
+        "kind": "rings",
+        "cx": 300,
+        "cy": 260,
+        "count": 30,
+        "spacing": 10,
+        "opacity": 0.95
+      },
+      {
+        "kind": "stripes",
+        "ang": 75,
+        "width": 3,
+        "gap": 12,
+        "opacity": 0.7
+      },
+      {
+        "kind": "dots",
+        "dot": 4,
+        "spacing": 14,
+        "inset": [
+          100,
+          60,
+          100,
+          60
+        ],
+        "opacity": 0.9
+      },
+      {
+        "kind": "disc",
+        "cx": 450,
+        "cy": 400,
+        "r": 220,
+        "opacity": 0.85
+      }
+    ]
+  },
+  "013": {
+    "palette": [
+      "#000",
+      "#e6e6e6"
+    ],
+    "layers": [
+      {
+        "kind": "stripes",
+        "ang": 0,
+        "width": 1,
+        "gap": 300,
+        "opacity": 0.8
+      },
+      {
+        "kind": "stripes",
+        "ang": 90,
+        "width": 1,
+        "gap": 300,
+        "opacity": 0.8
+      },
+      {
+        "kind": "rings",
+        "cx": 300,
+        "cy": 280,
+        "count": 16,
+        "spacing": 18,
+        "opacity": 0.85
+      },
+      {
+        "kind": "dots",
+        "dot": 4.5,
+        "spacing": 18,
+        "inset": [
+          100,
+          100,
+          100,
+          100
+        ],
+        "opacity": 0.95
+      },
+      {
+        "kind": "disc",
+        "cx": 300,
+        "cy": 280,
+        "r": 140,
+        "opacity": 0.5,
+        "blend": "difference"
+      }
+    ]
+  },
+  "014": {
+    "palette": [
+      "#000",
+      "#ffe600"
+    ],
+    "layers": [
+      {
+        "kind": "stripes",
+        "ang": 30,
+        "width": 2,
+        "gap": 14,
+        "opacity": 0.65
+      },
+      {
+        "kind": "stripes",
+        "ang": 150,
+        "width": 2,
+        "gap": 14,
+        "opacity": 0.65
+      },
+      {
+        "kind": "rings",
+        "cx": 300,
+        "cy": 300,
+        "count": 20,
+        "spacing": 15,
+        "opacity": 0.85
+      },
+      {
+        "kind": "dots",
+        "dot": 4,
+        "spacing": 16,
+        "inset": [
+          120,
+          120,
+          120,
+          120
+        ],
+        "opacity": 0.9
+      },
+      {
+        "kind": "disc",
+        "cx": 200,
+        "cy": 200,
+        "r": 160,
+        "opacity": 0.7,
+        "blend": "difference"
+      }
+    ]
+  },
+  "015": {
+    "palette": [
+      "#000",
+      "#00b37a"
+    ],
+    "layers": [
+      {
+        "kind": "stripes",
+        "ang": 90,
+        "width": 8,
+        "gap": 40,
+        "opacity": 0.7
+      },
+      {
+        "kind": "rings",
+        "cx": 420,
+        "cy": 180,
+        "count": 24,
+        "spacing": 12,
+        "opacity": 0.9
+      },
+      {
+        "kind": "dots",
+        "dot": 4,
+        "spacing": 15,
+        "inset": [
+          60,
+          60,
+          60,
+          60
+        ],
+        "opacity": 0.85
+      },
+      {
+        "kind": "disc",
+        "cx": 160,
+        "cy": 420,
+        "r": 200,
+        "opacity": 0.8
+      }
+    ]
+  },
+  "016": {
+    "palette": [
+      "#000",
+      "#fff"
+    ],
+    "layers": [
+      {
+        "kind": "stripes",
+        "ang": 0,
+        "width": 8,
+        "gap": 24,
+        "opacity": 0.9
+      },
+      {
+        "kind": "rings",
+        "cx": 300,
+        "cy": 300,
+        "count": 20,
+        "spacing": 15,
+        "opacity": 0.85
+      },
+      {
+        "kind": "dots",
+        "dot": 4,
+        "spacing": 16,
+        "inset": [
+          60,
+          160,
+          60,
+          160
+        ],
+        "opacity": 0.9
+      },
+      {
+        "kind": "disc",
+        "cx": 300,
+        "cy": 300,
+        "r": 210,
+        "opacity": 0.6,
+        "blend": "difference"
+      }
+    ]
+  },
+  "017": {
+    "palette": [
+      "#111",
+      "#ff3b00"
+    ],
+    "layers": [
+      {
+        "kind": "stripes",
+        "ang": 90,
+        "width": 1,
+        "gap": 6,
+        "opacity": 0.8
+      },
+      {
+        "kind": "rings",
+        "cx": 150,
+        "cy": 300,
+        "count": 24,
+        "spacing": 12,
+        "opacity": 0.85
+      },
+      {
+        "kind": "dots",
+        "dot": 3,
+        "spacing": 9,
+        "inset": [
+          20,
+          20,
+          20,
+          300
+        ],
+        "opacity": 0.95
+      },
+      {
+        "kind": "disc",
+        "cx": 480,
+        "cy": 300,
+        "r": 220,
+        "opacity": 0.95
+      }
+    ]
+  },
+  "018": {
+    "palette": [
+      "#000",
+      "#ff3b00"
+    ],
+    "layers": [
+      {
+        "kind": "rings",
+        "cx": 200,
+        "cy": 260,
+        "count": 22,
+        "spacing": 12,
+        "opacity": 0.85
+      },
+      {
+        "kind": "rings",
+        "cx": 400,
+        "cy": 260,
+        "count": 22,
+        "spacing": 12,
+        "opacity": 0.85
+      },
+      {
+        "kind": "dots",
+        "dot": 4,
+        "spacing": 16,
+        "inset": [
+          140,
+          80,
+          140,
+          80
+        ],
+        "opacity": 0.9
+      },
+      {
+        "kind": "disc",
+        "cx": 300,
+        "cy": 360,
+        "r": 180,
+        "opacity": 0.7,
+        "blend": "difference"
+      }
+    ]
+  },
+  "019": {
+    "palette": [
+      "#000",
+      "#fff"
+    ],
+    "layers": [
+      {
+        "kind": "dots",
+        "dot": 3,
+        "spacing": 10,
+        "inset": [
+          40,
+          40,
+          40,
+          40
+        ],
+        "opacity": 0.95
+      },
+      {
+        "kind": "stripes",
+        "ang": 90,
+        "width": 2,
+        "gap": 180,
+        "opacity": 0.9
+      },
+      {
+        "kind": "rings",
+        "cx": 300,
+        "cy": 260,
+        "count": 26,
+        "spacing": 13,
+        "opacity": 0.9
+      },
+      {
+        "kind": "disc",
+        "cx": 100,
+        "cy": 450,
+        "r": 300,
+        "opacity": 0.95
+      }
+    ]
+  },
+  "020": {
+    "palette": [
+      "#fff",
+      "#0033ff"
+    ],
+    "layers": [
+      {
+        "kind": "stripes",
+        "ang": 45,
+        "width": 4,
+        "gap": 40,
+        "opacity": 0.8
+      },
+      {
+        "kind": "rings",
+        "cx": 160,
+        "cy": 200,
+        "count": 12,
+        "spacing": 14,
+        "opacity": 0.8
+      },
+      {
+        "kind": "rings",
+        "cx": 320,
+        "cy": 300,
+        "count": 12,
+        "spacing": 14,
+        "opacity": 0.8
+      },
+      {
+        "kind": "rings",
+        "cx": 460,
+        "cy": 200,
+        "count": 12,
+        "spacing": 14,
+        "opacity": 0.8
+      },
+      {
+        "kind": "dots",
+        "dot": 4,
+        "spacing": 16,
+        "inset": [
+          80,
+          80,
+          80,
+          80
+        ],
+        "opacity": 0.85
+      }
+    ]
+  },
+  "021": {
+    "palette": [
+      "#000",
+      "#ffe600"
+    ],
+    "layers": [
+      {
+        "kind": "rings",
+        "cx": 300,
+        "cy": 280,
+        "count": 24,
+        "spacing": 12,
+        "opacity": 0.95
+      },
+      {
+        "kind": "stripes",
+        "ang": 0,
+        "width": 8,
+        "gap": 260,
+        "opacity": 0.95
+      },
+      {
+        "kind": "dots",
+        "dot": 4,
+        "spacing": 14,
+        "inset": [
+          80,
+          80,
+          80,
+          80
+        ],
+        "opacity": 0.85
+      },
+      {
+        "kind": "disc",
+        "cx": 480,
+        "cy": 280,
+        "r": 160,
+        "opacity": 0.8,
+        "blend": "difference"
+      }
+    ]
+  }
+}

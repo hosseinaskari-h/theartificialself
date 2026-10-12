@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>THE MACHINE WANTS — Hossein Askari / Archive</title>
+    <meta name="description" content="Essay exploring the intersection of transhumanism and body modification culture.">
+    <meta name="author" content="Hossein Askari">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://theartificialself.com/projects/016-the-machine-wants.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="THE MACHINE WANTS — Hossein Askari">
+    <meta property="og:description" content="Essay exploring the intersection of transhumanism and body modification culture.">
+    <meta property="og:url" content="https://theartificialself.com/projects/016-the-machine-wants.html">
+    <meta property="og:image" content="https://theartificialself.com/data/images/DivineMeat.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="THE MACHINE WANTS — Hossein Askari">
+    <meta name="twitter:description" content="Essay exploring the intersection of transhumanism and body modification culture.">
+    <meta name="twitter:image" content="https://theartificialself.com/data/images/DivineMeat.jpg">
+
+    <style>
+        :root {
+            --ink: #000;
+            --paper: #fff;
+            --rule: #000;
+            --hair: 1px;
+            --mono: ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace;
+            --sans: 'Helvetica Neue', Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
+        }
+        * { box-sizing: border-box; border-radius: 0 !important; box-shadow: none !important; }
+        html, body { margin: 0; background: var(--paper); color: var(--ink); overflow-x: hidden; width: 100%; }
+        body { font-family: var(--mono); font-size: 13px; line-height: 1.4; -webkit-font-smoothing: antialiased; }
+        ::selection { background: #000; color: #fff; }
+
+        header.masthead {
+            position: sticky; top: 0; z-index: 100;
+            background: var(--paper);
+            border-bottom: var(--hair) solid var(--rule);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 20px;
+        }
+        .masthead a.brand {
+            font-family: var(--sans); font-weight: 700; font-size: 14px;
+            letter-spacing: -0.02em; text-transform: uppercase;
+            text-decoration: none; color: var(--ink);
+        }
+        .masthead a.brand span { font-weight: 300; }
+        .masthead .back-link {
+            font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;
+            text-decoration: none; color: var(--ink); font-weight: 600;
+        }
+        .masthead .back-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+        @media (max-width: 640px) {
+            header.masthead { padding: 10px 14px; }
+            .masthead a.brand { font-size: 11px; }
+            .masthead .back-link { font-size: 10px; }
+        }
+
+        .dossier-wrap {
+            max-width: 860px; margin: 0 auto; padding: 40px 20px 100px;
+        }
+
+        .archive-spec-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            border: var(--hair) solid var(--rule);
+            margin-bottom: 30px;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+        .spec-cell {
+            padding: 10px 14px; border-right: var(--hair) solid var(--rule);
+        }
+        .spec-cell:last-child { border-right: none; }
+        .spec-cell b { display: block; font-size: 9px; letter-spacing: 0.14em; opacity: 0.6; margin-bottom: 2px; }
+        .spec-cell span { font-weight: 600; letter-spacing: 0.04em; }
+
+        @media (max-width: 680px) {
+            .archive-spec-grid { grid-template-columns: 1fr 1fr; }
+            .spec-cell:nth-child(2) { border-right: none; }
+            .spec-cell:nth-child(1), .spec-cell:nth-child(2) { border-bottom: var(--hair) solid var(--rule); }
+        }
+        @media (max-width: 440px) {
+            .spec-cell { padding: 8px 10px; font-size: 10px; }
+            .spec-cell b { font-size: 8px; }
+            .spec-cell span { word-break: break-word; }
+        }
+
+        h1.project-title {
+            font-family: var(--sans); font-weight: 700;
+            font-size: clamp(28px, 5.5vw, 56px);
+            line-height: 0.95; letter-spacing: -0.04em;
+            text-transform: uppercase; margin: 0 0 20px;
+        }
+
+        .project-lead {
+            font-size: 14px; line-height: 1.6; margin-bottom: 35px;
+            padding-bottom: 25px; border-bottom: var(--hair) solid var(--rule);
+            color: #222;
+        }
+
+        .content {
+            font-family: var(--sans);
+        }
+        .content p {
+            font-size: 15px; line-height: 1.8; margin: 0 0 22px; color: #111;
+        }
+        .content h1, .content h2, .content h3 {
+            font-family: var(--sans); font-weight: 700;
+            text-transform: uppercase; letter-spacing: -0.02em;
+            margin: 40px 0 16px; color: var(--ink);
+        }
+        .content h1 { font-size: 20px; border-bottom: var(--hair) solid var(--rule); padding-bottom: 8px; }
+        .content h2 { font-size: 17px; border-bottom: var(--hair) solid var(--rule); padding-bottom: 6px; }
+        .content img {
+            width: 100%; height: auto; display: block;
+            border: var(--hair) solid var(--rule);
+            margin: 28px 0 16px;
+        }
+        .content hr {
+            border: 0; border-top: var(--hair) dashed var(--rule);
+            margin: 36px 0;
+        }
+        .content a {
+            color: var(--ink); text-decoration: underline; text-underline-offset: 3px; font-weight: 600;
+        }
+        .content a:hover { background: var(--ink); color: var(--paper); text-decoration: none; }
+        .content em { font-style: italic; }
+        .content strong { font-weight: 700; }
+        #ps-canvas { width: 100% !important; max-width: 600px; height: auto !important; aspect-ratio: 3 / 2; }
+
+        @media (max-width: 680px) {
+            .dossier-wrap { padding: 24px 14px 60px; }
+            h1.project-title { font-size: clamp(24px, 6.5vw, 42px); margin-bottom: 14px; }
+            .project-lead { font-size: 13px; margin-bottom: 24px; padding-bottom: 18px; }
+            .content p { font-size: 14px; line-height: 1.7; margin-bottom: 18px; }
+        }
+
+        /* Pager */
+        .pager {
+            display: grid; grid-template-columns: 1fr auto 1fr;
+            border: var(--hair) solid var(--rule);
+            margin-top: 60px;
+            font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+        }
+        .pager a, .pager div {
+            padding: 14px 20px; text-decoration: none; color: var(--ink);
+        }
+        .pager a:hover { background: var(--ink); color: var(--paper); }
+        .pager .prev { border-right: var(--hair) solid var(--rule); text-align: left; }
+        .pager .index-link { border-right: var(--hair) solid var(--rule); text-align: center; font-weight: 700; }
+        .pager .next { text-align: right; }
+        .pager .disabled { opacity: 0.3; pointer-events: none; }
+
+        @media (max-width: 640px) {
+            .pager {
+                grid-template-columns: 1fr 1fr;
+            }
+            .pager .prev {
+                border-right: var(--hair) solid var(--rule);
+                border-bottom: var(--hair) solid var(--rule);
+                padding: 12px 10px;
+                font-size: 10px;
+            }
+            .pager .next {
+                border-bottom: var(--hair) solid var(--rule);
+                padding: 12px 10px;
+                font-size: 10px;
+            }
+            .pager .index-link {
+                grid-column: 1 / -1;
+                border-right: none;
+                padding: 12px 10px;
+                text-align: center;
+            }
+        }
+
+        footer {
+            border-top: var(--hair) solid var(--rule);
+            padding: 30px 20px; font-size: 11px;
+            text-transform: uppercase; letter-spacing: 0.08em;
+            display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+            max-width: 860px; margin: 0 auto;
+        }
+        @media (max-width: 600px) {
+            footer {
+                flex-direction: column;
+                gap: 8px;
+                padding: 24px 14px 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="masthead">
+        <a href="../index.html" class="brand">HOSSEIN ASKARI <span>/</span> ARCHIVE</a>
+        <a href="../index.html" class="back-link">← Return to Index</a>
+    </header>
+
+    <main class="dossier-wrap">
+        <div class="archive-spec-grid">
+            <div class="spec-cell"><b>Fonds ID</b><span>016</span></div>
+            <div class="spec-cell"><b>Chronology</b><span>2024</span></div>
+            <div class="spec-cell"><b>Medium</b><span>Critical Essay &amp; Monograph</span></div>
+            <div class="spec-cell"><b>Specification</b><span>Transhumanism &amp; Body Modification</span></div>
+        </div>
+
+        <h1 class="project-title">THE MACHINE WANTS</h1>
+        <div class="project-lead">Essay exploring the intersection of transhumanism and body modification culture.</div>
+
+        <article class="content">
+            <h1>The Machine Wants What the Bimbo Wants</h1>
+            <p>"From the moment I understood the weakness of my flesh, it disgusted me. I craved the strength and certainty of steel. I aspired to the purity of the Blessed Machine. Your kind cling to your flesh, as though it will not decay and fail you. One day the crude biomass you call a temple will wither, and you will beg my kind to save you. But I am already saved, for the Machine is immortal… Even in death I serve the Omnissiah."</p>
+            <p>I've been thinking about this prayer from Warhammer's tech priests. About disgust. About craving something more certain than what you were given. About calling your own body crude biomass.</p>
+            <p>The Adeptus Mechanicus cuts off their arms and legs, replaces them with metal. They drill into their skulls and socket in computers. They do this because they worship the machine, because they think the body they were born with is insufficient. Weak. Wrong.</p>
+            <p>Bimbofication is the same instinct wearing different skin.</p>
+            <p>"From the moment I understood the weakness of this vessel, I craved more. I craved the certainty of the perfection, the purity of the transformation. Your kind cling to 'authentic' and 'natural,' as though that will not fade and disappoint you. One day the body you were given will not be enough, and you will understand. But I am already becoming, for the ideal is eternal."</p>
+            <p>You look at yourself and you want more. Or different. Or you want to push yourself into a shape that feels right even though everyone says it's too much, it's fake, it's shallow. You get the fillers, the surgery, you do the workouts, you bleach the hair. The body you were born with isn't the endpoint—it's raw material.</p>
+            <p>Both of these things are about transformation as a kind of worship. The tech-priest bows to the Omnissiah. The bimbo bows to the perfection, to the archetype, to something bigger than just "looking hot."</p>
+            <p>My bimbo friend always says: it's about becoming. It's about craving more. Perfection. Not attention, perfection. And that's the thing people miss. They think it's for the male gaze or validation or whatever. But it's not. It's about the pursuit itself. The becoming. The endless refinement toward an ideal that maybe you never fully reach, but you chase it anyway because the chase is the point.</p>
+            <p>It's dedication. It's ritual.</p>
+            <p>And both of these things are about transformation as a kind of worship. The tech-priest bows to the Omnissiah. The bimbo bows to the perfection, to the archetype, to something bigger than just "looking hot."</p>
+            <p>They're both choosing artifice over nature. They're both saying: I will rebuild myself. I will become what I need to become.</p>
+            <p>The flesh is weak. Or maybe the flesh is just the starting point, and what matters is what you make of it—chrome and sacred oils, or platinum blonde and perfect tits. Same impulse. Same hunger for transformation.</p>
+            <p>There's something here about the body as a site of meaning-making. Philosophers used to argue about whether the body was a prison or a temple. The Cartesians said mind over matter, the body is just meat housing consciousness. Nietzsche said the body is where truth lives, that we think with our flesh.</p>
+            <p>But both the tech-priest and the bimbo are saying something else: the body is neither prison nor temple in its given state. It's a canvas. It's potential. And the act of transformation, the choice to remake yourself, is where the meaning comes from. Not from accepting what you were given, but from the refusal to accept it.</p>
+            <p>Maybe that's what transcendence actually is. Not escape from the body, but the willful reshaping of it. The tech-priest doesn't transcend flesh by rejecting it, they transcend it by choosing what replaces it. Same with the bimbo. The transformation is the theology.</p>
+            <p>Maybe transcendence just looks different depending on which god you're chasing.</p>
+        </article>
+
+        <nav class="pager">
+            <a href="015-plasmodia.html" class="prev">← 015 PLASMODIA</a>
+            <a href="../index.html" class="index-link">Archive Index</a>
+            <a href="017-the-necessary-gradual-descent.html" class="next">017 THE NECESSARY GRADUAL DESCENT OF WHAT WE USED TO BE →</a>
+        </nav>
+    </main>
+
+    <footer>
+        <div>Hossein Askari</div>
+        <div>Holding 21 Works · 2021–2026</div>
+        <div><a href="../index.html" style="color:inherit">Return to Index ↑</a></div>
+    </footer>
+    
+</body>
+</html>

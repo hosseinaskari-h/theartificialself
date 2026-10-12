@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SM-MCPM — Hossein Askari / Archive</title>
+    <meta name="description" content="Research paper presenting a new State-Modulated Monte Carlo Physarum Machine model.">
+    <meta name="author" content="Hossein Askari">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://theartificialself.com/projects/007-sm-mcpm.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="SM-MCPM — Hossein Askari">
+    <meta property="og:description" content="Research paper presenting a new State-Modulated Monte Carlo Physarum Machine model.">
+    <meta property="og:url" content="https://theartificialself.com/projects/007-sm-mcpm.html">
+    <meta property="og:image" content="https://theartificialself.com/data/images/smmcpm.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SM-MCPM — Hossein Askari">
+    <meta name="twitter:description" content="Research paper presenting a new State-Modulated Monte Carlo Physarum Machine model.">
+    <meta name="twitter:image" content="https://theartificialself.com/data/images/smmcpm.jpg">
+
+    <style>
+        :root {
+            --ink: #000;
+            --paper: #fff;
+            --rule: #000;
+            --hair: 1px;
+            --mono: ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace;
+            --sans: 'Helvetica Neue', Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
+        }
+        * { box-sizing: border-box; border-radius: 0 !important; box-shadow: none !important; }
+        html, body { margin: 0; background: var(--paper); color: var(--ink); overflow-x: hidden; width: 100%; }
+        body { font-family: var(--mono); font-size: 13px; line-height: 1.4; -webkit-font-smoothing: antialiased; }
+        ::selection { background: #000; color: #fff; }
+
+        header.masthead {
+            position: sticky; top: 0; z-index: 100;
+            background: var(--paper);
+            border-bottom: var(--hair) solid var(--rule);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 20px;
+        }
+        .masthead a.brand {
+            font-family: var(--sans); font-weight: 700; font-size: 14px;
+            letter-spacing: -0.02em; text-transform: uppercase;
+            text-decoration: none; color: var(--ink);
+        }
+        .masthead a.brand span { font-weight: 300; }
+        .masthead .back-link {
+            font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;
+            text-decoration: none; color: var(--ink); font-weight: 600;
+        }
+        .masthead .back-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+        @media (max-width: 640px) {
+            header.masthead { padding: 10px 14px; }
+            .masthead a.brand { font-size: 11px; }
+            .masthead .back-link { font-size: 10px; }
+        }
+
+        .dossier-wrap {
+            max-width: 860px; margin: 0 auto; padding: 40px 20px 100px;
+        }
+
+        .archive-spec-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            border: var(--hair) solid var(--rule);
+            margin-bottom: 30px;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+        .spec-cell {
+            padding: 10px 14px; border-right: var(--hair) solid var(--rule);
+        }
+        .spec-cell:last-child { border-right: none; }
+        .spec-cell b { display: block; font-size: 9px; letter-spacing: 0.14em; opacity: 0.6; margin-bottom: 2px; }
+        .spec-cell span { font-weight: 600; letter-spacing: 0.04em; }
+
+        @media (max-width: 680px) {
+            .archive-spec-grid { grid-template-columns: 1fr 1fr; }
+            .spec-cell:nth-child(2) { border-right: none; }
+            .spec-cell:nth-child(1), .spec-cell:nth-child(2) { border-bottom: var(--hair) solid var(--rule); }
+        }
+        @media (max-width: 440px) {
+            .spec-cell { padding: 8px 10px; font-size: 10px; }
+            .spec-cell b { font-size: 8px; }
+            .spec-cell span { word-break: break-word; }
+        }
+
+        h1.project-title {
+            font-family: var(--sans); font-weight: 700;
+            font-size: clamp(28px, 5.5vw, 56px);
+            line-height: 0.95; letter-spacing: -0.04em;
+            text-transform: uppercase; margin: 0 0 20px;
+        }
+
+        .project-lead {
+            font-size: 14px; line-height: 1.6; margin-bottom: 35px;
+            padding-bottom: 25px; border-bottom: var(--hair) solid var(--rule);
+            color: #222;
+        }
+
+        .content {
+            font-family: var(--sans);
+        }
+        .content p {
+            font-size: 15px; line-height: 1.8; margin: 0 0 22px; color: #111;
+        }
+        .content h1, .content h2, .content h3 {
+            font-family: var(--sans); font-weight: 700;
+            text-transform: uppercase; letter-spacing: -0.02em;
+            margin: 40px 0 16px; color: var(--ink);
+        }
+        .content h1 { font-size: 20px; border-bottom: var(--hair) solid var(--rule); padding-bottom: 8px; }
+        .content h2 { font-size: 17px; border-bottom: var(--hair) solid var(--rule); padding-bottom: 6px; }
+        .content img {
+            width: 100%; height: auto; display: block;
+            border: var(--hair) solid var(--rule);
+            margin: 28px 0 16px;
+        }
+        .content hr {
+            border: 0; border-top: var(--hair) dashed var(--rule);
+            margin: 36px 0;
+        }
+        .content a {
+            color: var(--ink); text-decoration: underline; text-underline-offset: 3px; font-weight: 600;
+        }
+        .content a:hover { background: var(--ink); color: var(--paper); text-decoration: none; }
+        .content em { font-style: italic; }
+        .content strong { font-weight: 700; }
+        #ps-canvas { width: 100% !important; max-width: 600px; height: auto !important; aspect-ratio: 3 / 2; }
+
+        @media (max-width: 680px) {
+            .dossier-wrap { padding: 24px 14px 60px; }
+            h1.project-title { font-size: clamp(24px, 6.5vw, 42px); margin-bottom: 14px; }
+            .project-lead { font-size: 13px; margin-bottom: 24px; padding-bottom: 18px; }
+            .content p { font-size: 14px; line-height: 1.7; margin-bottom: 18px; }
+        }
+
+        /* Pager */
+        .pager {
+            display: grid; grid-template-columns: 1fr auto 1fr;
+            border: var(--hair) solid var(--rule);
+            margin-top: 60px;
+            font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+        }
+        .pager a, .pager div {
+            padding: 14px 20px; text-decoration: none; color: var(--ink);
+        }
+        .pager a:hover { background: var(--ink); color: var(--paper); }
+        .pager .prev { border-right: var(--hair) solid var(--rule); text-align: left; }
+        .pager .index-link { border-right: var(--hair) solid var(--rule); text-align: center; font-weight: 700; }
+        .pager .next { text-align: right; }
+        .pager .disabled { opacity: 0.3; pointer-events: none; }
+
+        @media (max-width: 640px) {
+            .pager {
+                grid-template-columns: 1fr 1fr;
+            }
+            .pager .prev {
+                border-right: var(--hair) solid var(--rule);
+                border-bottom: var(--hair) solid var(--rule);
+                padding: 12px 10px;
+                font-size: 10px;
+            }
+            .pager .next {
+                border-bottom: var(--hair) solid var(--rule);
+                padding: 12px 10px;
+                font-size: 10px;
+            }
+            .pager .index-link {
+                grid-column: 1 / -1;
+                border-right: none;
+                padding: 12px 10px;
+                text-align: center;
+            }
+        }
+
+        footer {
+            border-top: var(--hair) solid var(--rule);
+            padding: 30px 20px; font-size: 11px;
+            text-transform: uppercase; letter-spacing: 0.08em;
+            display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+            max-width: 860px; margin: 0 auto;
+        }
+        @media (max-width: 600px) {
+            footer {
+                flex-direction: column;
+                gap: 8px;
+                padding: 24px 14px 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="masthead">
+        <a href="../index.html" class="brand">HOSSEIN ASKARI <span>/</span> ARCHIVE</a>
+        <a href="../index.html" class="back-link">← Return to Index</a>
+    </header>
+
+    <main class="dossier-wrap">
+        <div class="archive-spec-grid">
+            <div class="spec-cell"><b>Fonds ID</b><span>007</span></div>
+            <div class="spec-cell"><b>Chronology</b><span>2024</span></div>
+            <div class="spec-cell"><b>Medium</b><span>Research Paper / Complex Systems</span></div>
+            <div class="spec-cell"><b>Specification</b><span>Physarum Model · Complex Systems</span></div>
+        </div>
+
+        <h1 class="project-title">SM-MCPM</h1>
+        <div class="project-lead">Research paper presenting a new State-Modulated Monte Carlo Physarum Machine model.</div>
+
+        <article class="content">
+            <h1>State-Modulated Monte Carlo Physarum Machine for Energy-Constrained Collective Navigation</h1>
+            <p>While I was developing Plasmodia game, I started by using Jeff Jones' algorithm of physarum behaviour, but the game needed more survival and environmental variables, so I started adding those to the code. At some point I asked myself is this still Jones' algorithm or is it a new version. I took a two week break from the development and wrote this paper.</p>
+            <p><strong>Abstract:</strong> We present SM-MCPM (State-Modulated Monte Carlo Physarum Machine), an extension of physarum-based collective algorithms incorporating behavioral state machines and metabolic constraints. Classical physarum models treat agents as memoryless particles whose behavior depends solely on local pheromone gradients. SM-MCPM agents maintain internal states-Scouting, Returning, LowEnergy, Recharging-that dynamically modulate sensing weights and movement priorities. Agents operate under energy constraints, requiring intermediate recharge stations (nodes) to complete round-trip journeys between a home base (core) and target locations (objectives). The framework produces emergent infrastructure: high-traffic routes consolidate into persistent vein highways providing speed and efficiency bonuses. We formalize the complete system dynamics including the agent state machine, multi-layer sensing model, energy mechanics, and vein formation process. Simulation experiments (N = 100) demonstrate that state modulation is strictly necessary for survival, with the full model achieving 10,277 ± 7,074 round trips compared to zero for a memoryless baseline. Furthermore, we observe emergent range extension, where vein infrastructure allows agents to survive theoretically impossible journeys by reducing metabolic costs. However, this mechanism exhibits high instability (611±707 trips without pre-placed nodes) with a heavy-tailed distribution of outcomes, confirming that reliable collective navigation requires deliberate infrastructure.</p>
+            <p><a href="https://doi.org/10.13140/RG.2.2.13933.24803" target="_blank">Link to full paper</a></p>
+        </article>
+
+        <nav class="pager">
+            <a href="006-mr-rubix.html" class="prev">← 006 MR RUBIX</a>
+            <a href="../index.html" class="index-link">Archive Index</a>
+            <a href="008-vr-london.html" class="next">008 VR LONDON →</a>
+        </nav>
+    </main>
+
+    <footer>
+        <div>Hossein Askari</div>
+        <div>Holding 21 Works · 2021–2026</div>
+        <div><a href="../index.html" style="color:inherit">Return to Index ↑</a></div>
+    </footer>
+    
+</body>
+</html>

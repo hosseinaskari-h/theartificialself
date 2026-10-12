@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+        <rect width="600" height="600" fill="#fff"/>
+
+                <defs>
+                    <pattern id="stripes-009-0" width="20" height="20" patternTransform="rotate(90)" patternUnits="userSpaceOnUse">
+                        <line x1="0" y1="0" x2="0" y2="20" stroke="#000" stroke-width="1"/>
+                    </pattern>
+                </defs>
+                <rect width="600" height="600" fill="url(#stripes-009-0)" opacity="0.5"/>
+            
+
+                <defs>
+                    <pattern id="stripes-009-1" width="20" height="20" patternTransform="rotate(0)" patternUnits="userSpaceOnUse">
+                        <line x1="0" y1="0" x2="0" y2="20" stroke="#000" stroke-width="1"/>
+                    </pattern>
+                </defs>
+                <rect width="600" height="600" fill="url(#stripes-009-1)" opacity="0.5"/>
+            
+<g opacity="0.9"><circle cx="300" cy="300" r="18" fill="none" stroke="#000" stroke-width="1.5"/>
+<circle cx="300" cy="300" r="36" fill="none" stroke="#000" stroke-width="1.5"/>
+<circle cx="300" cy="300" r="54" fill="none" stroke="#000" stroke-width="1.5"/>
+<circle cx="300" cy="300" r="72" fill="none" stroke="#000" stroke-width="1.5"/>
+<circle cx="300" cy="300" r="90" fill="none" stroke="#000" stroke-width="1.5"/>
+<circle cx="300" cy="300" r="108" fill="none" stroke="#000" stroke-width="1.5"/>
+<circle cx="300" cy="300" r="126" fill="none" stroke="#000" stroke-width="1.5"/>
+<circle cx="300" cy="300" r="144" fill="none" stroke="#000" stroke-width="1.5"/>
+<circle cx="300" cy="300" r="162" fill="none" stroke="#000" stroke-width="1.5"/>
+<circle cx="300" cy="300" r="180" fill="none" stroke="#000" stroke-width="1.5"/>
+<circle cx="300" cy="300" r="198" fill="none" stroke="#000" stroke-width="1.5"/>
+<circle cx="300" cy="300" r="216" fill="none" stroke="#000" stroke-width="1.5"/>
+<circle cx="300" cy="300" r="234" fill="none" stroke="#000" stroke-width="1.5"/>
+<circle cx="300" cy="300" r="252" fill="none" stroke="#000" stroke-width="1.5"/>
+<circle cx="300" cy="300" r="270" fill="none" stroke="#000" stroke-width="1.5"/>
+<circle cx="300" cy="300" r="288" fill="none" stroke="#000" stroke-width="1.5"/>
+<circle cx="300" cy="300" r="306" fill="none" stroke="#000" stroke-width="1.5"/>
+<circle cx="300" cy="300" r="324" fill="none" stroke="#000" stroke-width="1.5"/></g>
+
+                <defs>
+                    <pattern id="dots-009-3" width="16" height="16" patternUnits="userSpaceOnUse">
+                        <circle cx="8" cy="8" r="2" fill="#000"/>
+                    </pattern>
+                    <clipPath id="clip-dots-009-3">
+                        <rect x="120" y="120" width="360" height="360"/>
+                    </clipPath>
+                </defs>
+                <rect width="600" height="600" fill="url(#dots-009-3)" clip-path="url(#clip-dots-009-3)" opacity="0.85"/>
+            
+
+                <circle cx="120" cy="450" r="280" fill="#000" opacity="0.95"/>
+            
+<rect x="0" y="0" width="600" height="600" fill="none" stroke="#000" stroke-width="2"/>
+
+        <g transform="translate(16, 552)">
+            <rect x="0" y="0" width="84" height="30" fill="#fff" stroke="#000" stroke-width="1.5"/>
+            <text x="42" y="19" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" font-weight="bold" fill="#000" letter-spacing="1.5">009</text>
+        </g>
+    
+    </svg>
