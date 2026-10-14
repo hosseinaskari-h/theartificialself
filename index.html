@@ -620,7 +620,7 @@
     <header class="masthead" id="masthead">
         <h1>Hossein Askari <span>/</span> Archive</h1>
         <div class="meta">
-            <div class="clock" id="clock">00:00:00<small id="tz">UTC</small></div>
+            <div class="clock" id="clock">00:00:00<small id="tz">GMT</small></div>
             <div id="dateline">—</div>
             <div class="nav-links">
                 <a href="data/pdf/cv.pdf" target="_blank">[ CV (PDF) ]</a>
@@ -896,8 +896,8 @@
         // Clock
         function updateClock() {
             const now = new Date();
-            const utc = now.toISOString().substring(11, 19);
-            document.getElementById('clock').innerHTML = utc + '<small>UTC</small>';
+            const gmt = now.toISOString().substring(11, 19);
+            document.getElementById('clock').innerHTML = gmt + '<small>GMT</small>';
             document.getElementById('dateline').innerText = now.toISOString().substring(0, 10);
         }
         setInterval(updateClock, 1000);
