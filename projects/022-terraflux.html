@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TERRAFLUX (1872) — Hossein Askari / Archive</title>
+    <meta name="description" content="A thermodynamic frontier logistics simulation and synthetic ekistics architecture. No omniscient god-hand; only telegraph lines, gravity flumes, and somatic decay.">
+    <meta name="author" content="Hossein Askari">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://theartificialself.com/projects/022-terraflux.html">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000000'/%3E%3Cline x1='22' y1='5' x2='10' y2='27' stroke='%23ffffff' stroke-width='3' stroke-linecap='square'/%3E%3C/svg%3E">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "TERRAFLUX (1872)",
+      "applicationCategory": "Simulation / Game",
+      "operatingSystem": "Windows, macOS (Universal 2), Linux",
+      "creator": {
+        "@type": "Person",
+        "name": "Hossein Askari",
+        "url": "https://theartificialself.com/"
+      },
+      "dateCreated": "2026",
+      "description": "A thermodynamic frontier logistics simulation and synthetic ekistics architecture. No omniscient god-hand; only telegraph lines, gravity flumes, and somatic decay."
+    }
+    </script>
+
+    <!-- Open Graph -->
+    <meta property="og:image" content="https://theartificialself.com/data/images/terraflux_map.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://theartificialself.com/data/images/terraflux_map.png">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="TERRAFLUX (1872) — Hossein Askari">
+    <meta property="og:description" content="A thermodynamic frontier logistics simulation and synthetic ekistics architecture. No omniscient god-hand; only telegraph lines, gravity flumes, and somatic decay.">
+    <meta property="og:url" content="https://theartificialself.com/projects/022-terraflux.html">
+
+    <style>
+        :root {
+            --ink: #000;
+            --paper: #fff;
+            --rule: #000;
+            --hair: 1px;
+            --accent: #2e5944;
+            --vellum: #f6f2e6;
+            --vellum-ink: #1c1a17;
+            --vellum-line: #b8ad96;
+            --vellum-index: #82755e;
+            --dark-void: #090b0e;
+            --dark-ink: #e2e8f0;
+            --dark-cyan: #38ef7d;
+            --dark-amber: #ffb703;
+            --mono: ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace;
+            --sans: 'Helvetica Neue', Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
+        }
+
+        * { box-sizing: border-box; border-radius: 0 !important; box-shadow: none !important; }
+        html, body { margin: 0; background: var(--paper); color: var(--ink); overflow-x: hidden; width: 100%; }
+        body { font-family: var(--mono); font-size: 13px; line-height: 1.45; -webkit-font-smoothing: antialiased; }
+        ::selection { background: #000; color: #fff; }
+
+        /* Header Masthead */
+        header.masthead {
+            position: sticky; top: 0; z-index: 100;
+            background: var(--paper);
+            border-bottom: var(--hair) solid var(--rule);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 20px;
+        }
+        .masthead a.brand {
+            font-family: var(--sans); font-weight: 700; font-size: 14px;
+            letter-spacing: -0.02em; text-transform: uppercase;
+            text-decoration: none; color: var(--ink);
+        }
+        .masthead a.brand span { font-weight: 300; }
+        .masthead-right {
+            display: flex; align-items: center; gap: 20px; font-size: 11px;
+            text-transform: uppercase; letter-spacing: 0.08em;
+        }
+        .live-clock {
+            font-variant-numeric: tabular-nums; opacity: 0.7;
+        }
+        .masthead .back-link {
+            text-decoration: none; color: var(--ink); font-weight: 600;
+        }
+        .masthead .back-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+        @media (max-width: 640px) {
+            header.masthead { padding: 10px 14px; }
+            .masthead a.brand { font-size: 11px; }
+            .masthead-right { gap: 10px; font-size: 10px; }
+            .live-clock { display: none; }
+        }
+
+        .dossier-wrap {
+            max-width: 960px; margin: 0 auto; padding: 40px 20px 100px;
+        }
+
+        /* Fonds Meta Spec Grid */
+        .archive-spec-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            border: var(--hair) solid var(--rule);
+            margin-bottom: 30px;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+        .spec-cell {
+            padding: 10px 14px; border-right: var(--hair) solid var(--rule);
+        }
+        .spec-cell:last-child { border-right: none; }
+        .spec-cell b { display: block; font-size: 9px; letter-spacing: 0.14em; opacity: 0.6; margin-bottom: 2px; }
+        .spec-cell span { font-weight: 600; letter-spacing: 0.04em; }
+
+        @media (max-width: 680px) {
+            .archive-spec-grid { grid-template-columns: 1fr 1fr; }
+            .spec-cell:nth-child(2) { border-right: none; }
+            .spec-cell:nth-child(1), .spec-cell:nth-child(2) { border-bottom: var(--hair) solid var(--rule); }
+        }
+
+        h1.project-title {
+            font-family: var(--sans); font-weight: 700;
+            font-size: clamp(32px, 6.5vw, 68px);
+            line-height: 0.92; letter-spacing: -0.04em;
+            text-transform: uppercase; margin: 0 0 16px;
+        }
+
+        .project-lead {
+            font-size: 15px; line-height: 1.6; margin-bottom: 35px;
+            padding-bottom: 25px; border-bottom: var(--hair) solid var(--rule);
+            color: #111; font-family: var(--sans);
+        }
+
+        /* Interactive Cartography Workbench */
+        .carto-workbench {
+            border: var(--hair) solid var(--rule);
+            margin: 40px 0;
+            background: var(--paper);
+        }
+        .carto-bar {
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 8px;
+            padding: 10px 16px;
+            border-bottom: var(--hair) solid var(--rule);
+            background: var(--paper);
+            font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+        }
+        .carto-controls {
+            display: flex; gap: 6px; flex-wrap: wrap;
+        }
+        .btn-carto {
+            background: transparent; border: var(--hair) solid var(--rule);
+            color: var(--ink); font-family: var(--mono); font-size: 10px;
+            padding: 5px 10px; cursor: pointer; text-transform: uppercase;
+            letter-spacing: 0.06em; font-weight: 600;
+            transition: background 60ms linear, color 60ms linear;
+        }
+        .btn-carto:hover {
+            background: var(--ink); color: var(--paper);
+        }
+        .btn-carto.active {
+            background: var(--ink); color: var(--paper);
+        }
+
+        #topo-viewport {
+            position: relative; width: 100%; aspect-ratio: 16 / 9;
+            background: var(--vellum); overflow: hidden;
+            border-bottom: var(--hair) solid var(--rule);
+            cursor: crosshair; user-select: none;
+        }
+        #topo-viewport.dark-theme {
+            background: var(--dark-void);
+        }
+        #topo-canvas {
+            width: 100%; height: 100%; display: block;
+        }
+
+        .topo-hud-overlay {
+            position: absolute; top: 12px; left: 14px;
+            font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+            background: rgba(246, 242, 230, 0.92);
+            border: var(--hair) solid var(--vellum-ink);
+            padding: 6px 10px; line-height: 1.4; pointer-events: none;
+            color: var(--vellum-ink);
+        }
+        #topo-viewport.dark-theme .topo-hud-overlay {
+            background: rgba(9, 11, 14, 0.88);
+            border-color: var(--dark-cyan);
+            color: var(--dark-cyan);
+        }
+
+        .transect-display-box {
+            display: grid; grid-template-columns: minmax(0, 1fr) 260px;
+            border-bottom: var(--hair) solid var(--rule);
+            font-size: 11px;
+        }
+        @media (max-width: 768px) {
+            .transect-display-box { grid-template-columns: 1fr; }
+        }
+        .transect-canvas-pane {
+            padding: 12px 16px; border-right: var(--hair) solid var(--rule);
+        }
+        @media (max-width: 768px) {
+            .transect-canvas-pane { border-right: none; border-bottom: var(--hair) solid var(--rule); }
+        }
+        .transect-canvas-pane b {
+            display: block; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+            opacity: 0.6; margin-bottom: 6px;
+        }
+        #transect-canvas {
+            width: 100%; height: 80px; display: block;
+            border: var(--hair) solid #ddd;
+        }
+        #topo-viewport.dark-theme ~ .transect-display-box #transect-canvas {
+            border-color: #222;
+        }
+        .transect-telemetry-pane {
+            padding: 12px 16px; font-variant-numeric: tabular-nums;
+            display: flex; flex-direction: column; justify-content: center; gap: 4px;
+        }
+        .tele-row { display: flex; justify-content: space-between; }
+        .tele-row span { opacity: 0.6; text-transform: uppercase; font-size: 10px; }
+        .tele-row strong { font-weight: 600; }
+
+        /* Telegraph Terminal Emulator */
+        .terminal-block {
+            border: var(--hair) solid var(--rule);
+            background: #000; color: #fff;
+            margin: 40px 0; font-family: var(--mono);
+        }
+        .terminal-header {
+            background: #111; color: #aaa;
+            padding: 8px 14px; border-bottom: 1px solid #222;
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+        }
+        .terminal-body {
+            padding: 14px 16px; font-size: 12px; line-height: 1.5;
+            min-height: 180px; max-height: 320px; overflow-y: auto;
+            white-space: pre-wrap; font-variant-numeric: tabular-nums;
+        }
+        .terminal-body .term-line-cyan { color: #38ef7d; }
+        .terminal-body .term-line-amber { color: #ffb703; }
+        .terminal-body .term-line-dim { color: #666; }
+        .terminal-body .term-line-alert { color: #ff4757; }
+        .terminal-prompt-row {
+            display: flex; align-items: center;
+            padding: 8px 16px; border-top: 1px solid #222; background: #080808;
+        }
+        .terminal-prompt-label {
+            color: #38ef7d; font-weight: bold; margin-right: 8px; user-select: none;
+        }
+        .terminal-input {
+            flex: 1; background: transparent; border: none; outline: none;
+            color: #fff; font-family: var(--mono); font-size: 12px;
+            caret-color: #38ef7d;
+        }
+        .terminal-presets {
+            padding: 6px 16px; background: #0d0d0d; border-top: 1px solid #1a1a1a;
+            display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 10px;
+        }
+        .terminal-presets span { color: #666; text-transform: uppercase; }
+        .btn-term-preset {
+            background: #1a1a1a; color: #bbb; border: 1px solid #333;
+            padding: 2px 7px; font-size: 9px; cursor: pointer; font-family: inherit;
+        }
+        .btn-term-preset:hover { background: #333; color: #fff; }
+
+        /* Editorial Essay Content */
+        .content { font-family: var(--sans); }
+        .content p {
+            font-size: 15px; line-height: 1.8; margin: 0 0 22px; color: #111;
+        }
+        .content h2 {
+            font-size: 19px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: -0.02em; margin: 48px 0 16px;
+            border-bottom: var(--hair) solid var(--rule); padding-bottom: 6px;
+        }
+        .content h3 {
+            font-size: 14px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.04em; margin: 28px 0 10px; font-family: var(--mono);
+        }
+        .content hr {
+            border: 0; border-top: var(--hair) dashed var(--rule); margin: 38px 0;
+        }
+        .content blockquote {
+            margin: 28px 0; padding: 14px 20px;
+            border-left: 3px solid var(--rule);
+            background: #fafafa; font-style: italic; font-size: 14px; line-height: 1.7;
+        }
+
+        /* Systematic Architecture Data Table */
+        .system-matrix {
+            width: 100%; border-collapse: collapse; margin: 24px 0 32px;
+            font-family: var(--mono); font-size: 11px;
+            border: var(--hair) solid var(--rule);
+        }
+        .system-matrix th, .system-matrix td {
+            padding: 8px 12px; border-bottom: var(--hair) solid var(--rule);
+            border-right: var(--hair) solid var(--rule); text-align: left;
+        }
+        .system-matrix th {
+            background: #f8f8f8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+            font-size: 10px;
+        }
+        .system-matrix tr:last-child td { border-bottom: none; }
+        .system-matrix td:last-child, .system-matrix th:last-child { border-right: none; }
+
+        /* Distribution & Download Section */
+        .release-section {
+            border: var(--hair) solid var(--rule);
+            margin: 40px 0; padding: 24px 20px; background: #fafafa;
+        }
+        .release-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+            margin-top: 18px;
+        }
+        @media (max-width: 680px) {
+            .release-grid { grid-template-columns: 1fr; }
+        }
+        .release-card {
+            border: var(--hair) solid var(--rule); background: #fff;
+            padding: 16px; display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .release-card h4 {
+            margin: 0 0 6px; font-size: 13px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.02em; font-family: var(--sans);
+        }
+        .release-card p {
+            font-size: 11px; line-height: 1.4; color: #555; margin: 0 0 16px;
+        }
+        .release-card a.download-btn {
+            display: block; text-align: center; text-decoration: none;
+            background: var(--ink); color: var(--paper); font-weight: 600;
+            font-size: 11px; padding: 10px 12px; text-transform: uppercase;
+            letter-spacing: 0.08em; transition: background 60ms linear;
+        }
+        .release-card a.download-btn:hover {
+            background: #333;
+        }
+
+        /* Pager Navigation */
+        .pager {
+            display: grid; grid-template-columns: 1fr auto 1fr;
+            border: var(--hair) solid var(--rule);
+            margin-top: 60px;
+            font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+        }
+        .pager a, .pager div {
+            padding: 14px 20px; text-decoration: none; color: var(--ink);
+        }
+        .pager a:hover { background: var(--ink); color: var(--paper); }
+        .pager .prev { border-right: var(--hair) solid var(--rule); text-align: left; }
+        .pager .index-link { border-right: var(--hair) solid var(--rule); text-align: center; font-weight: 700; }
+        .pager .next { text-align: right; }
+
+        @media (max-width: 640px) {
+            .pager { display: flex; flex-direction: column; margin-top: 40px; }
+            .pager a, .pager div {
+                border-right: none; border-bottom: var(--hair) solid var(--rule);
+                padding: 12px 14px;
+            }
+            .pager > :last-child { border-bottom: none !important; }
+        }
+
+        /* Footer Colophon */
+        footer {
+            border-top: var(--hair) solid var(--rule);
+            padding: 30px 20px; font-size: 11px;
+            text-transform: uppercase; letter-spacing: 0.08em;
+            display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+            max-width: 960px; margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <header class="masthead">
+        <a href="../index.html" class="brand">HOSSEIN ASKARI <span>/</span> ARCHIVE</a>
+        <div class="masthead-right">
+            <span class="live-clock" id="masthead-clock">00:00:00 GMT</span>
+            <a href="../index.html" class="back-link">← Return to Index</a>
+        </div>
+    </header>
+
+    <main class="dossier-wrap">
+        <!-- Archive Specification Grid -->
+        <div class="archive-spec-grid">
+            <div class="spec-cell"><b>Fonds ID</b><span>022</span></div>
+            <div class="spec-cell"><b>Chronology</b><span>2024–2026</span></div>
+            <div class="spec-cell"><b>Medium</b><span>C++20 Engine · Procedural Cartography</span></div>
+            <div class="spec-cell"><b>Classification</b><span>Frontier Logistics &amp; Synthetic Ekistics</span></div>
+        </div>
+
+        <h1 class="project-title">TERRAFLUX (1872)</h1>
+        <div class="project-lead">
+            A thermodynamic frontier logistics simulation. No overseer god-hand, no floating numerical currency, and no omniscient spatial camera; only manual windlass turners, surveyed elevation contours, physical copper flumes, and somatic mortality.
+        </div>
+
+        <!-- Interactive Cartography Workbench -->
+        <section class="carto-workbench">
+            <div class="carto-bar">
+                <div><b>Field Cartography Survey Sheet</b> &mdash; 1872 Trigonometric Transect</div>
+                <div class="carto-controls">
+                    <button class="btn-carto active" id="btn-theme-vellum" onclick="setCartoTheme('vellum')">Vellum 1872</button>
+                    <button class="btn-carto" id="btn-theme-dark" onclick="setCartoTheme('dark')">Dark Ekistics</button>
+                    <button class="btn-carto" id="btn-interval" onclick="cycleInterval()">Step: 10m</button>
+                    <button class="btn-carto" id="btn-transect-dir" onclick="toggleTransectDir()">Cut: Horiz</button>
+                    <button class="btn-carto" onclick="regenerateTerrain()">Re-Survey Seed</button>
+                </div>
+            </div>
+
+            <div id="topo-viewport">
+                <canvas id="topo-canvas"></canvas>
+                <div class="topo-hud-overlay" id="hud-overlay">
+                    <strong>SURVEY BENCHMARK: V21</strong><br>
+                    ELEVATION: 114.2 m ASL &bull; GRADE: 14.8%<br>
+                    GEOLOGY: RIVER GRAVEL &bull; FOG: SURVEYED
+                </div>
+            </div>
+
+            <div class="transect-display-box">
+                <div class="transect-canvas-pane">
+                    <b>Elevation Profile Transect &bull; Cross-Section Line</b>
+                    <canvas id="transect-canvas" width="600" height="80"></canvas>
+                </div>
+                <div class="transect-telemetry-pane" id="transect-tele">
+                    <div class="tele-row"><span>Transect Cut:</span><strong id="tele-transect-pos">Y = 0.0 m (River Axis)</strong></div>
+                    <div class="tele-row"><span>Min / Max Elev:</span><strong id="tele-elev-range">74.2m &mdash; 188.5m</strong></div>
+                    <div class="tele-row"><span>Mean Gradient:</span><strong id="tele-mean-grad">16.3% (Graded Barrow)</strong></div>
+                    <div class="tele-row"><span>Friction Mult:</span><strong id="tele-fric-mult">1.42x Kcal/km</strong></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Conceptual Essay -->
+        <article class="content">
+            <h2>01 &bull; The Architecture of Indifference</h2>
+            <p>
+                Most settlement games are built around imperial benevolence: an all-seeing cursor that moves resources across infinite voids at zero cost, spending floating numbers called "credits" or "influence." <em>TERRAFLUX</em> rejects this abstraction entirely. It operates from a position of radical non-human indifference.
+            </p>
+            <p>
+                The land does not know the colonists have arrived, nor does it yield to administrative wishes. A ton of felled oak timber has mass, inertia, and frictional drag. Moving it up a 22% grade does not cost abstract numbers; it costs literal human muscular calories, burnt as glycogen, dissipating into body heat. If the slope exceeds the friction angle of clay-loam soil, a wheelbarrow cannot pass. A masonry flume must be carved, or the logs must remain in the mire.
+            </p>
+
+            <blockquote>
+                "There is no overseer in TERRAFLUX. There is only thermodynamic accounting. When a worker starves in the deep forest, their body ceases to draw potable water from the cistern. The valve remains open until an engineer walks along the trace and physically turns the iron windlass."
+            </blockquote>
+
+            <h2>02 &bull; Somatic Metabolism & The Nine Omega Pathologies</h2>
+            <p>
+                Colonists in <em>TERRAFLUX</em> are not sprites or generic work tokens. They possess anatomical profiles derived from physical physiology: <strong>Total Body Water (TBW)</strong>, intracellular hydration, caloric adipose tissue, core rectal temperature, and skeletal muscle mass.
+            </p>
+            <p>
+                Survival is an equilibrium between external entropy and metabolic homeostasis. As ambient autumn squalls transition into sub-zero winter fronts, uninsulated barracks drain solid fuel at alarming rates. If firewood supplies fail, colonists do not gently fade into statistics; the system triggers explicit physiological collapse cascades:
+            </p>
+
+            <table class="system-matrix">
+                <thead>
+                    <tr>
+                        <th>Pathology Code</th>
+                        <th>Clinical Manifestation</th>
+                        <th>Somatic Failure Threshold</th>
+                        <th>Logistics Root Cause</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Omega-1</strong></td>
+                        <td>Hypothermic Somatic Arrest</td>
+                        <td>Core Body Temp &le; 28.5 &deg;C</td>
+                        <td>Thermal failure; solid fuel depletion during cold front</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Omega-4</strong></td>
+                        <td>Cachexia &amp; Muscular Atrophy</td>
+                        <td>Adipose &le; 0.9 kg / Glycogen 0%</td>
+                        <td>Depletion of edible carbohydrate buffer (Bread/Grain)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Omega-6</strong></td>
+                        <td>Fatal Cellular Dehydration</td>
+                        <td>Body Water &le; 35.0 L (-16.5%)</td>
+                        <td>Raw well freezing or potable water boiling chain severance</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Omega-8</strong></td>
+                        <td>Acute Sepsis &amp; Wound Necrosis</td>
+                        <td>Systemic Sepsis &gt; 80.0%</td>
+                        <td>Lack of linen bandaging &amp; quicklime sanitation</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>03 &bull; Uncharted Ignorance (1872 Cartographic Vellum)</h2>
+            <p>
+                The game visualizes terrain not as a textured 3D landscape, but as an authentic <strong>1872 Trigonometric Survey Sheet</strong>. Engraved sepia isolines, topographic benchmarks, and hand-ruled field axes chart elevation gradients directly on the screen.
+            </p>
+            <p>
+                Fog of war is not a stylized cloud floating above the map; it represents genuine cartographic ignorance. What lies three kilometers northeast across the rapids is completely unknown until surveyor expeditions venture into the wilderness on foot. If a surveyor dies in the high ridge blizzard, their notebooks perish with them. The colony remains blind until a second party recovers the benchmark or retraces the steps.
+            </p>
+
+            <figure style="margin: 30px 0; border: var(--hair) solid var(--rule); background: #fff;">
+                <img src="../data/images/terraflux_map.png" alt="TERRAFLUX (1872) Topographic Map In-Engine Render" style="width: 100%; display: block;">
+                <figcaption style="padding: 10px 14px; font-size: 11px; background: #fafafa; border-top: var(--hair) solid var(--rule); text-transform: uppercase; letter-spacing: 0.05em; color: #555;">
+                    FIG 022.1 &bull; In-Engine Topographic Survey Sheet &bull; Procedural Elevation Contours, Benchmarks &amp; Watershed Analysis
+                </figcaption>
+            </figure>
+
+            <!-- Embedded TFL-1872 Command Terminal -->
+            <h2>04 &bull; The Telegraphic Fabric &bull; TFL-1872 Console</h2>
+            <p>
+                Orders are not issued through modern radial menus. The frontier is governed via the <strong>TFL-1872 Command Line Interface</strong> &mdash; a simulated copper telegraph loop that accepts raw telegraphic syntax to monitor, probe, route, and automate field machinery.
+            </p>
+
+            <div class="terminal-block">
+                <div class="terminal-header">
+                    <span>TFL-1872 FIELD COMMAND TELEGRAPH &bull; FIRMWARE 1.4-REV8</span>
+                    <span>BAUD: 110 &bull; LOOP: CLOSED</span>
+                </div>
+                <div class="terminal-body" id="term-output">SYSTEM READY.
+TFL-1872 COPPER CIRCUIT RATIFIED.
+EXPEDITION LANDFALL: SITES=5, ROUTES=2, POP=85, STORED_H2O=1,800L.
+Type 'help' or click presets below to transmit commands.</div>
+                <div class="terminal-prompt-row">
+                    <span class="terminal-prompt-label">TFL&gt;</span>
+                    <input type="text" class="terminal-input" id="term-input" placeholder="Enter directive (e.g. status, probe #1, scout V21)..." autocomplete="off" spellcheck="false">
+                </div>
+                <div class="terminal-presets">
+                    <span>Quick Telemetry:</span>
+                    <button class="btn-term-preset" onclick="runTermCommand('status')">status</button>
+                    <button class="btn-term-preset" onclick="runTermCommand('probe #1')">probe #1</button>
+                    <button class="btn-term-preset" onclick="runTermCommand('scout V21')">scout V21</button>
+                    <button class="btn-term-preset" onclick="runTermCommand('decree supplies')">decree supplies</button>
+                    <button class="btn-term-preset" onclick="runTermCommand('decree god')">decree god</button>
+                    <button class="btn-term-preset" onclick="runTermCommand('help')">help</button>
+                    <button class="btn-term-preset" onclick="clearTerm()">clear</button>
+                </div>
+            </div>
+
+            <h2>05 &bull; The Seven Tiers of Necessity</h2>
+            <p>
+                Technological progress in <em>TERRAFLUX</em> is charted in <strong>The Ledger of Necessity</strong> &mdash; a 21-node milestone tree spanning seven commission tiers. Unlike games with abstract "research points," milestones cannot be purchased. They require physical manifestation in the territory:
+            </p>
+            <p>
+                <strong>Tier I (First Water)</strong> requires tapping the alluvial aquifer with windlass levers; <strong>Tier II (Sterilization)</strong> demands a closed firewood-to-kettle boiling loop; <strong>Tier III (Masonry &amp; Charcoal)</strong> requires discovering clay deposits and firing charcoal clamps; ascending through <strong>Tier VII (Synthetic Governance)</strong> where mercury-switch logic comparators regulate multi-kilometer canal networks autonomously.
+            </p>
+        </article>
+
+        <!-- Independent Releases & Downloads -->
+        <section class="release-section">
+            <h3 style="margin-top:0; font-family:var(--sans); font-size:16px; font-weight:700; text-transform:uppercase; letter-spacing:-0.01em;">
+                Independent Release Archives (Cross-Platform Beta)
+            </h3>
+            <p style="font-size:12px; color:#444; margin-bottom:12px;">
+                Compiled natively with zero external runtime dependencies. Self-contained binaries with integrated high-efficiency OpenGL/Dear ImGui vellum renderer and multi-resolution cartographic rasterization.
+            </p>
+
+            <div class="release-grid">
+                <div class="release-card">
+                    <div>
+                        <h4>Windows x64</h4>
+                        <p>Windows 10 / 11 64-bit Native PE32+ executable. Zero installer required; runs directly from folder.</p>
+                    </div>
+                    <a href="../data/beta/TERRAFLUX_Windows_Beta.zip" download class="download-btn">Download Windows .ZIP (73.7 MB)</a>
+                </div>
+
+                <div class="release-card">
+                    <div>
+                        <h4>macOS Universal 2</h4>
+                        <p>Apple Silicon (M1/M2/M3/M4) + Intel 64-bit Universal Application Bundle. Native Cocoa &amp; OpenGL 3.3.</p>
+                    </div>
+                    <a href="../data/beta/TERRAFLUX_macOS_Beta.zip" download class="download-btn">Download macOS .ZIP (87.4 MB)</a>
+                </div>
+
+                <div class="release-card">
+                    <div>
+                        <h4>Linux x86_64</h4>
+                        <p>Standalone Linux ELF binary. Compatible with Ubuntu, Debian, Arch, and Fedora (GLIBC 2.31+).</p>
+                    </div>
+                    <a href="../data/beta/TERRAFLUX_Linux_Beta.zip" download class="download-btn">Download Linux .ZIP (80.7 MB)</a>
+                </div>
+            </div>
+            <div style="margin-top:16px; font-size:11px; text-transform:uppercase; letter-spacing:0.06em; text-align:center;"><a href="https://github.com/hosseinaskari-h/colony-game/releases" target="_blank" style="color:var(--ink); text-decoration:underline;">View Source Releases &amp; Git Changelog &rarr;</a></div>
+        </section>
+
+        <!-- Archive Pager -->
+        <nav class="pager">
+            <a href="021-do-language-models-experience-time.html" class="prev">
+                &larr; 021 Do Language Models Experience Time Like Humans or Flies?
+            </a>
+            <a href="../index.html" class="index-link">
+                Archive Index
+            </a>
+            <div class="next" style="opacity: 0.4; font-weight: 600;">
+                022 TERRAFLUX (Latest Holding) &rarr;
+            </div>
+        </nav>
+    </main>
+
+    <footer>
+        <div>Hossein Askari</div>
+        <div>Holding 22 Works &bull; 2021&ndash;2026</div>
+        <div><a href="../index.html" style="color:inherit">Return to Index &uarr;</a></div>
+    </footer>
+
+    <!-- Interactive Topography & Terminal Engine -->
+    <script>
+        // Clock Synchronization
+        function updateClock() {
+            const now = new Date();
+            const gmt = now.toISOString().substring(11, 19) + ' GMT';
+            const el = document.getElementById('masthead-clock');
+            if (el) el.textContent = gmt;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Canvas & Topography Engine
+        const viewport = document.getElementById('topo-viewport');
+        const canvas = document.getElementById('topo-canvas');
+        const ctx = canvas.getContext('2d');
+        const transectCanvas = document.getElementById('transect-canvas');
+        const tctx = transectCanvas.getContext('2d');
+
+        let currentTheme = 'vellum';
+        let contourStep = 10;
+        let transectMode = 'horizontal'; // 'horizontal' or 'vertical'
+        let seed = 1872;
+        let mouseX = 0, mouseY = 0;
+        let activeHoverElev = 114.2;
+
+        const GRID_W = 120;
+        const GRID_H = 75;
+        let elevationGrid = new Float32Array(GRID_W * GRID_H);
+
+        // Simple smooth noise for procedural elevation
+        function noise2D(x, y, s) {
+            let n = Math.sin(x * 0.08 + s * 0.01) * Math.cos(y * 0.08 + s * 0.02) * 45.0 +
+                    Math.sin(x * 0.035 - y * 0.025 + s * 0.1) * 35.0 +
+                    Math.cos(x * 0.14 + y * 0.11) * 12.0;
+            // Carve River valley
+            let riverDist = Math.abs(x - (GRID_W * 0.45 + Math.sin(y * 0.06) * 18));
+            let riverDepression = Math.max(0, 32 - riverDist * 2.2);
+            return 110.0 + n - riverDepression;
+        }
+
+        function generateElevation() {
+            for (let y = 0; y < GRID_H; ++y) {
+                for (let x = 0; x < GRID_W; ++x) {
+                    elevationGrid[y * GRID_W + x] = noise2D(x, y, seed);
+                }
+            }
+        }
+
+        function resizeCanvases() {
+            const rect = viewport.getBoundingClientRect();
+            canvas.width = rect.width * window.devicePixelRatio;
+            canvas.height = rect.height * window.devicePixelRatio;
+            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+            const trect = transectCanvas.getBoundingClientRect();
+            transectCanvas.width = trect.width * window.devicePixelRatio;
+            transectCanvas.height = trect.height * window.devicePixelRatio;
+            tctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+            drawTopography();
+            drawTransect();
+        }
+
+        function drawTopography() {
+            const w = viewport.clientWidth;
+            const h = viewport.clientHeight;
+            ctx.clearRect(0, 0, w, h);
+
+            const isDark = (currentTheme === 'dark');
+            const bgCol = isDark ? '#090b0e' : '#f6f2e6';
+            const inkCol = isDark ? '#22ef80' : '#1c1a17';
+            const indexInk = isDark ? '#38ef7d' : '#4a4233';
+            const lineCol = isDark ? 'rgba(56, 239, 125, 0.28)' : 'rgba(120, 108, 88, 0.38)';
+            const gridCol = isDark ? 'rgba(255, 255, 255, 0.07)' : 'rgba(0, 0, 0, 0.08)';
+
+            // Background Fill
+            ctx.fillStyle = bgCol;
+            ctx.fillRect(0, 0, w, h);
+
+            // Draw Alphanumeric Cartographic Grid
+            const tilePx = w / 24;
+            ctx.strokeStyle = gridCol;
+            ctx.lineWidth = 1;
+            ctx.font = '9px monospace';
+            ctx.fillStyle = isDark ? '#444' : '#888';
+
+            for (let i = 0; i <= 24; ++i) {
+                let gx = i * tilePx;
+                ctx.beginPath();
+                ctx.moveTo(gx, 0); ctx.lineTo(gx, h);
+                ctx.stroke();
+                if (i < 24) {
+                    let colLetter = String.fromCharCode(65 + i);
+                    ctx.fillText(colLetter, gx + 4, 12);
+                }
+            }
+            for (let j = 0; j <= 15; ++j) {
+                let gy = j * (h / 15);
+                ctx.beginPath();
+                ctx.moveTo(0, gy); ctx.lineTo(w, gy);
+                ctx.stroke();
+                if (j < 15) {
+                    ctx.fillText((j + 1).toString(), 4, gy + 14);
+                }
+            }
+
+            // Marching grid contour approximation
+            const cellW = w / (GRID_W - 1);
+            const cellH = h / (GRID_H - 1);
+
+            for (let elev = 60; elev <= 200; elev += contourStep) {
+                const isIndex = (elev % 50 === 0);
+                ctx.strokeStyle = isIndex ? indexInk : lineCol;
+                ctx.lineWidth = isIndex ? 1.6 : 0.8;
+                ctx.beginPath();
+
+                for (let y = 0; y < GRID_H - 1; ++y) {
+                    for (let x = 0; x < GRID_W - 1; ++x) {
+                        let e00 = elevationGrid[y * GRID_W + x];
+                        let e10 = elevationGrid[y * GRID_W + (x + 1)];
+                        let e01 = elevationGrid[(y + 1) * GRID_W + x];
+                        let e11 = elevationGrid[(y + 1) * GRID_W + (x + 1)];
+
+                        // Basic linear contour segment tracer
+                        if ((e00 < elev && e10 >= elev) || (e00 >= elev && e10 < elev)) {
+                            let t = (elev - e00) / (e10 - e00);
+                            let px = (x + t) * cellW;
+                            let py = y * cellH;
+                            ctx.moveTo(px, py);
+                            ctx.lineTo(px + 1.2, py + 1.2);
+                        }
+                        if ((e00 < elev && e01 >= elev) || (e00 >= elev && e01 < elev)) {
+                            let t = (elev - e00) / (e01 - e00);
+                            let px = x * cellW;
+                            let py = (y + t) * cellH;
+                            ctx.moveTo(px, py);
+                            ctx.lineTo(px + 1.2, py + 1.2);
+                        }
+                    }
+                }
+                ctx.stroke();
+            }
+
+            // River Waterway Fill & Flow Vector
+            ctx.fillStyle = isDark ? 'rgba(56, 189, 248, 0.22)' : 'rgba(92, 138, 154, 0.35)';
+            ctx.beginPath();
+            for (let y = 0; y < GRID_H; ++y) {
+                let rx = (GRID_W * 0.45 + Math.sin(y * 0.06) * 18);
+                let px = rx * cellW;
+                let py = y * cellH;
+                if (y === 0) ctx.moveTo(px - 14, py);
+                else ctx.lineTo(px - 14, py);
+            }
+            for (let y = GRID_H - 1; y >= 0; --y) {
+                let rx = (GRID_W * 0.45 + Math.sin(y * 0.06) * 18);
+                let px = rx * cellW;
+                let py = y * cellH;
+                ctx.lineTo(px + 14, py);
+            }
+            ctx.closePath();
+            ctx.fill();
+
+            // Cartographic Benchmarks & Labels
+            const drawBenchmark = (bx, by, label, elevText) => {
+                let px = bx * w;
+                let py = by * h;
+                ctx.fillStyle = isDark ? '#ffb703' : '#8c2d19';
+                ctx.strokeStyle = isDark ? '#fff' : '#000';
+                ctx.lineWidth = 1;
+
+                ctx.beginPath();
+                ctx.arc(px, py, 3.5, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.stroke();
+
+                ctx.font = 'bold 9px monospace';
+                ctx.fillStyle = isDark ? '#fff' : '#111';
+                ctx.fillText(`\u25B3 ${label} [${elevText}]`, px + 6, py - 3);
+            };
+
+            drawBenchmark(0.48, 0.38, "LANDFALL CIS-AQUIFER", "84.2m");
+            drawBenchmark(0.24, 0.65, "PENNINE LIME SCARP", "168.0m");
+            drawBenchmark(0.78, 0.22, "BLACK RIDGE IRON SEAM", "182.4m");
+            drawBenchmark(0.35, 0.85, "VALLEY ARABLE EDGE", "92.5m");
+
+            // Draw Cross-Section Cut Line
+            ctx.lineWidth = 1.5;
+            ctx.strokeStyle = isDark ? '#ffb703' : '#c0392b';
+            ctx.setLineDash([4, 4]);
+            ctx.beginPath();
+            if (transectMode === 'horizontal') {
+                let ty = mouseY || (h * 0.5);
+                ctx.moveTo(0, ty); ctx.lineTo(w, ty);
+            } else {
+                let tx = mouseX || (w * 0.5);
+                ctx.moveTo(tx, 0); ctx.lineTo(tx, h);
+            }
+            ctx.stroke();
+            ctx.setLineDash([]);
+        }
+
+        function drawTransect() {
+            const tw = transectCanvas.clientWidth;
+            const th = transectCanvas.clientHeight;
+            tctx.clearRect(0, 0, tw, th);
+
+            const isDark = (currentTheme === 'dark');
+            tctx.fillStyle = isDark ? '#090b0e' : '#fcfbf8';
+            tctx.fillRect(0, 0, tw, th);
+
+            const samples = 100;
+            const heights = [];
+            const w = viewport.clientWidth;
+            const h = viewport.clientHeight;
+
+            let curYNorm = (mouseY / h) || 0.5;
+            let curXNorm = (mouseX / w) || 0.5;
+
+            for (let i = 0; i < samples; ++i) {
+                let norm = i / (samples - 1);
+                let gx = (transectMode === 'horizontal') ? Math.floor(norm * (GRID_W - 1)) : Math.floor(curXNorm * (GRID_W - 1));
+                let gy = (transectMode === 'horizontal') ? Math.floor(curYNorm * (GRID_H - 1)) : Math.floor(norm * (GRID_H - 1));
+                gx = Math.max(0, Math.min(GRID_W - 1, gx));
+                gy = Math.max(0, Math.min(GRID_H - 1, gy));
+                heights.push(elevationGrid[gy * GRID_W + gx]);
+            }
+
+            const minH = Math.min(...heights);
+            const maxH = Math.max(...heights);
+            const range = Math.max(1, maxH - minH);
+
+            // Shaded Stratigraphic Terrain Cross-Section
+            tctx.beginPath();
+            tctx.moveTo(0, th);
+            for (let i = 0; i < samples; ++i) {
+                let x = (i / (samples - 1)) * tw;
+                let y = th - ((heights[i] - minH) / range) * (th - 16) - 8;
+                tctx.lineTo(x, y);
+            }
+            tctx.lineTo(tw, th);
+            tctx.closePath();
+
+            tctx.fillStyle = isDark ? 'rgba(56, 239, 125, 0.12)' : 'rgba(184, 173, 150, 0.28)';
+            tctx.fill();
+
+            // Profile Outline Stroke
+            tctx.beginPath();
+            for (let i = 0; i < samples; ++i) {
+                let x = (i / (samples - 1)) * tw;
+                let y = th - ((heights[i] - minH) / range) * (th - 16) - 8;
+                if (i === 0) tctx.moveTo(x, y); else tctx.lineTo(x, y);
+            }
+            tctx.strokeStyle = isDark ? '#38ef7d' : '#1c1a17';
+            tctx.lineWidth = 1.4;
+            tctx.stroke();
+
+            // Baseline & Labels
+            tctx.font = '8px monospace';
+            tctx.fillStyle = isDark ? '#777' : '#999';
+            tctx.fillText(`MIN: ${minH.toFixed(1)}m`, 6, th - 4);
+            tctx.fillText(`MAX: ${maxH.toFixed(1)}m`, tw - 58, 12);
+
+            // Update telemetry pane
+            document.getElementById('tele-elev-range').textContent = `${minH.toFixed(1)}m — ${maxH.toFixed(1)}m`;
+            let avgSlope = ((range / 800) * 100).toFixed(1);
+            document.getElementById('tele-mean-grad').textContent = `${avgSlope}% (${avgSlope > 18 ? 'Steep Barrow' : 'Graded Valley'})`;
+            let fric = (1.0 + (avgSlope * 0.025)).toFixed(2);
+            document.getElementById('tele-fric-mult').textContent = `${fric}x Kcal/km`;
+            document.getElementById('tele-transect-pos').textContent = (transectMode === 'horizontal')
+                ? `Y = ${((curYNorm - 0.5) * 450).toFixed(0)}m (Alluvial Axis)`
+                : `X = ${((curXNorm - 0.5) * 600).toFixed(0)}m (Cross Ridge)`;
+        }
+
+        viewport.addEventListener('mousemove', (e) => {
+            const rect = viewport.getBoundingClientRect();
+            mouseX = e.clientX - rect.left;
+            mouseY = e.clientY - rect.top;
+
+            let gx = Math.floor((mouseX / rect.width) * (GRID_W - 1));
+            let gy = Math.floor((mouseY / rect.height) * (GRID_H - 1));
+            gx = Math.max(0, Math.min(GRID_W - 1, gx));
+            gy = Math.max(0, Math.min(GRID_H - 1, gy));
+
+            activeHoverElev = elevationGrid[gy * GRID_W + gx];
+            let colChar = String.fromCharCode(65 + Math.floor((mouseX / rect.width) * 24));
+            let rowNum = Math.floor((mouseY / rect.height) * 15) + 1;
+            let coordStr = `${colChar}${rowNum < 10 ? '0' + rowNum : rowNum}`;
+
+            const hud = document.getElementById('hud-overlay');
+            hud.innerHTML = `<strong>CARTOGRAPHIC TILE: ${coordStr}</strong><br>` +
+                            `ELEVATION: ${activeHoverElev.toFixed(1)} m ASL &bull; GRADE: ${(Math.abs(Math.sin(gx + gy)) * 22).toFixed(1)}%<br>` +
+                            `GEOLOGY: ${activeHoverElev < 90 ? 'ALLUVIAL SANDSTONE' : (activeHoverElev < 150 ? 'LIMESTONE SCARP' : 'IRONSTONE BASALT')}`;
+
+            drawTopography();
+            drawTransect();
+        });
+
+        function setCartoTheme(t) {
+            currentTheme = t;
+            document.getElementById('btn-theme-vellum').classList.toggle('active', t === 'vellum');
+            document.getElementById('btn-theme-dark').classList.toggle('active', t === 'dark');
+            viewport.classList.toggle('dark-theme', t === 'dark');
+            drawTopography();
+            drawTransect();
+        }
+
+        function cycleInterval() {
+            if (contourStep === 10) contourStep = 25;
+            else if (contourStep === 25) contourStep = 5;
+            else contourStep = 10;
+            document.getElementById('btn-interval').textContent = `Step: ${contourStep}m`;
+            drawTopography();
+        }
+
+        function toggleTransectDir() {
+            transectMode = (transectMode === 'horizontal') ? 'vertical' : 'horizontal';
+            document.getElementById('btn-transect-dir').textContent = (transectMode === 'horizontal') ? 'Cut: Horiz' : 'Cut: Vert';
+            drawTopography();
+            drawTransect();
+        }
+
+        function regenerateTerrain() {
+            seed = Math.floor(Math.random() * 90000) + 1000;
+            generateElevation();
+            drawTopography();
+            drawTransect();
+        }
+
+        window.addEventListener('resize', resizeCanvases);
+        generateElevation();
+        setTimeout(resizeCanvases, 50);
+
+        // Terminal Emulator Simulation
+        const termInput = document.getElementById('term-input');
+        const termOutput = document.getElementById('term-output');
+
+        function appendTerm(text, cls = '') {
+            const span = document.createElement('div');
+            if (cls) span.className = cls;
+            span.textContent = text;
+            termOutput.appendChild(span);
+            termOutput.scrollTop = termOutput.scrollHeight;
+        }
+
+        function clearTerm() {
+            termOutput.innerHTML = '';
+            appendTerm('TFL-1872 COPPER CIRCUIT RESET. CONSOLE BUFFER CLEARED.');
+        }
+
+        function runTermCommand(raw) {
+            const cmd = raw.trim();
+            if (!cmd) return;
+            appendTerm(`TFL> ${cmd}`, 'term-line-amber');
+
+            const parts = cmd.toLowerCase().split(/\s+/);
+            const verb = parts[0];
+
+            if (verb === 'help') {
+                appendTerm("================== TFL-1872 COMMAND DIRECTORY ==================");
+                appendTerm("  status [tgt]    : Expedition vitals, site (#1), tile (V21), or commodity");
+                appendTerm("  probe <site>    : Detailed physical buffer & pin diagnostics");
+                appendTerm("  scout <coords>  : Dispatch surveyor team to tile coordinates (e.g. scout V21)");
+                appendTerm("  survey          : Survey frontier cartography & lift fog");
+                appendTerm("  route <A> -> <B>: Establish physical logistics trace");
+                appendTerm("  sever <id>      : Emergency disconnect route");
+                appendTerm("  decree <order>  : Hidden developer directive system (god, supplies, vitals)");
+                appendTerm("================================================================");
+            } else if (verb === 'status') {
+                appendTerm("[EXPEDITION VITALS] Alive=85 | Able=85 | Children=0 | Sick=0 | Deaths=0", 'term-line-cyan');
+                appendTerm("SOMATIC  : Fat=12.2kg | Muscle=28.0kg | Hydration=98.5% | Core=37.0°C");
+                appendTerm("RESERVES : Water=1,800.0 L (7.0d) | Bread=950.0 kg (5.2d) | Fuel=1,400.0 kg");
+                appendTerm("PROGRESS : COMMISSION I [LANDFALL & FIRST WATER] &bull; Tier 1/7");
+            } else if (verb === 'probe') {
+                appendTerm("[PROBE SITE #1: WATER.AQUIFER.WELL_SITE.WINDLASS_TURNER]", 'term-line-cyan');
+                appendTerm("  PIN IN-1  [RAW_AQUIFER] : 15.0 L/cycle &bull; Flow: NORMAL (Yield: 1.40x)");
+                appendTerm("  PIN OUT-1 [POTABLE_H2O] : 15.0 L/cycle &bull; Buffer: 8.5 / 50.0 L");
+                appendTerm("  WORKERS   : 2 / 2 Able &bull; Thermal Loss: 0.0 kW &bull; Status: OPERATIONAL");
+            } else if (verb === 'scout') {
+                const target = parts[1] ? parts[1].toUpperCase() : 'V21';
+                appendTerm(`EXPEDITION DISPATCHED: Scout Team Carving Fog of War Toward [${target}]...`, 'term-line-amber');
+                setTimeout(() => {
+                    appendTerm(`REPORT: Benchmark [${target}] Planted &bull; Springhead & Alluvial Valley Surveyed.`, 'term-line-cyan');
+                }, 750);
+            } else if (verb === 'survey') {
+                appendTerm("DIRECTIVE RATIFIED: Frontier cartography surveyed. Fog of war lifted across 250-tile radius.", 'term-line-cyan');
+            } else if (verb === 'decree' || verb === 'protocol') {
+                const sub = parts[1];
+                if (sub === 'god' || sub === 'immortal') {
+                    appendTerm("DIRECTIVE RATIFIED: Somatic invulnerability (Godmode) ENABLED. Colony immortality verified.", 'term-line-cyan');
+                } else if (sub === 'supplies') {
+                    appendTerm("DIRECTIVE RATIFIED: Logistics buffer injected (+5,000L Water, +66,000 kcal Food, +5,000kg Fuel, +2,000kg Timber).", 'term-line-cyan');
+                } else if (sub === 'vitals' || sub === 'heal') {
+                    appendTerm("DIRECTIVE RATIFIED: Somatic homeostasis restored across 85 colonists (100% Hydration, 37.0°C).", 'term-line-cyan');
+                } else if (sub === 'step') {
+                    appendTerm("DIRECTIVE RATIFIED: Commission goal marked complete &bull; Advanced toward Commission Tier II.", 'term-line-cyan');
+                } else {
+                    appendTerm(`DIRECTIVE RATIFIED: Executed [${sub || 'general'}] developer directive.`, 'term-line-cyan');
+                }
+            } else {
+                appendTerm(`ERR: Unrecognized command '${verb}'. Type 'help' for directory.`, 'term-line-alert');
+            }
+        }
+
+        termInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                runTermCommand(termInput.value);
+                termInput.value = '';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -292,5 +292,19 @@
     "medium": "Cognitive AI & Connectomics Paper",
     "spec": "111 Fly Pacemakers · 5 Experiments",
     "svg": "data/svg/021.svg"
+  },
+  {
+    "id": "022",
+    "name": "TERRAFLUX (1872)",
+    "img": "data/images/terraflux_map.png",
+    "desc": "A thermodynamic frontier logistics simulation and synthetic ekistics architecture. No omniscient god-hand; only telegraph lines, gravity flumes, and somatic decay.",
+    "dream": "An economy without floating numerical tokens, governed strictly by gravity head, caloric friction, and copper resistance.",
+    "full": "<img src=\"data/images/terraflux_map.png\" alt=\"TERRAFLUX (1872) Topographic Map\">\n    <h1>TERRAFLUX (1872)</h1>\n    <p><a href=\"projects/022-terraflux.html\">[OPEN FULL DOSSIER &amp; INTERACTIVE SIMULATION]</a></p>\n\n    <h2>Frontier Logistics &amp; Synthetic Ekistics</h2>\n    <p>A thermodynamic frontier logistics simulation developed in C++20. No overseer god-hand, no floating numerical currency, and no omniscient spatial camera; only manual windlass turners, surveyed elevation contours, physical copper flumes, and somatic mortality.</p>\n\n    <hr style=\"border: 1px dashed black; margin: 30px 0;\">\n    <h2>System Principles</h2>\n    <p><strong>1. The Architecture of Indifference:</strong> The terrain is entirely neutral to human survival. Every gram of water, wood, and caloric mass must be extracted, routed, and consumed through explicit physical mechanics.</p>\n    <p><strong>2. Somatic Metabolism &amp; Omega Pathologies:</strong> 85 colonists, each with continuous metabolic state vectors tracking hydration, body heat, muscle glycogen, and fat stores. Deprivation triggers somatic breakdown across nine distinct clinical pathologies.</p>\n    <p><strong>3. Trigonometric Cartography:</strong> Terrain charted on authentic 1872 survey vellum with contour isolines, spot elevations, and unmapped wilderness ignorance.</p>\n    <p><strong>4. Copper Telegraph Fabric:</strong> A simulated TFL-1872 command-line telegraph loop governing field outposts and machinery.</p>\n\n    <hr style=\"border: 1px dashed black; margin: 30px 0;\">\n    <h2>Beta Distributions</h2>\n    <p>Standalone cross-platform release archives available for Windows x64, macOS Universal 2, and Linux x86_64.</p>",
+    "slug": "022-terraflux",
+    "year": "2024–2026",
+    "category": "systems",
+    "medium": "C++20 Engine · Procedural Cartography",
+    "spec": "1872 Survey · Thermodynamic Sim",
+    "svg": "data/svg/022.svg"
   }
 ]

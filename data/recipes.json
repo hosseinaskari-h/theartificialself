@@ -923,5 +923,48 @@
         "blend": "difference"
       }
     ]
+  },
+  "022": {
+    "palette": [
+      "#1c1a17",
+      "#f6f2e6"
+    ],
+    "layers": [
+      {
+        "kind": "rings",
+        "cx": 340,
+        "cy": 260,
+        "count": 28,
+        "spacing": 10,
+        "opacity": 0.9
+      },
+      {
+        "kind": "stripes",
+        "ang": 125,
+        "width": 3,
+        "gap": 32,
+        "opacity": 0.7
+      },
+      {
+        "kind": "dots",
+        "dot": 3,
+        "spacing": 18,
+        "inset": [
+          60,
+          60,
+          60,
+          60
+        ],
+        "opacity": 0.85
+      },
+      {
+        "kind": "disc",
+        "cx": 180,
+        "cy": 380,
+        "r": 210,
+        "opacity": 0.85,
+        "blend": "difference"
+      }
+    ]
   }
 }

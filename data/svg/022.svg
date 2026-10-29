@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+        <rect width="600" height="600" fill="#f6f2e6"/>
+<g opacity="0.9"><circle cx="340" cy="260" r="10" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+<circle cx="340" cy="260" r="20" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+<circle cx="340" cy="260" r="30" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+<circle cx="340" cy="260" r="40" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+<circle cx="340" cy="260" r="50" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+<circle cx="340" cy="260" r="60" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+<circle cx="340" cy="260" r="70" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+<circle cx="340" cy="260" r="80" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+<circle cx="340" cy="260" r="90" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+<circle cx="340" cy="260" r="100" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+<circle cx="340" cy="260" r="110" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+<circle cx="340" cy="260" r="120" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+<circle cx="340" cy="260" r="130" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+<circle cx="340" cy="260" r="140" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+<circle cx="340" cy="260" r="150" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+<circle cx="340" cy="260" r="160" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+<circle cx="340" cy="260" r="170" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+<circle cx="340" cy="260" r="180" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+<circle cx="340" cy="260" r="190" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+<circle cx="340" cy="260" r="200" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+<circle cx="340" cy="260" r="210" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+<circle cx="340" cy="260" r="220" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+<circle cx="340" cy="260" r="230" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+<circle cx="340" cy="260" r="240" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+<circle cx="340" cy="260" r="250" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+<circle cx="340" cy="260" r="260" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+<circle cx="340" cy="260" r="270" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+<circle cx="340" cy="260" r="280" fill="none" stroke="#1c1a17" stroke-width="1.5"/></g>
+
+                <defs>
+                    <pattern id="stripes-022-1" width="32" height="32" patternTransform="rotate(125)" patternUnits="userSpaceOnUse">
+                        <line x1="0" y1="0" x2="0" y2="32" stroke="#1c1a17" stroke-width="3"/>
+                    </pattern>
+                </defs>
+                <rect width="600" height="600" fill="url(#stripes-022-1)" opacity="0.7"/>
+            
+
+                <defs>
+                    <pattern id="dots-022-2" width="18" height="18" patternUnits="userSpaceOnUse">
+                        <circle cx="9" cy="9" r="1.5" fill="#1c1a17"/>
+                    </pattern>
+                    <clipPath id="clip-dots-022-2">
+                        <rect x="60" y="60" width="480" height="480"/>
+                    </clipPath>
+                </defs>
+                <rect width="600" height="600" fill="url(#dots-022-2)" clip-path="url(#clip-dots-022-2)" opacity="0.85"/>
+            
+
+                <circle cx="180" cy="380" r="210" fill="#1c1a17" opacity="0.85" style="mix-blend-mode: difference;"/>
+            
+<rect x="0" y="0" width="600" height="600" fill="none" stroke="#1c1a17" stroke-width="2"/>
+
+        <g transform="translate(16, 552)">
+            <rect x="0" y="0" width="84" height="30" fill="#f6f2e6" stroke="#1c1a17" stroke-width="1.5"/>
+            <text x="42" y="19" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" font-weight="bold" fill="#1c1a17" letter-spacing="1.5">022</text>
+        </g>
+    
+    </svg>
