@@ -531,7 +531,6 @@ Type 'help' or click presets below to transmit commands.</div>
                     <button class="btn-term-preset" onclick="runTermCommand('status')">status</button>
                     <button class="btn-term-preset" onclick="runTermCommand('probe #1')">probe #1</button>
                     <button class="btn-term-preset" onclick="runTermCommand('scout V21')">scout V21</button>
-                    <button class="btn-term-preset" onclick="runTermCommand('survey')">survey</button>
                     <button class="btn-term-preset" onclick="runTermCommand('help')">help</button>
                     <button class="btn-term-preset" onclick="clearTerm()">clear</button>
                 </div>
@@ -965,7 +964,6 @@ Type 'help' or click presets below to transmit commands.</div>
                 appendTerm("  status [tgt]    : Expedition vitals, site (#1), tile (V21), or commodity");
                 appendTerm("  probe <site>    : Detailed physical buffer & pin diagnostics");
                 appendTerm("  scout <coords>  : Dispatch surveyor team to tile coordinates (e.g. scout V21)");
-                appendTerm("  survey          : Survey frontier cartography & lift fog");
                 appendTerm("  route <A> -> <B>: Establish physical logistics trace");
                 appendTerm("  sever <id>      : Emergency disconnect route");
                 appendTerm("================================================================");
@@ -985,8 +983,6 @@ Type 'help' or click presets below to transmit commands.</div>
                 setTimeout(() => {
                     appendTerm(`REPORT: Benchmark [${target}] Planted &bull; Springhead & Alluvial Valley Surveyed.`, 'term-line-cyan');
                 }, 750);
-            } else if (verb === 'survey') {
-                appendTerm("DIRECTIVE RATIFIED: Frontier cartography surveyed. Fog of war lifted across 250-tile radius.", 'term-line-cyan');
             } else {
                 appendTerm(`ERR: Unrecognized command '${verb}'. Type 'help' for directory.`, 'term-line-alert');
             }
