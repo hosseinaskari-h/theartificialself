@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TERRAFLUX — Hossein Askari / Archive</title>
+    <title>TERRAFLUX - Hossein Askari / Archive</title>
     <meta name="description" content="A thermodynamic frontier logistics simulation and synthetic ekistics architecture. No omniscient god-hand; only telegraph lines, gravity flumes, and somatic decay.">
     <meta name="author" content="Hossein Askari">
     <meta name="robots" content="index, follow">
@@ -33,7 +33,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://theartificialself.com/data/images/terraflux_map.png">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="TERRAFLUX — Hossein Askari">
+    <meta property="og:title" content="TERRAFLUX - Hossein Askari">
     <meta property="og:description" content="A thermodynamic frontier logistics simulation and synthetic ekistics architecture. No omniscient god-hand; only telegraph lines, gravity flumes, and somatic decay.">
     <meta property="og:url" content="https://theartificialself.com/projects/022-terraflux.html">
 
@@ -400,7 +400,7 @@
         <!-- Interactive Cartography Workbench -->
         <section class="carto-workbench">
             <div class="carto-bar">
-                <div><b>Field Cartography Survey Sheet</b> &mdash; Trigonometric Transect</div>
+                <div><b>Field Cartography Survey Sheet</b> &bull; Trigonometric Transect</div>
                 <div class="carto-controls">
                     <button class="btn-carto active" id="btn-theme-vellum" onclick="setCartoTheme('vellum')">Vellum</button>
                     <button class="btn-carto" id="btn-theme-dark" onclick="setCartoTheme('dark')">Dark Ekistics</button>
@@ -426,7 +426,7 @@
                 </div>
                 <div class="transect-telemetry-pane" id="transect-tele">
                     <div class="tele-row"><span>Transect Cut:</span><strong id="tele-transect-pos">Y = 0.0 m (River Axis)</strong></div>
-                    <div class="tele-row"><span>Min / Max Elev:</span><strong id="tele-elev-range">74.2m &mdash; 188.5m</strong></div>
+                    <div class="tele-row"><span>Min / Max Elev:</span><strong id="tele-elev-range">74.2m to 188.5m</strong></div>
                     <div class="tele-row"><span>Mean Gradient:</span><strong id="tele-mean-grad">16.3% (Graded Barrow)</strong></div>
                     <div class="tele-row"><span>Friction Mult:</span><strong id="tele-fric-mult">1.42x Kcal/km</strong></div>
                 </div>
@@ -468,26 +468,56 @@
                     <tr>
                         <td><strong>Omega-1</strong></td>
                         <td>Hypothermic Somatic Arrest</td>
-                        <td>Core Body Temp &le; 28.5 &deg;C</td>
-                        <td>Thermal failure; solid fuel depletion during cold front</td>
+                        <td>Core Body Temp &le; 28.0 &deg;C</td>
+                        <td>Thermal failure; solid fuel depletion during winter freeze</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Omega-2</strong></td>
+                        <td>Acute Trauma &amp; Exsanguination</td>
+                        <td>Blood Loss &ge; 40.0%</td>
+                        <td>Felled timber impact, quarry blast, or machine entanglement</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Omega-3</strong></td>
+                        <td>Septic Shock &amp; Wound Necrosis</td>
+                        <td>Systemic Sepsis &ge; 80.0%</td>
+                        <td>Lack of sterile linen bandaging &amp; quicklime sanitation</td>
                     </tr>
                     <tr>
                         <td><strong>Omega-4</strong></td>
                         <td>Cachexia &amp; Muscular Atrophy</td>
-                        <td>Adipose &le; 0.9 kg / Glycogen 0%</td>
-                        <td>Depletion of edible carbohydrate buffer (Bread/Grain)</td>
+                        <td>Adipose &le; 1.0 kg / Glycogen 0%</td>
+                        <td>Depletion of edible carbohydrate buffer (Bread/Grain famine)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Omega-5</strong></td>
+                        <td>Waterborne Enteric Toxemia</td>
+                        <td>Pathogen Ingestion &ge; 75.0%</td>
+                        <td>Consumption of raw alluvial runoff prior to Tier II sterilization</td>
                     </tr>
                     <tr>
                         <td><strong>Omega-6</strong></td>
                         <td>Fatal Cellular Dehydration</td>
-                        <td>Body Water &le; 35.0 L (-16.5%)</td>
+                        <td>Body Water &le; 35.2 L (-16.0%)</td>
                         <td>Raw well freezing or potable water boiling chain severance</td>
                     </tr>
                     <tr>
+                        <td><strong>Omega-7</strong></td>
+                        <td>Structural Crush &amp; Rockfall</td>
+                        <td>Mine/Quarry Collapse Force &gt; 12 kN</td>
+                        <td>Unpropped timber gallery failure in subterranean extraction</td>
+                    </tr>
+                    <tr>
                         <td><strong>Omega-8</strong></td>
-                        <td>Acute Sepsis &amp; Wound Necrosis</td>
-                        <td>Systemic Sepsis &gt; 80.0%</td>
-                        <td>Lack of linen bandaging &amp; quicklime sanitation</td>
+                        <td>Parturition &amp; Childbirth Complications</td>
+                        <td>Unattended Parturition Hazard</td>
+                        <td>Lack of infirmary obstetrics ward &amp; trained medical attendants</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Omega-9</strong></td>
+                        <td>Senescence &amp; Terminal Frailty</td>
+                        <td>Chronological Age &ge; 72 yr</td>
+                        <td>Cumulative physical fatigue and irreversible metabolic decline</td>
                     </tr>
                 </tbody>
             </table>
@@ -510,7 +540,7 @@
             <!-- Embedded TFL Command Terminal -->
             <h2>04 &bull; The Telegraphic Fabric &bull; TFL Console</h2>
             <p>
-                Orders are not issued through modern radial menus. The frontier is governed via the <strong>TFL Command Line Interface</strong> &mdash; a simulated copper telegraph loop that accepts raw telegraphic syntax to monitor, probe, route, and automate field machinery.
+                Orders are not issued through modern radial menus. The frontier is governed via the <strong>TFL Command Line Interface</strong>, a simulated copper telegraph loop that accepts raw telegraphic syntax to monitor, probe, route, and automate field machinery.
             </p>
 
             <div class="terminal-block">
@@ -538,7 +568,7 @@ Type 'help' or click presets below to transmit commands.</div>
 
             <h2>05 &bull; The Seven Tiers of Necessity</h2>
             <p>
-                Technological progress in <em>TERRAFLUX</em> is charted in <strong>The Ledger of Necessity</strong> &mdash; a 21-node milestone tree spanning seven commission tiers. Unlike games with abstract "research points," milestones cannot be purchased. They require physical manifestation in the territory:
+                Technological progress in <em>TERRAFLUX</em> is charted in <strong>The Ledger of Necessity</strong>, a 21-node milestone tree spanning seven commission tiers. Unlike games with abstract "research points," milestones cannot be purchased. They require physical manifestation in the territory:
             </p>
             <p>
                 <strong>Tier I (First Water)</strong> requires tapping the alluvial aquifer with windlass levers; <strong>Tier II (Sterilization)</strong> demands a closed firewood-to-kettle boiling loop; <strong>Tier III (Masonry &amp; Charcoal)</strong> requires discovering clay deposits and firing charcoal clamps; ascending through <strong>Tier VII (Synthetic Governance)</strong> where mercury-switch logic comparators regulate multi-kilometer canal networks autonomously.
@@ -865,7 +895,7 @@ Type 'help' or click presets below to transmit commands.</div>
             tctx.fillText(`MAX: ${maxH.toFixed(1)}m`, tw - 58, 12);
 
             // Update telemetry pane
-            document.getElementById('tele-elev-range').textContent = `${minH.toFixed(1)}m — ${maxH.toFixed(1)}m`;
+            document.getElementById('tele-elev-range').textContent = `${minH.toFixed(1)}m to ${maxH.toFixed(1)}m`;
             let avgSlope = ((range / 800) * 100).toFixed(1);
             document.getElementById('tele-mean-grad').textContent = `${avgSlope}% (${avgSlope > 18 ? 'Steep Barrow' : 'Graded Valley'})`;
             let fric = (1.0 + (avgSlope * 0.025)).toFixed(2);
