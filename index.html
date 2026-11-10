@@ -96,7 +96,7 @@
             align-items: stretch;
             border-bottom: var(--hair) solid var(--rule);
             background: var(--paper);
-            position: sticky; top: 0; z-index: 15;
+            position: sticky; top: var(--toolbar-top, 80px); z-index: 15;
         }
         .toolbar > * { padding: 10px 18px; border-right: var(--hair) solid var(--rule); }
         .toolbar > *:last-child { border-right: 0; }
@@ -290,16 +290,16 @@
         /* Pure Brutalist Procedural Artifact Preview Drawer (Fixed Viewport HUD) */
         aside.preview {
             position: sticky;
-            top: var(--aside-top, 42px);
+            top: var(--aside-top, 130px);
             align-self: start;
-            height: calc(100vh - var(--aside-top, 42px));
+            height: calc(100vh - var(--aside-top, 130px));
             border-left: var(--hair) solid var(--rule);
             background: var(--paper);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 30px 36px;
+            padding: 24px 32px;
             overflow: hidden;
             box-sizing: border-box;
             z-index: 5;
@@ -318,7 +318,7 @@
             position: relative;
             aspect-ratio: 1 / 1;
             width: 100%;
-            max-width: 420px;
+            max-width: min(420px, 44vh);
             margin: 0 auto;
             border: var(--hair) solid var(--rule);
             overflow: hidden;
@@ -378,12 +378,12 @@
 
         .caption {
             border-top: var(--hair) solid var(--rule);
-            padding-top: 16px;
+            padding-top: 14px;
             display: flex;
             flex-direction: column;
             gap: 10px;
             width: 100%;
-            max-width: 420px;
+            max-width: min(420px, 44vh);
             margin: 0 auto;
         }
         .caption .pt {
@@ -920,9 +920,18 @@
 
         // Layout offsets for sticky elements
         function updateLayout() {
+            const isMobile = window.innerWidth <= 860;
             const t = document.getElementById('toolbar').offsetHeight || 42;
-            document.documentElement.style.setProperty('--thead-top', t + 'px');
-            document.documentElement.style.setProperty('--aside-top', t + 'px');
+            if (isMobile) {
+                document.documentElement.style.setProperty('--toolbar-top', '0px');
+                document.documentElement.style.setProperty('--thead-top', t + 'px');
+                document.documentElement.style.setProperty('--aside-top', t + 'px');
+            } else {
+                const h = document.getElementById('masthead').offsetHeight || 110;
+                document.documentElement.style.setProperty('--toolbar-top', h + 'px');
+                document.documentElement.style.setProperty('--thead-top', (h + t) + 'px');
+                document.documentElement.style.setProperty('--aside-top', (h + t) + 'px');
+            }
         }
         window.addEventListener('resize', updateLayout);
         window.addEventListener('load', updateLayout);
