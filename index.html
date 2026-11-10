@@ -96,7 +96,7 @@
             align-items: stretch;
             border-bottom: var(--hair) solid var(--rule);
             background: var(--paper);
-            position: sticky; top: var(--toolbar-top, 80px); z-index: 15;
+            position: sticky; top: 0; z-index: 15;
         }
         .toolbar > * { padding: 10px 18px; border-right: var(--hair) solid var(--rule); }
         .toolbar > *:last-child { border-right: 0; }
@@ -287,46 +287,45 @@
             }
         }
 
-        /* Pure Brutalist Procedural Artifact Preview Drawer (Elevator Mode) */
+        /* Pure Brutalist Procedural Artifact Preview Drawer (Fixed Viewport HUD) */
         aside.preview {
-            position: relative;
-            align-self: stretch;
-            min-height: 100%;
+            position: sticky;
+            top: var(--aside-top, 42px);
+            align-self: start;
+            height: calc(100vh - var(--aside-top, 42px));
             border-left: var(--hair) solid var(--rule);
             background: var(--paper);
-            overflow: hidden;
-        }
-
-        .preview-elevator {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            transform: translateY(0px);
-            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: transform;
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 24px 20px;
+            overflow: hidden;
+            box-sizing: border-box;
+            z-index: 5;
         }
 
-        @media (prefers-reduced-motion: reduce) {
-            .preview-elevator {
-                transition: none !important;
-            }
+        .preview-card {
+            width: 100%;
+            max-width: 360px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
         }
 
         .artifact {
             position: relative;
             aspect-ratio: 1 / 1;
-            width: calc(100% - 40px);
-            max-width: 340px;
-            margin: 16px auto 14px;
+            width: 100%;
+            max-width: min(280px, 36vh);
+            margin: 0 auto;
             border: var(--hair) solid var(--rule);
             overflow: hidden;
             background: #eee;
             flex-shrink: 0;
             opacity: 0.35;
-            transition: opacity 200ms linear;
+            transition: opacity 180ms ease;
         }
         aside.preview.on .artifact { opacity: 1; }
         .artifact .layer {
@@ -379,20 +378,22 @@
 
         .caption {
             border-top: var(--hair) solid var(--rule);
-            padding: 28px 24px 36px;
+            padding-top: 14px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            flex-grow: 1;
+            gap: 10px;
+            width: 100%;
+            max-width: min(340px, 94%);
+            margin: 0 auto;
         }
         .caption .pt {
             font-family: var(--sans);
             font-weight: 700;
-            font-size: 21px;
+            font-size: 20px;
             letter-spacing: -0.02em;
             line-height: 1.25;
             text-transform: uppercase;
-            margin: 6px 0 0 0;
+            margin: 2px 0 0 0;
         }
         .caption .pm {
             font-size: 11px;
@@ -404,13 +405,13 @@
             font-size: 13px;
             line-height: 1.6;
             color: #222;
-            margin: 4px 0 10px 0;
+            margin: 2px 0 6px 0;
         }
 
         .dossier-action-btn {
             display: inline-block;
-            margin-top: 10px;
-            padding: 12px 18px;
+            margin-top: 4px;
+            padding: 11px 18px;
             border: var(--hair) solid var(--rule);
             text-align: center;
             font-family: var(--mono);
@@ -876,7 +877,7 @@
         </table>
 
         <aside class="preview" id="preview" aria-live="polite">
-            <div class="preview-elevator" id="preview-elevator">
+            <div class="preview-card" id="preview-card">
                 <div class="artifact" id="artifact">
                     <div class="empty" id="empty">No selection</div>
                 </div>
@@ -917,18 +918,9 @@
 
         // Layout offsets for sticky elements
         function updateLayout() {
-            const isMobile = window.innerWidth <= 768;
-            const t = document.getElementById('toolbar').offsetHeight;
-            if (isMobile) {
-                document.documentElement.style.setProperty('--toolbar-top', '0px');
-                document.documentElement.style.setProperty('--thead-top', t + 'px');
-                document.documentElement.style.setProperty('--aside-top', t + 'px');
-            } else {
-                const h = document.getElementById('masthead').offsetHeight;
-                document.documentElement.style.setProperty('--toolbar-top', h + 'px');
-                document.documentElement.style.setProperty('--thead-top', (h + t) + 'px');
-                document.documentElement.style.setProperty('--aside-top', (h + t) + 'px');
-            }
+            const t = document.getElementById('toolbar').offsetHeight || 42;
+            document.documentElement.style.setProperty('--thead-top', t + 'px');
+            document.documentElement.style.setProperty('--aside-top', t + 'px');
         }
         window.addEventListener('resize', updateLayout);
         window.addEventListener('load', updateLayout);
@@ -950,43 +942,11 @@
         // Procedural Abstract Vector/CSS Artifact Generator (Exact match with inspo site)
         const artifact = document.getElementById('artifact');
         const preview = document.getElementById('preview');
-        const elevatorEl = document.getElementById('preview-elevator');
         const pt = document.getElementById('pt');
         const pm = document.getElementById('pm');
         const pd = document.getElementById('pd');
         const pvLink = document.getElementById('pv-link');
         let currentActiveItem = null;
-
-        function positionElevator(item) {
-            if (window.innerWidth <= 860) return;
-            const elevator = document.getElementById('preview-elevator');
-            const shaft = document.getElementById('preview');
-            if (!elevator || !shaft) return;
-
-            const visibleRows = Array.from(document.querySelectorAll('#tbody tr:not(.mobile-accordion-row):not(.hidden)'));
-            if (!visibleRows.length) return;
-
-            const activeRow = visibleRows.find(r => r.dataset.id === item.id);
-            if (!activeRow) return;
-
-            const shaftHeight = shaft.offsetHeight;
-            const elevatorHeight = elevator.offsetHeight;
-            const maxTravel = Math.max(0, shaftHeight - elevatorHeight);
-
-            if (maxTravel <= 0 || visibleRows.length <= 1) {
-                elevator.style.transform = 'translateY(0px)';
-                return;
-            }
-
-            const firstTop = visibleRows[0].offsetTop;
-            const lastTop = visibleRows[visibleRows.length - 1].offsetTop;
-            const range = lastTop - firstTop;
-
-            const ratio = range > 0 ? Math.max(0, Math.min(1, (activeRow.offsetTop - firstTop) / range)) : 0;
-            const targetY = Math.round(ratio * maxTravel);
-
-            elevator.style.transform = `translateY(${targetY}px)`;
-        }
 
         function buildArtifactNode(item) {
             const recipe = RECIPES[item.id];
@@ -1065,8 +1025,6 @@
                 if (r.dataset.id === item.id) r.classList.add('active-row');
                 else r.classList.remove('active-row');
             });
-
-            positionElevator(item);
         }
 
         // Mobile Inline Accordion Drawer (Option 1)
@@ -1223,42 +1181,12 @@
             updateLayout();
             if (window.innerWidth > 860) {
                 closeMobileAccordion();
-                if (currentActiveItem) {
-                    positionElevator(currentActiveItem);
-                } else {
+                if (!currentActiveItem) {
                     const defaultItem = PROJECTS[0];
                     renderArtifact(defaultItem);
                 }
             }
         });
-
-        // Mousemove & Scroll Tracking for Desktop Elevator
-        let lastMouseX = null;
-        let lastMouseY = null;
-        window.addEventListener('mousemove', (e) => {
-            lastMouseX = e.clientX;
-            lastMouseY = e.clientY;
-        }, { passive: true });
-
-        let scrollHoverTimer = null;
-        window.addEventListener('scroll', () => {
-            if (window.innerWidth <= 860) return;
-            if (scrollHoverTimer) cancelAnimationFrame(scrollHoverTimer);
-            scrollHoverTimer = requestAnimationFrame(() => {
-                if (lastMouseX !== null && lastMouseY !== null) {
-                    const el = document.elementFromPoint(lastMouseX, lastMouseY);
-                    if (el) {
-                        const tr = el.closest('#tbody tr:not(.mobile-accordion-row):not(.hidden)');
-                        if (tr && tr.dataset.id) {
-                            const item = PROJECTS.find(p => p.id === tr.dataset.id);
-                            if (item && (!currentActiveItem || currentActiveItem.id !== item.id)) {
-                                renderArtifact(item);
-                            }
-                        }
-                    }
-                }
-            });
-        }, { passive: true });
 
         // Filter & Search
         const filterInput = document.getElementById('filter');
@@ -1302,8 +1230,6 @@
                 if (!stillVisible && visibleRows.length) {
                     const nextItem = PROJECTS.find(p => p.id === visibleRows[0].dataset.id);
                     if (nextItem) renderArtifact(nextItem);
-                } else if (stillVisible) {
-                    positionElevator(currentActiveItem);
                 }
             }
         }
@@ -1365,9 +1291,6 @@
                 });
 
                 sortedRows.forEach(r => tbody.appendChild(r));
-                if (currentActiveItem) {
-                    positionElevator(currentActiveItem);
-                }
             });
         });
     </script>
