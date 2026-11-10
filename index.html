@@ -51,7 +51,7 @@
             --sans: 'Helvetica Neue', Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
         }
         * { box-sizing: border-box; border-radius: 0 !important; box-shadow: none !important; }
-        html, body { margin: 0; background: var(--paper); color: var(--ink); overflow-x: hidden; width: 100%; }
+        html, body { margin: 0; background: var(--paper); color: var(--ink); overflow-x: clip; width: 100%; }
         body { font-family: var(--mono); font-size: 13px; line-height: 1.35; -webkit-font-smoothing: antialiased; }
         ::selection { background: #000; color: #fff; }
 
@@ -287,25 +287,40 @@
             }
         }
 
-        /* Pure Brutalist Procedural Artifact Preview Drawer */
+        /* Pure Brutalist Procedural Artifact Preview Drawer (Elevator Mode) */
         aside.preview {
-            position: sticky;
-            top: var(--aside-top, 130px);
-            align-self: start;
-            height: calc(100vh - var(--aside-top, 130px));
+            position: relative;
+            align-self: stretch;
+            min-height: 100%;
             border-left: var(--hair) solid var(--rule);
+            background: var(--paper);
+            overflow: hidden;
+        }
+
+        .preview-elevator {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            transform: translateY(0px);
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform;
             display: flex;
             flex-direction: column;
-            background: var(--paper);
-            overflow-y: auto;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .preview-elevator {
+                transition: none !important;
+            }
         }
 
         .artifact {
             position: relative;
             aspect-ratio: 1 / 1;
             width: calc(100% - 40px);
-            max-width: 380px;
-            margin: 20px auto 16px;
+            max-width: 340px;
+            margin: 16px auto 14px;
             border: var(--hair) solid var(--rule);
             overflow: hidden;
             background: #eee;
@@ -861,14 +876,16 @@
         </table>
 
         <aside class="preview" id="preview" aria-live="polite">
-            <div class="artifact" id="artifact">
-                <div class="empty" id="empty">No selection</div>
-            </div>
-            <div class="caption">
-                <div class="pt" id="pt">—</div>
-                <div class="pm" id="pm">Hover a row to render its procedural artifact</div>
-                <div class="pd" id="pd">Each visual artifact is generated deterministically from the item ID using stacked geometric interference layers.</div>
-                <a href="#" class="dossier-action-btn" id="pv-link" style="display:none">[ Open Project Dossier → ]</a>
+            <div class="preview-elevator" id="preview-elevator">
+                <div class="artifact" id="artifact">
+                    <div class="empty" id="empty">No selection</div>
+                </div>
+                <div class="caption">
+                    <div class="pt" id="pt">—</div>
+                    <div class="pm" id="pm">Hover a row to render its procedural artifact</div>
+                    <div class="pd" id="pd">Each visual artifact is generated deterministically from the item ID using stacked geometric interference layers.</div>
+                    <a href="#" class="dossier-action-btn" id="pv-link" style="display:none">[ Open Project Dossier → ]</a>
+                </div>
             </div>
         </aside>
     </div>
@@ -933,10 +950,43 @@
         // Procedural Abstract Vector/CSS Artifact Generator (Exact match with inspo site)
         const artifact = document.getElementById('artifact');
         const preview = document.getElementById('preview');
+        const elevatorEl = document.getElementById('preview-elevator');
         const pt = document.getElementById('pt');
         const pm = document.getElementById('pm');
         const pd = document.getElementById('pd');
         const pvLink = document.getElementById('pv-link');
+        let currentActiveItem = null;
+
+        function positionElevator(item) {
+            if (window.innerWidth <= 860) return;
+            const elevator = document.getElementById('preview-elevator');
+            const shaft = document.getElementById('preview');
+            if (!elevator || !shaft) return;
+
+            const visibleRows = Array.from(document.querySelectorAll('#tbody tr:not(.mobile-accordion-row):not(.hidden)'));
+            if (!visibleRows.length) return;
+
+            const activeRow = visibleRows.find(r => r.dataset.id === item.id);
+            if (!activeRow) return;
+
+            const shaftHeight = shaft.offsetHeight;
+            const elevatorHeight = elevator.offsetHeight;
+            const maxTravel = Math.max(0, shaftHeight - elevatorHeight);
+
+            if (maxTravel <= 0 || visibleRows.length <= 1) {
+                elevator.style.transform = 'translateY(0px)';
+                return;
+            }
+
+            const firstTop = visibleRows[0].offsetTop;
+            const lastTop = visibleRows[visibleRows.length - 1].offsetTop;
+            const range = lastTop - firstTop;
+
+            const ratio = range > 0 ? Math.max(0, Math.min(1, (activeRow.offsetTop - firstTop) / range)) : 0;
+            const targetY = Math.round(ratio * maxTravel);
+
+            elevator.style.transform = `translateY(${targetY}px)`;
+        }
 
         function buildArtifactNode(item) {
             const recipe = RECIPES[item.id];
@@ -1005,14 +1055,18 @@
             pm.textContent = `${item.id} · ${item.year} · ${item.medium}`;
             pd.textContent = item.desc;
             pvLink.href = 'projects/' + item.slug + '.html';
+            pvLink.textContent = (item.numbered === false || item.id === 'stray-kitten' || item.id === 'down-in-the-valley') ? '[ OPEN FULL POEM → ]' : '[ OPEN PROJECT DOSSIER → ]';
             pvLink.style.display = 'block';
 
             preview.classList.add('on');
+            currentActiveItem = item;
 
             document.querySelectorAll('#tbody tr').forEach(r => {
                 if (r.dataset.id === item.id) r.classList.add('active-row');
                 else r.classList.remove('active-row');
             });
+
+            positionElevator(item);
         }
 
         // Mobile Inline Accordion Drawer (Option 1)
@@ -1159,21 +1213,52 @@
             });
         });
 
-        // Set default preview to latest major project (e.g. 022) only on desktop screens
+        // Set default preview to first project on desktop screens
         if (window.innerWidth > 860) {
-            const defaultItem = PROJECTS.find(p => p.id === '022') || PROJECTS[PROJECTS.length - 1];
+            const defaultItem = PROJECTS[0];
             renderArtifact(defaultItem);
         }
 
         window.addEventListener('resize', () => {
+            updateLayout();
             if (window.innerWidth > 860) {
                 closeMobileAccordion();
-                if (!preview.classList.contains('on')) {
-                    const defaultItem = PROJECTS.find(p => p.id === '022') || PROJECTS[PROJECTS.length - 1];
+                if (currentActiveItem) {
+                    positionElevator(currentActiveItem);
+                } else {
+                    const defaultItem = PROJECTS[0];
                     renderArtifact(defaultItem);
                 }
             }
         });
+
+        // Mousemove & Scroll Tracking for Desktop Elevator
+        let lastMouseX = null;
+        let lastMouseY = null;
+        window.addEventListener('mousemove', (e) => {
+            lastMouseX = e.clientX;
+            lastMouseY = e.clientY;
+        }, { passive: true });
+
+        let scrollHoverTimer = null;
+        window.addEventListener('scroll', () => {
+            if (window.innerWidth <= 860) return;
+            if (scrollHoverTimer) cancelAnimationFrame(scrollHoverTimer);
+            scrollHoverTimer = requestAnimationFrame(() => {
+                if (lastMouseX !== null && lastMouseY !== null) {
+                    const el = document.elementFromPoint(lastMouseX, lastMouseY);
+                    if (el) {
+                        const tr = el.closest('#tbody tr:not(.mobile-accordion-row):not(.hidden)');
+                        if (tr && tr.dataset.id) {
+                            const item = PROJECTS.find(p => p.id === tr.dataset.id);
+                            if (item && (!currentActiveItem || currentActiveItem.id !== item.id)) {
+                                renderArtifact(item);
+                            }
+                        }
+                    }
+                }
+            });
+        }, { passive: true });
 
         // Filter & Search
         const filterInput = document.getElementById('filter');
@@ -1210,6 +1295,17 @@
             });
 
             shownCount.innerText = visible;
+
+            if (currentActiveItem) {
+                const visibleRows = Array.from(document.querySelectorAll('#tbody tr:not(.mobile-accordion-row):not(.hidden)'));
+                const stillVisible = visibleRows.find(r => r.dataset.id === currentActiveItem.id);
+                if (!stillVisible && visibleRows.length) {
+                    const nextItem = PROJECTS.find(p => p.id === visibleRows[0].dataset.id);
+                    if (nextItem) renderArtifact(nextItem);
+                } else if (stillVisible) {
+                    positionElevator(currentActiveItem);
+                }
+            }
         }
 
         filterInput.addEventListener('input', applyFilter);
@@ -1269,6 +1365,9 @@
                 });
 
                 sortedRows.forEach(r => tbody.appendChild(r));
+                if (currentActiveItem) {
+                    positionElevator(currentActiveItem);
+                }
             });
         });
     </script>
