@@ -1,0 +1,1960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Down in the Valley — Hossein Askari / Archive</title>
+    <meta name="description" content="A concrete poem and topological trajectory. A river twists and barks toward the hungry moon; entity tokens are ingested under stone; the thought of returning burns in the fire.">
+    <meta name="author" content="Hossein Askari">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://theartificialself.com/projects/down-in-the-valley.html">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000000'/%3E%3Cline x1='22' y1='5' x2='10' y2='27' stroke='%23ffffff' stroke-width='3' stroke-linecap='square'/%3E%3C/svg%3E">
+
+    <style>
+        :root {
+            --ink: #000000;
+            --paper: #ffffff;
+            --rule: #000000;
+            --hair: 1px;
+            --accent-red: #d92323;
+            --accent-red-dim: rgba(217, 35, 35, 0.08);
+            --mono: ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace;
+            --sans: 'Helvetica Neue', Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+        }
+
+        html, body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        body {
+            font-family: var(--mono);
+            font-size: 13px;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection {
+            background: #000;
+            color: #fff;
+        }
+
+        .vec {
+            position: relative;
+            display: inline-block;
+        }
+        .vec::before {
+            content: "→";
+            position: absolute;
+            top: -0.65em;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 0.65em;
+            line-height: 1;
+            font-weight: normal;
+        }
+
+        /* Header Masthead */
+        header.masthead {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--paper);
+            border-bottom: var(--hair) solid var(--rule);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+        }
+
+        .masthead a.brand {
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--ink);
+        }
+
+        .masthead a.brand span {
+            font-weight: 300;
+        }
+
+        .masthead-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .live-clock {
+            font-variant-numeric: tabular-nums;
+            opacity: 0.7;
+        }
+
+        .masthead .back-link {
+            text-decoration: none;
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .masthead .back-link:hover {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        @media (max-width: 640px) {
+            header.masthead { padding: 10px 14px; }
+            .masthead a.brand { font-size: 11px; }
+            .masthead-right { gap: 10px; font-size: 10px; }
+            .live-clock { display: none; }
+        }
+
+        /* Dossier Wrap */
+        .dossier-wrap {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 40px 20px 100px;
+        }
+
+        /* Fonds Meta Spec Grid */
+        .archive-spec-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border: var(--hair) solid var(--rule);
+            margin-bottom: 30px;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        .spec-cell {
+            padding: 10px 14px;
+            border-right: var(--hair) solid var(--rule);
+        }
+
+        .spec-cell:last-child {
+            border-right: none;
+        }
+
+        .spec-cell b {
+            display: block;
+            font-size: 9px;
+            letter-spacing: 0.14em;
+            opacity: 0.6;
+            margin-bottom: 2px;
+        }
+
+        .spec-cell span {
+            font-weight: 600;
+            letter-spacing: 0.04em;
+        }
+
+        @media (max-width: 680px) {
+            .archive-spec-grid { grid-template-columns: 1fr 1fr; }
+            .spec-cell:nth-child(2) { border-right: none; }
+            .spec-cell:nth-child(1), .spec-cell:nth-child(2) { border-bottom: var(--hair) solid var(--rule); }
+        }
+
+        h1.project-title {
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: clamp(30px, 6vw, 60px);
+            line-height: 0.94;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            margin: 0 0 16px;
+        }
+
+        .project-lead {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 35px;
+            padding-bottom: 22px;
+            border-bottom: var(--hair) solid var(--rule);
+            color: #222;
+        }
+
+        /* Preface Banner */
+        .preface-block {
+            margin: 30px 0 40px;
+            border-bottom: var(--hair) solid var(--rule);
+            padding-bottom: 30px;
+        }
+
+        .preface-stream {
+            font-family: var(--mono);
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.35;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+            margin-bottom: 24px;
+            text-align: justify;
+        }
+
+        .preface-annot {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            font-size: 13px;
+            color: #222;
+        }
+
+        del {
+            text-decoration: line-through;
+            opacity: 0.5;
+        }
+
+        /* Section Delimiters */
+        .fonds-section {
+            margin: 50px 0;
+            border-top: var(--hair) solid var(--rule);
+            padding-top: 24px;
+        }
+
+        .section-tag {
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-weight: 600;
+            opacity: 0.7;
+        }
+
+        .section-title {
+            font-family: var(--sans);
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin: 0 0 16px;
+        }
+
+        /* Workbench Cartography Box */
+        .carto-workbench {
+            border: var(--hair) solid var(--rule);
+            margin: 24px 0 32px;
+            background: var(--paper);
+        }
+
+        .carto-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 9px 14px;
+            border-bottom: var(--hair) solid var(--rule);
+            background: #fafafa;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .carto-controls {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .btn-carto {
+            background: transparent;
+            border: var(--hair) solid var(--rule);
+            color: var(--ink);
+            font-family: var(--mono);
+            font-size: 10px;
+            padding: 4px 9px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 600;
+            transition: background 60ms linear, color 60ms linear;
+        }
+
+        .btn-carto:hover {
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        .btn-carto.active {
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        #river-viewport {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: var(--paper);
+            overflow: hidden;
+            border-bottom: var(--hair) solid var(--rule);
+            user-select: none;
+        }
+
+        #river-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .carto-telemetry-box {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 280px;
+            font-size: 11px;
+        }
+
+        @media (max-width: 768px) {
+            .carto-telemetry-box { grid-template-columns: 1fr; }
+        }
+
+        .tele-legend-pane {
+            padding: 12px 16px;
+            border-right: var(--hair) solid var(--rule);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .tele-legend-pane { border-right: none; border-bottom: var(--hair) solid var(--rule); }
+        }
+
+        .tele-data-pane {
+            padding: 12px 16px;
+            font-variant-numeric: tabular-nums;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 4px;
+            background: #fafafa;
+        }
+
+        .tele-row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .tele-row span {
+            opacity: 0.6;
+            text-transform: uppercase;
+            font-size: 10px;
+        }
+
+        .tele-row strong {
+            font-weight: 600;
+        }
+
+        /* Protocol Framed Box */
+        .protocol-box {
+            border: var(--hair) solid var(--rule);
+            padding: 20px;
+            margin: 24px 0;
+            background: #fafafa;
+        }
+
+        .protocol-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            border-bottom: var(--hair) solid var(--rule);
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .protocol-formula {
+            background: var(--paper);
+            border: var(--hair) solid var(--rule);
+            padding: 12px;
+            margin: 16px 0;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .velocity-control-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: var(--hair) dashed #ccc;
+        }
+
+        .velocity-slider {
+            flex: 1;
+            -webkit-appearance: none;
+            background: #ddd;
+            height: 2px;
+            outline: none;
+        }
+
+        .velocity-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 12px;
+            height: 12px;
+            background: #000;
+            cursor: pointer;
+        }
+
+        /* Echo Cascade */
+        .echo-block {
+            margin: 24px 0 16px;
+            line-height: 1.8;
+        }
+
+        .echo-row {
+            transition: opacity 120ms linear;
+        }
+
+        .echo-subtext {
+            font-size: 11px;
+            opacity: 0.6;
+            margin-left: 20px;
+            font-style: italic;
+        }
+
+        /* System Matrix Data Table */
+        .system-matrix {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0 30px;
+            font-family: var(--mono);
+            font-size: 11px;
+            border: var(--hair) solid var(--rule);
+        }
+
+        .system-matrix th, .system-matrix td {
+            padding: 8px 12px;
+            border-bottom: var(--hair) solid var(--rule);
+            border-right: var(--hair) solid var(--rule);
+            text-align: left;
+        }
+
+        .system-matrix th {
+            background: #f8f8f8;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 10px;
+        }
+
+        .system-matrix tr:last-child td {
+            border-bottom: none;
+        }
+
+        .system-matrix td:last-child, .system-matrix th:last-child {
+            border-right: none;
+        }
+
+        .btn-table-action {
+            background: transparent;
+            border: var(--hair) solid var(--rule);
+            color: var(--ink);
+            font-family: var(--mono);
+            font-size: 9px;
+            padding: 3px 7px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .btn-table-action:hover {
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        .btn-table-action:disabled {
+            opacity: 0.3;
+            cursor: default;
+            border-color: #aaa;
+            background: transparent;
+            color: #888;
+        }
+
+        /* Telemetry Interrupt Notice */
+        .telemetry-interrupt {
+            border: var(--hair) solid var(--rule);
+            background: #fafafa;
+            padding: 10px 14px;
+            margin: 24px 0;
+            text-align: center;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        /* Thirst Gauge */
+        .thirst-meter-wrap {
+            border: var(--hair) solid var(--rule);
+            padding: 12px 16px;
+            margin: 20px 0;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 16px;
+            align-items: center;
+            background: #fafafa;
+        }
+
+        .meter-bar {
+            height: 4px;
+            background: #e5e5e5;
+            border: var(--hair) solid var(--rule);
+            position: relative;
+            margin-top: 6px;
+        }
+
+        .meter-fill {
+            height: 100%;
+            background: #000;
+            width: 38%;
+            transition: width 150ms linear;
+        }
+
+        /* Automaton Diagram (TikZ style) */
+        .automaton-box {
+            border: var(--hair) solid var(--rule);
+            padding: 18px;
+            margin: 24px 0;
+            background: #fff;
+        }
+
+        .automaton-svg-wrap {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        /* Digging Coordinate Area */
+        .dig-sandbox {
+            border: var(--hair) solid var(--rule);
+            margin: 20px 0;
+            background: #fafafa;
+            padding: 16px;
+        }
+
+        .dig-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin: 12px 0;
+            font-size: 11px;
+        }
+
+        .dig-node {
+            border: var(--hair) solid #bbb;
+            padding: 6px 10px;
+            background: #fff;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .dig-node.excavated {
+            border-color: #000;
+            background: #000;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        /* Nullification Paper Strips */
+        .tear-list {
+            margin: 20px 0;
+            border: var(--hair) solid var(--rule);
+        }
+
+        .tear-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            border-bottom: var(--hair) solid var(--rule);
+            background: #fff;
+            font-size: 12px;
+        }
+
+        .tear-item:last-child {
+            border-bottom: none;
+        }
+
+        .tear-item.torn span.poem-text {
+            text-decoration: line-through;
+            opacity: 0.4;
+        }
+
+        .tear-badge {
+            font-size: 9px;
+            font-weight: 700;
+            margin-right: 8px;
+            display: none;
+        }
+
+        .tear-item.torn .tear-badge {
+            display: inline;
+        }
+
+        /* Asymptote Graph & Fire Workbench */
+        .fire-graph-workbench {
+            border: var(--hair) solid var(--rule);
+            margin: 24px 0;
+            background: #fff;
+        }
+
+        #asymptote-canvas {
+            width: 100%;
+            height: 220px;
+            display: block;
+            border-bottom: var(--hair) solid var(--rule);
+        }
+
+        .asymptote-telemetry {
+            padding: 10px 16px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            background: #fafafa;
+            text-transform: uppercase;
+        }
+
+        /* Loneliest Nucleus Staircase */
+        .staircase-section {
+            border: var(--hair) solid var(--rule);
+            padding: 30px 24px;
+            margin: 40px 0 20px;
+            background: #fafafa;
+        }
+
+        .staircase-hero {
+            font-family: var(--sans);
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+        }
+
+        .staircase-wrap {
+            margin: 16px 0;
+            line-height: 2;
+        }
+
+        .step-line {
+            transition: color 120ms linear;
+        }
+
+        .step-line:hover {
+            color: var(--accent-red);
+            font-weight: 600;
+        }
+
+        /* Flying Away Transitions for All Original Content */
+        header.masthead,
+        .dossier-wrap > *,
+        footer {
+            transition: transform 1.3s cubic-bezier(0.16, 1, 0.3, 1),
+                        opacity 0.9s ease,
+                        filter 0.9s ease;
+            will-change: transform, opacity;
+        }
+
+        body.void-active {
+            overflow: hidden !important;
+            background: #ffffff !important;
+        }
+
+        body.void-active header.masthead {
+            transform: translateY(-130px) !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        body.void-active footer {
+            transform: translateY(130px) !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        body.void-active .archive-spec-grid {
+            transform: translate(-70px, -110px) rotate(-2.5deg) scale(0.94) !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        body.void-active h1.project-title,
+        body.void-active .project-lead {
+            transform: translate(65px, -120px) rotate(2deg) scale(0.94) !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        body.void-active .preface-block {
+            transform: translate(-50px, -100px) rotate(-1.5deg) scale(0.94) !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        body.void-active .fonds-section:nth-of-type(1) {
+            transform: translate(90px, -140px) rotate(2deg) scale(0.93) !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        body.void-active .fonds-section:nth-of-type(2) {
+            transform: translate(-90px, -110px) rotate(-2.5deg) scale(0.93) !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        body.void-active .fonds-section:nth-of-type(3) {
+            transform: translate(75px, -105px) rotate(1.8deg) scale(0.93) !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        body.void-active .fonds-section:nth-of-type(4) {
+            transform: translate(-80px, 95px) rotate(-2deg) scale(0.93) !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        body.void-active .fonds-section:nth-of-type(5) {
+            transform: translate(85px, 135px) rotate(2.2deg) scale(0.93) !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        body.void-active .staircase-section {
+            transform: translate(-65px, 145px) rotate(-2deg) scale(0.93) !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        /* Staggered flight for staircase step lines */
+        body.void-active .staircase-wrap .step-line:nth-child(1) { transform: translate(40px, -60px) rotate(3deg); opacity: 0; }
+        body.void-active .staircase-wrap .step-line:nth-child(2) { transform: translate(-30px, -70px) rotate(-4deg); opacity: 0; }
+        body.void-active .staircase-wrap .step-line:nth-child(3) { transform: translate(50px, -80px) rotate(5deg); opacity: 0; }
+        body.void-active .staircase-wrap .step-line:nth-child(4) { transform: translate(-40px, -90px) rotate(-3deg); opacity: 0; }
+        body.void-active .staircase-wrap .step-line:nth-child(5) { transform: translate(60px, -100px) rotate(4deg); opacity: 0; }
+        body.void-active .staircase-wrap .step-line:nth-child(6) { transform: translate(-50px, -110px) rotate(-5deg); opacity: 0; }
+        body.void-active .staircase-wrap .step-line:nth-child(7) { transform: translate(45px, -120px) rotate(3deg); opacity: 0; }
+        body.void-active .staircase-wrap .step-line:nth-child(8) { transform: translate(-35px, -130px) rotate(-4deg); opacity: 0; }
+        body.void-active .staircase-wrap .step-line:nth-child(9) { transform: translate(55px, -140px) rotate(6deg); opacity: 0; }
+        body.void-active .staircase-wrap .step-line:nth-child(10) { transform: translate(-45px, -150px) rotate(-5deg); opacity: 0; }
+        body.void-active .staircase-wrap .step-line:nth-child(11) { transform: translate(30px, -160px) rotate(8deg); opacity: 0; }
+        body.void-active .staircase-wrap .step-line:nth-child(12) { transform: translate(-20px, -170px) rotate(-10deg); opacity: 0; }
+
+        body.void-active .epilogue-gate-container,
+        body.void-active .pager {
+            transform: translateY(130px) !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        /* Dissolve Overlay Canvas */
+        #dissolve-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 100000;
+            display: none;
+        }
+
+        /* Epilogue Gate Button below Staircase */
+        .epilogue-gate-container {
+            margin: 50px 0 20px;
+            text-align: center;
+            border-top: var(--hair) dashed #ccc;
+            padding-top: 36px;
+        }
+
+        .btn-epilogue-gate {
+            background: transparent;
+            border: var(--hair) solid var(--rule);
+            color: var(--ink);
+            font-family: var(--mono);
+            font-size: 11px;
+            padding: 10px 22px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+            transition: background 80ms linear, color 80ms linear;
+        }
+
+        .btn-epilogue-gate:hover {
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        /* Fullscreen Solitary Void Screen (Only epilogue text + return to index) */
+        .void-screen {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.2s ease 1.2s;
+        }
+
+        body.void-active .void-screen {
+            display: flex;
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .void-content {
+            text-align: center;
+            font-family: var(--mono);
+            font-size: 16px;
+            line-height: 2.2;
+            color: #000;
+            padding: 30px;
+            max-width: 600px;
+            user-select: none;
+        }
+
+        .void-line {
+            margin: 0;
+            letter-spacing: 0.02em;
+        }
+
+        .void-subline {
+            margin-top: 10px;
+            opacity: 0.75;
+        }
+
+        .void-action {
+            margin-top: 48px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 1s ease 1.2s, transform 1s ease 1.2s;
+        }
+
+        body.void-active .void-action {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .void-index-btn {
+            display: inline-block;
+            font-family: var(--mono);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            color: var(--ink);
+            border: var(--hair) solid var(--rule);
+            padding: 10px 20px;
+            font-weight: 600;
+            transition: background 80ms linear, color 80ms linear;
+        }
+
+        .void-index-btn:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        /* Pager Navigation */
+        .pager {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            border: var(--hair) solid var(--rule);
+            margin-top: 60px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .pager a, .pager div {
+            padding: 14px 20px;
+            text-decoration: none;
+            color: var(--ink);
+        }
+
+        .pager a:hover {
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        .pager .prev {
+            border-right: var(--hair) solid var(--rule);
+            text-align: left;
+        }
+
+        .pager .index-link {
+            border-right: var(--hair) solid var(--rule);
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .pager .next {
+            text-align: right;
+        }
+
+        .pager .disabled {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        @media (max-width: 640px) {
+            .pager { display: flex; flex-direction: column; margin-top: 40px; }
+            .pager a, .pager div {
+                border-right: none;
+                border-bottom: var(--hair) solid var(--rule);
+                padding: 12px 14px;
+            }
+            .pager > :last-child { border-bottom: none !important; }
+        }
+
+        /* Footer */
+        footer {
+            border-top: var(--hair) solid var(--rule);
+            padding: 30px 20px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            max-width: 880px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Masthead -->
+    <header class="masthead">
+        <a href="../index.html" class="brand">HOSSEIN ASKARI <span>/</span> ARCHIVE</a>
+        <div class="masthead-right">
+            <span class="live-clock" id="masthead-clock">00:00:00 GMT</span>
+            <a href="../index.html" class="back-link">&larr; Return to Index</a>
+        </div>
+    </header>
+
+    <main class="dossier-wrap">
+
+        <!-- Archive Specification Grid -->
+        <div class="archive-spec-grid">
+            <div class="spec-cell"><b>Fonds ID</b><span>&mdash;</span></div>
+            <div class="spec-cell"><b>Chronology</b><span>2026</span></div>
+            <div class="spec-cell"><b>Medium</b><span>Concrete Poetry &bull; Vector Field</span></div>
+            <div class="spec-cell"><b>Classification</b><span>Topography of Madness &amp; Solitude</span></div>
+        </div>
+
+        <h1 class="project-title">Down in the Valley</h1>
+        <div class="project-lead">
+            A concrete poem and topological trajectory. A river twists and barks toward the hungry moon; entity tokens are ingested under stone; the thought of returning burns in the fire.
+        </div>
+
+        <!-- Preface Stream -->
+        <div class="preface-block">
+            <div class="preface-stream">
+                HELLO I WENT TO THE PARK TODAY DOWN IN THE VALLEY A RIVER TWISTS AND BARKS TOWARD THE SKY TOWARD THE CLOUDS TOWARD THE HUNGRY MOON THIS IS THE LANGUAGE OF RIGHT HERE THE HOME LANGUAGE OF THIS VALLEY AND I AM LISTENING
+            </div>
+            <div class="preface-annot">
+                <div>H e l l o , &nbsp; &nbsp; I &nbsp; w e n t &nbsp; t o &nbsp; t h e &nbsp; p a r k .</div>
+                <div><del>The park is green.</del> &nbsp; The park is at the bottom.</div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             SECTION 1: CARTOGRAPHY WORKBENCH & THE BARKING RIVER
+             ==================================================================== -->
+        <section class="fonds-section" style="border-top: none; padding-top: 0;">
+            <div class="section-tag">
+                <span>Topographical Chart // Figure 1.1</span>
+                <span><span class="vec">B</span><sub>bark</sub>(&theta;) = &nabla; &times; (foam &middot; <span class="vec">k</span>)</span>
+            </div>
+            <h2 class="section-title">01 &bull; The Barking River &amp; The Hungry Moon</h2>
+
+            <div class="carto-workbench">
+                <div class="carto-bar">
+                    <div><b>Valley Survey Sheet // Figure 1.1</b> &bull; Flume Elevation &amp; Acoustic Bark Vectors</div>
+                    <div style="font-size: 10px; opacity: 0.6; text-transform: uppercase;">Vector Topography</div>
+                </div>
+
+                <div id="river-viewport">
+                    <canvas id="river-canvas"></canvas>
+                </div>
+
+                <div class="carto-telemetry-box">
+                    <div class="tele-legend-pane">
+                        <strong>SURVEY METRIC:</strong><br>
+                        River vector field oscillating along valley depth <em>x</em>. Acoustic shear vectors arc toward the Hungry Moon at coordinate (11.5, 3.0). Click viewport to perturb current.
+                    </div>
+                    <div class="tele-data-pane">
+                        <div class="tele-row"><span>Vector Field:</span><strong>&nabla; &times; (foam &middot; <span class="vec">k</span>)</strong></div>
+                        <div class="tele-row"><span>Acoustic Flux:</span><strong id="tele-flux">14.88 kHz</strong></div>
+                        <div class="tele-row"><span>Lunar Target:</span><strong>(11.5, 3.0) Moon</strong></div>
+                        <div class="tele-row"><span>House State:</span><strong>Window = Black</strong></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================================================================
+             SECTION 2: PROTOCOL 07 & ESCAPE KINEMATICS
+             ==================================================================== -->
+        <section class="fonds-section">
+            <div class="section-tag">
+                <span>Kinematic Ledger // Protocol 07</span>
+                <span>Ref: VAL-009-PARDON</span>
+            </div>
+            <h2 class="section-title">02 &bull; Protocol 07: Kinematics of the Pardoned</h2>
+
+            <div class="protocol-box">
+                <div class="protocol-header">
+                    <span>PROTOCOL 07: KINEMATICS OF THE PARDONED</span>
+                    <span>ID: 009-VOID</span>
+                </div>
+                <ol style="margin: 0 0 12px 20px; padding: 0; line-height: 1.7;">
+                    <li>You can be calmer. Take a breath.</li>
+                    <li>You can be a murderer who has been set free.</li>
+                    <li>And run faster, with the bundle under your arm, faster:</li>
+                </ol>
+
+                <div class="protocol-formula">
+                    <span class="vec">v</span><sub>run</sub> = &Delta;x / &Delta;t &nbsp; &#x27F9; &nbsp; 
+                    <strong>lim<sub>&Delta;t &rarr; 0</sub> &#x2119;(Window(wife) = Reflection) = 0</strong>
+                </div>
+
+                <div class="velocity-control-row">
+                    <span style="font-size: 11px; text-transform: uppercase; font-weight: 600;">Velocity (<span class="vec">v</span><sub>run</sub>):</span>
+                    <input type="range" class="velocity-slider" id="vSlider" min="2" max="60" value="12" oninput="updateVelocity(this.value)">
+                    <strong id="vValue" style="width: 55px; font-variant-numeric: tabular-nums;">12 m/s</strong>
+                    <button class="btn-carto" onclick="sprint()">Run Faster</button>
+                </div>
+            </div>
+
+            <div class="echo-block">
+                <p style="margin: 0 0 14px;">
+                    <del>I am walking.</del> I am running with the bundle. &nbsp;&nbsp; 
+                    <del>The bundle is bread.</del> The bundle is heavy.
+                </p>
+                <div style="margin: 0 0 14px; font-weight: bold;">
+                    faster &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; faster &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>FASTER</strong>
+                </div>
+
+                <div class="echo-row">Run toward your house. And see the light is still on.</div>
+                <div class="echo-row">And your wife behind the window.</div>
+                <div class="echo-row" style="font-weight: 700; margin-top: 6px;">
+                    And shout from afar: It is me! I have returned.
+                </div>
+                <div class="echo-row" style="margin-left: 20px;"><del>It is me! I have returned.</del></div>
+                <div class="echo-row" style="margin-left: 40px; opacity: 0.5;">It is me! I have returned.</div>
+                <div class="echo-row" style="margin-left: 60px; opacity: 0.25;">It is me! I have returned.</div>
+
+                <div style="margin-top: 14px;">
+                    <div class="echo-subtext">(she does not move)</div>
+                    <div class="echo-subtext" style="margin-left: 40px;">(the window is black on the inside)</div>
+                    <div class="echo-subtext" style="margin-left: 60px;">(the glass has no reflection)</div>
+                    <div class="echo-subtext" style="margin-left: 80px;">(the kitchen has been empty for twenty years)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================================================================
+             SECTION 3: NAME MASTICATION & TOKEN INGESTION
+             ==================================================================== -->
+        <section class="fonds-section">
+            <div class="section-tag">
+                <span>Entity Ledger // Table 1.1</span>
+                <span>Target: Nomenclature</span>
+            </div>
+            <h2 class="section-title">03 &bull; Entity Decomposition &amp; Thirst Accumulation</h2>
+
+            <p style="margin: 0 0 16px;">
+                Your name runs behind you. A few steps further away. You hate it. It is darkness, no one sees.
+                You take your name under your teeth like eating food. Ingest each entity token to dissolve identity:
+            </p>
+
+            <table class="system-matrix">
+                <thead>
+                    <tr>
+                        <th>Target Token</th>
+                        <th>Syllables</th>
+                        <th>Mastication Operator</th>
+                        <th>Residual Mass</th>
+                        <th>Operation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="row-wife">
+                        <td><strong>wife</strong></td>
+                        <td>1</td>
+                        <td>T̂<sub>rage</sub> &comp; swallow()</td>
+                        <td id="res-wife"><del>kitchen</del> &rarr; 0.00 g</td>
+                        <td><button class="btn-table-action" onclick="ingestToken('wife')">Ingest</button></td>
+                    </tr>
+                    <tr id="row-city">
+                        <td><strong>city</strong></td>
+                        <td>2</td>
+                        <td>crushed against jawbone</td>
+                        <td id="res-city"><del>streetlights</del> &rarr; dust</td>
+                        <td><button class="btn-table-action" onclick="ingestToken('city')">Ingest</button></td>
+                    </tr>
+                    <tr id="row-son">
+                        <td><strong>son</strong></td>
+                        <td>1</td>
+                        <td>consumed without water</td>
+                        <td id="res-son"><del>bloodline</del> &rarr; &empty;</td>
+                        <td><button class="btn-table-action" onclick="ingestToken('son')">Ingest</button></td>
+                    </tr>
+                    <tr id="row-self">
+                        <td><strong>self</strong></td>
+                        <td>2</td>
+                        <td>auto-ingestion under stones</td>
+                        <td id="res-self"><strong>MURDERER</strong></td>
+                        <td><button class="btn-table-action" onclick="ingestToken('self')">Ingest</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Telemetry Interrupt Notice -->
+            <div class="telemetry-interrupt">
+                *** TELEMETRY INTERRUPT: [the loneliest person] ***
+            </div>
+
+            <!-- Thirst Gauge -->
+            <div class="thirst-meter-wrap">
+                <div>
+                    <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7;">
+                        Thirst Integral: &int;<sub>0</sub><sup>t</sup> (Fear of Rabies / &radic;(1 - name<sup>2</sup>)) d&tau; &rarr; &infin;
+                    </div>
+                    <div class="meter-bar">
+                        <div class="meter-fill" id="thirstFill"></div>
+                    </div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 9px; opacity: 0.6; text-transform: uppercase;">Rabies Thirst</div>
+                    <strong id="thirstText" style="font-size: 16px; font-variant-numeric: tabular-nums;">38.0%</strong>
+                </div>
+            </div>
+
+            <div style="margin-top: 18px; line-height: 1.7;">
+                <p>You swallow the syllables until your throat fills with blood.</p>
+                <p><del>Now the house is warm.</del> Now no one ever lived in that house.</p>
+                <p><del>You are a father.</del> Now no one has a son. &nbsp;&nbsp; <del>You are a husband.</del> <del>You are a person.</del></p>
+                <div style="text-align: right; opacity: 0.55; margin-top: 8px;"><em>[I had talked about you in my life.]</em></div>
+
+                <div style="margin-top: 14px;">
+                    <div>You pull back, thirstier. You lick your dry lips.</div>
+                    <div>You are afraid, you are afraid of your name.</div>
+                    <div style="margin-left: 20px;">Fear of: what if you really are a murderer.</div>
+                    <div style="margin-left: 40px; font-weight: bold;">Fear of: what if you really are a murderer.</div>
+                    <div style="margin-left: 60px; opacity: 0.5;">Fear of: what if there is no one left to kill.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================================================================
+             SECTION 4: STATE TRANSITION AUTOMATON & POETRY NULLIFICATION
+             ==================================================================== -->
+        <section class="fonds-section">
+            <div class="section-tag">
+                <span>Phase Machine // Figure 1.2</span>
+                <span>&forall; p &in; Manuscript, T̂<sub>teeth</sub>(p) &equiv; MURDERER</span>
+            </div>
+            <h2 class="section-title">04 &bull; The State Automaton &amp; Ground Digging</h2>
+
+            <div class="automaton-box">
+                <div class="automaton-svg-wrap">
+                    <svg viewBox="0 0 760 90" width="100%" height="90" style="display: block; font-family: var(--mono); font-size: 11px;">
+                        <!-- Nodes -->
+                        <g id="svg-nodes">
+                            <!-- Poet -->
+                            <circle cx="50" cy="45" r="28" fill="#fff" stroke="#000" stroke-width="1.2"/>
+                            <text x="50" y="49" text-anchor="middle" font-weight="600">POET</text>
+
+                            <!-- Murderer -->
+                            <rect x="170" y="23" width="95" height="44" fill="#fff" stroke="#000" stroke-width="1.2"/>
+                            <text x="217" y="50" text-anchor="middle" font-weight="600">MURDERER</text>
+
+                            <!-- Nameless -->
+                            <rect x="345" y="23" width="95" height="44" fill="#fff" stroke="#000" stroke-width="1.2"/>
+                            <text x="392" y="50" text-anchor="middle" font-weight="600">NAMELESS</text>
+
+                            <!-- Canine -->
+                            <circle cx="530" cy="45" r="28" fill="#f4f4f4" stroke="#000" stroke-width="1.2"/>
+                            <text x="530" y="49" text-anchor="middle" font-weight="600">CANINE</text>
+
+                            <!-- Loneliest -->
+                            <rect x="635" y="21" width="105" height="48" fill="#000" stroke="#000" stroke-width="1.2"/>
+                            <rect x="638" y="24" width="99" height="42" fill="#000" stroke="#fff" stroke-width="0.8"/>
+                            <text x="687" y="50" text-anchor="middle" font-weight="700" fill="#fff">LONELIEST</text>
+                        </g>
+
+                        <!-- Transitions -->
+                        <g stroke="#000" stroke-width="1.2" fill="none" marker-end="url(#arrow)">
+                            <defs>
+                                <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                    <path d="M 0 1 L 7 5 L 0 9 z" fill="#000"/>
+                                </marker>
+                            </defs>
+                            <line x1="78" y1="45" x2="168" y2="45"/>
+                            <line x1="265" y1="45" x2="343" y2="45"/>
+                            <line x1="440" y1="45" x2="500" y2="45"/>
+                            <line x1="558" y1="45" x2="633" y2="45"/>
+                        </g>
+
+                        <!-- Labels -->
+                        <g font-size="9px" text-anchor="middle" fill="#555">
+                            <text x="123" y="38">set free</text>
+                            <text x="304" y="38">eat name</text>
+                            <text x="470" y="38">drink foam</text>
+                            <text x="595" y="38">light fire</text>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Ground Digging Sandbox -->
+            <div class="dig-sandbox">
+                <div style="font-size: 10px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 6px;">
+                    "And with your hind legs you dig the wet ground." &bull; Excavate Coordinates
+                </div>
+                <div class="dig-grid">
+                    <div class="dig-node" onclick="excavate(this)"><span>dig(x₁, y₁)</span><strong>[46.2044° N]</strong></div>
+                    <div class="dig-node" onclick="excavate(this)"><span>dig(x₂, y₂)</span><strong>[06.1432° E]</strong></div>
+                    <div class="dig-node" onclick="excavate(this)"><span>dig(x₃, y₃)</span><strong>[BONE]</strong></div>
+                    <div class="dig-node" onclick="excavate(this)"><span>dig(x₄, y₄)</span><strong>[TEETH]</strong></div>
+                    <div class="dig-node" onclick="excavate(this)"><span>dig(x₅, y₅)</span><strong>[WET SOOT]</strong></div>
+                    <div class="dig-node" onclick="excavate(this)"><span>dig(x₆, y₆)</span><strong>[PAW MARK]</strong></div>
+                </div>
+                <div style="font-size: 11px; opacity: 0.65; text-align: right;">Click grid cells to dig into substrate</div>
+            </div>
+
+            <!-- Poetry Nullification Theorem -->
+            <div style="margin: 24px 0 12px;">
+                <p>You attack, you attack the poems you have written. You tear the paper with your teeth:</p>
+                <div class="tear-list">
+                    <div class="tear-item" id="strip-1">
+                        <span class="poem-text">"The morning light was gentle on the sill."</span>
+                        <div>
+                            <span class="tear-badge">[TORN]</span>
+                            <button class="btn-table-action" onclick="tearStrip(1)">Tear</button>
+                        </div>
+                    </div>
+                    <div class="tear-item" id="strip-2">
+                        <span class="poem-text">"We walked together by the garden fence."</span>
+                        <div>
+                            <span class="tear-badge">[TORN]</span>
+                            <button class="btn-table-action" onclick="tearStrip(2)">Tear</button>
+                        </div>
+                    </div>
+                    <div class="tear-item" id="strip-3">
+                        <span class="poem-text">"I promise I will always be your son."</span>
+                        <div>
+                            <span class="tear-badge">[TORN]</span>
+                            <button class="btn-table-action" onclick="tearStrip(3)">Tear</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Truth Evaluation Matrix -->
+            <table class="system-matrix" style="margin-top: 20px;">
+                <thead>
+                    <tr>
+                        <th>Poet</th>
+                        <th>Murderer</th>
+                        <th>Darkness</th>
+                        <th>Truth Evaluation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>Before (Memory)</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>Now (No one sees)</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>Rabid state: Barking toward moon</td>
+                    </tr>
+                    <tr style="background: #fafafa;">
+                        <td><strong>0</strong></td>
+                        <td><strong>0</strong></td>
+                        <td><strong>1</strong></td>
+                        <td><strong>THE LONELIEST PERSON I HAD TALKED ABOUT</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ====================================================================
+             SECTION 5: THE RIVERBANK FIRE & COGNITIVE ASYMPTOTE
+             ==================================================================== -->
+        <section class="fonds-section">
+            <div class="section-tag">
+                <span>Combustion Survey // Figure 1.3</span>
+                <span>Loneliness(t) &rarr; &infin;</span>
+            </div>
+            <h2 class="section-title">05 &bull; The Riverbank Fire &amp; The Asymptote</h2>
+
+            <p style="margin: 0 0 14px;">
+                You are standing beside the water. It was darkness, no one saw. Beside the river you have lit a fire.
+                You hold your hands to the coals, but they are not hands. <em>(paws in the wet soot)</em>
+            </p>
+
+            <div class="fire-graph-workbench">
+                <canvas id="asymptote-canvas"></canvas>
+                <div class="asymptote-telemetry">
+                    <span>Curve A: Thought of returning &rarr; 0</span>
+                    <span>Curve B: Loneliness(t) &rarr; &infin;</span>
+                    <strong>Singularity: House &cap; Road &cap; City = &empty;</strong>
+                </div>
+            </div>
+
+            <div style="line-height: 1.7; margin-top: 14px;">
+                <p>And the thought of returning to somewhere falls into the ash.</p>
+                <p>And the thought of returning to somewhere burns in the fire.</p>
+                <p><del>There is a kitchen.</del> There is no kitchen. &nbsp;&nbsp;&nbsp;&nbsp; <del>There is a road.</del> You ate the road.</p>
+            </div>
+        </section>
+
+        <!-- ====================================================================
+             SECTION 6: THE LONELIEST NUCLEUS (PUNCHLINE STAIRCASE)
+             ==================================================================== -->
+        <section class="staircase-section">
+            <div class="staircase-hero">
+                And you were the loneliest person I had talked about in my life.
+            </div>
+
+            <div class="staircase-wrap">
+                <div class="step-line" style="color: #000; font-weight: 600;">
+                    You were the loneliest person I had talked about in my life.
+                </div>
+                <div class="step-line" style="margin-left: 20px; color: #1a1a1a;">
+                    and you were the loneliest person I had talked about
+                </div>
+                <div class="step-line" style="margin-left: 40px; color: #333333;">
+                    the loneliest person I had talked about
+                </div>
+                <div class="step-line" style="margin-left: 60px; color: #555555;">
+                    the loneliest person in my life
+                </div>
+                <div class="step-line" style="margin-left: 80px; color: #777777;">
+                    the loneliest person
+                </div>
+                <div class="step-line" style="margin-left: 100px; color: #888888;">
+                    the loneliest person
+                </div>
+                <div class="step-line" style="margin-left: 120px; color: #999999;">
+                    the loneliest
+                </div>
+                <div class="step-line" style="margin-left: 140px; color: #aaaaaa;">
+                    loneliest
+                </div>
+                <div class="step-line" style="margin-left: 160px; color: #bbbbbb;">
+                    lonely
+                </div>
+                <div class="step-line" style="margin-left: 180px; color: #cccccc;">
+                    lone
+                </div>
+                <div class="step-line" style="margin-left: 200px; color: var(--accent-red); font-weight: 700;">
+                    l o n e
+                </div>
+                <div class="step-line" style="margin-left: 220px; color: var(--accent-red); font-weight: 700;">
+                    .
+                </div>
+            </div>
+        </section>
+
+        <!-- Epilogue Gate Trigger (Epilogue text is hidden behind this button) -->
+        <div class="epilogue-gate-container">
+            <button class="btn-epilogue-gate" id="epilogueGateBtn" onclick="triggerVoid()">
+                Hello, I went to the park today &rarr;
+            </button>
+        </div>
+
+        <!-- Pager Navigation -->
+        <nav class="pager">
+            <a href="022-terraflux.html" class="prev">&larr; 022 TERRAFLUX</a>
+            <a href="../index.html" class="index-link">Archive Index</a>
+            <div class="next disabled">End of Fonds &rarr;</div>
+        </nav>
+
+    </main>
+
+    <!-- Footer Colophon -->
+    <footer>
+        <div>Hossein Askari</div>
+        <div>Holding 22 Works &bull; 2021&ndash;2026</div>
+        <div><a href="../index.html" style="color:inherit">Return to Index &uarr;</a></div>
+    </footer>
+
+    <!-- Dissolve Flying Particles Canvas -->
+    <canvas id="dissolve-canvas"></canvas>
+
+    <!-- Full-screen Solitary Void Screen (Only epilogue text + return to index) -->
+    <div id="void-screen" class="void-screen">
+        <div class="void-content">
+            <p class="void-line">Hello, I went to the park today.</p>
+            <p class="void-line void-subline">Are you still down by the water?</p>
+            <div class="void-action">
+                <a href="../index.html" class="void-index-btn">&larr; Return to Index</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts: Restrained, Precise Canvas Engines -->
+    <script>
+        // Masthead live clock (matches Terraflux)
+        function updateClock() {
+            const now = new Date();
+            const timeStr = now.toTimeString().split(' ')[0] + ' GMT';
+            const clockEl = document.getElementById('masthead-clock');
+            if (clockEl) clockEl.textContent = timeStr;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        /* ----------------------------------------------------------------------
+           1. CARTOGRAPHY WORKBENCH: THE BARKING RIVER (FIGURE 1.1)
+           ---------------------------------------------------------------------- */
+        const riverCanvas = document.getElementById('river-canvas');
+        const rCtx = riverCanvas.getContext('2d');
+        let rTime = 0;
+        let isFlowing = true;
+        let mouseX = -1000, mouseY = -1000;
+        let pulses = [];
+
+        function resizeRiver() {
+            const rect = riverCanvas.parentElement.getBoundingClientRect();
+            riverCanvas.width = rect.width * window.devicePixelRatio;
+            riverCanvas.height = rect.height * window.devicePixelRatio;
+            rCtx.scale(window.devicePixelRatio, window.devicePixelRatio);
+        }
+        window.addEventListener('resize', resizeRiver);
+        resizeRiver();
+
+        riverCanvas.parentElement.addEventListener('mousemove', (e) => {
+            const rect = riverCanvas.getBoundingClientRect();
+            mouseX = e.clientX - rect.left;
+            mouseY = e.clientY - rect.top;
+        });
+
+        riverCanvas.parentElement.addEventListener('mouseleave', () => {
+            mouseX = -1000;
+            mouseY = -1000;
+        });
+
+        riverCanvas.parentElement.addEventListener('click', (e) => {
+            triggerBarkPulse();
+        });
+
+        function triggerBarkPulse() {
+            const rect = riverCanvas.getBoundingClientRect();
+            pulses.push({
+                x: rect.width * 0.45,
+                y: rect.height * 0.72,
+                r: 4,
+                alpha: 1.0
+            });
+        }
+
+        function drawRiver() {
+            const rect = riverCanvas.getBoundingClientRect();
+            const w = rect.width;
+            const h = rect.height;
+
+            if (isFlowing) rTime += 0.025;
+
+            // Background
+            rCtx.fillStyle = '#ffffff';
+            rCtx.fillRect(0, 0, w, h);
+
+            // Technical Grid Lines (Clean Hairlines)
+            rCtx.strokeStyle = '#f0f0f0';
+            rCtx.lineWidth = 1;
+
+            const gridStep = 40;
+            for (let x = 0; x < w; x += gridStep) {
+                rCtx.beginPath();
+                rCtx.moveTo(x, 0);
+                rCtx.lineTo(x, h);
+                rCtx.stroke();
+            }
+            for (let y = 0; y < h; y += gridStep) {
+                rCtx.beginPath();
+                rCtx.moveTo(0, y);
+                rCtx.lineTo(w, y);
+                rCtx.stroke();
+            }
+
+            // Axes
+            rCtx.strokeStyle = '#000000';
+            rCtx.lineWidth = 1.2;
+            // X-axis
+            rCtx.beginPath();
+            rCtx.moveTo(25, h - 25);
+            rCtx.lineTo(w - 20, h - 25);
+            rCtx.stroke();
+            // Arrowhead X
+            rCtx.fillStyle = '#000';
+            rCtx.beginPath();
+            rCtx.moveTo(w - 20, h - 25);
+            rCtx.lineTo(w - 28, h - 29);
+            rCtx.lineTo(w - 28, h - 21);
+            rCtx.closePath();
+            rCtx.fill();
+
+            // Y-axis
+            rCtx.beginPath();
+            rCtx.moveTo(25, h - 25);
+            rCtx.lineTo(25, 20);
+            rCtx.stroke();
+            // Arrowhead Y
+            rCtx.beginPath();
+            rCtx.moveTo(25, 20);
+            rCtx.lineTo(21, 28);
+            rCtx.lineTo(29, 28);
+            rCtx.closePath();
+            rCtx.fill();
+
+            // Axis labels (LaTeX TikZ style)
+            rCtx.font = '10px ui-monospace, monospace';
+            rCtx.fillStyle = '#000';
+            rCtx.fillText('x (valley depth)', w - 105, h - 12);
+            rCtx.fillText('z (altitude / moon)', 32, 28);
+
+            // Hungry Moon (TikZ position: circle at 86% width, 26% height)
+            const moonX = w * 0.86;
+            const moonY = h * 0.26;
+
+            rCtx.beginPath();
+            rCtx.arc(moonX, moonY, 14, 0, Math.PI * 2);
+            rCtx.fillStyle = '#000000';
+            rCtx.fill();
+
+            // Dashed orbit circle around moon
+            rCtx.strokeStyle = '#999';
+            rCtx.setLineDash([3, 4]);
+            rCtx.beginPath();
+            rCtx.arc(moonX, moonY, 26, 0, Math.PI * 2);
+            rCtx.stroke();
+            rCtx.setLineDash([]);
+
+            rCtx.fillStyle = '#000';
+            rCtx.font = 'bold 9px ui-monospace, monospace';
+            rCtx.fillText('HUNGRY MOON', moonX - 32, moonY - 32);
+
+            // Cloud line
+            rCtx.strokeStyle = '#888';
+            rCtx.lineWidth = 1;
+            rCtx.beginPath();
+            rCtx.moveTo(w * 0.38, h * 0.26);
+            rCtx.bezierCurveTo(w * 0.48, h * 0.20, w * 0.58, h * 0.30, w * 0.68, h * 0.24);
+            rCtx.stroke();
+            rCtx.fillStyle = '#666';
+            rCtx.font = '9px ui-monospace, monospace';
+            rCtx.fillText('clouds', w * 0.52, h * 0.22);
+
+            // House with Window
+            const houseX = w * 0.22;
+            const houseY = h * 0.44;
+            rCtx.fillStyle = '#fff';
+            rCtx.fillRect(houseX - 16, houseY - 14, 32, 28);
+            rCtx.strokeStyle = '#000';
+            rCtx.lineWidth = 1.2;
+            rCtx.strokeRect(houseX - 16, houseY - 14, 32, 28);
+
+            // Roof
+            rCtx.beginPath();
+            rCtx.moveTo(houseX - 18, houseY - 14);
+            rCtx.lineTo(houseX, houseY - 26);
+            rCtx.lineTo(houseX + 18, houseY - 14);
+            rCtx.closePath();
+            rCtx.stroke();
+
+            // Window = black
+            rCtx.fillStyle = '#000';
+            rCtx.fillRect(houseX - 6, houseY - 6, 12, 12);
+            rCtx.font = '9px ui-monospace, monospace';
+            rCtx.fillText('House: Window = black', houseX - 58, houseY + 26);
+
+            // Runner vector with bundle under arm
+            rCtx.strokeStyle = '#555';
+            rCtx.setLineDash([3, 3]);
+            rCtx.beginPath();
+            rCtx.moveTo(houseX - 70, houseY);
+            rCtx.lineTo(houseX - 25, houseY);
+            rCtx.stroke();
+            rCtx.setLineDash([]);
+            rCtx.fillStyle = '#555';
+            rCtx.fillText('v_run (bundle under arm)', houseX - 85, houseY - 8);
+
+            // The River (TikZ snake curve)
+            const riverBaseY = h * 0.72;
+            rCtx.strokeStyle = '#000';
+            rCtx.lineWidth = 2.2;
+            rCtx.beginPath();
+
+            for (let x = 25; x <= w - 30; x += 4) {
+                const distMouse = Math.abs(x - mouseX);
+                const mousePerturb = (distMouse < 90) ? Math.sin(distMouse * 0.08 - rTime * 3) * (90 - distMouse) * 0.15 : 0;
+                const wave = Math.sin(x * 0.02 + rTime * 1.5) * 8 
+                           + Math.cos(x * 0.04 - rTime) * 4 
+                           + mousePerturb;
+                const y = riverBaseY + wave;
+                if (x === 25) rCtx.moveTo(x, y);
+                else rCtx.lineTo(x, y);
+            }
+            rCtx.stroke();
+
+            // River formula label
+            rCtx.fillStyle = '#000';
+            rCtx.font = 'bold 10px ui-monospace, monospace';
+            rCtx.fillText('RIVER: B_bark(θ) = ∇ × (foam · k)', w * 0.35, riverBaseY + 36);
+
+            // Barking Vector to Moon (TikZ red arrow)
+            const barkOriginX = w * 0.44;
+            const barkOriginY = riverBaseY - 6;
+            rCtx.strokeStyle = '#d92323';
+            rCtx.lineWidth = 1.4;
+            rCtx.beginPath();
+            rCtx.moveTo(barkOriginX, barkOriginY);
+            rCtx.lineTo(moonX - 10, moonY + 10);
+            rCtx.stroke();
+
+            // Red Arrowhead
+            const angle = Math.atan2((moonY + 10) - barkOriginY, (moonX - 10) - barkOriginX);
+            rCtx.save();
+            rCtx.translate(moonX - 10, moonY + 10);
+            rCtx.rotate(angle);
+            rCtx.fillStyle = '#d92323';
+            rCtx.beginPath();
+            rCtx.moveTo(0, 0);
+            rCtx.lineTo(-8, -4);
+            rCtx.lineTo(-8, 4);
+            rCtx.closePath();
+            rCtx.fill();
+            rCtx.restore();
+
+            // Bark vector label
+            rCtx.save();
+            rCtx.translate((barkOriginX + moonX) / 2 - 20, (barkOriginY + moonY) / 2 - 10);
+            rCtx.rotate(angle);
+            rCtx.fillStyle = '#d92323';
+            rCtx.font = 'bold 9px ui-monospace, monospace';
+            rCtx.fillText('v_bark → moon', 0, 0);
+            rCtx.restore();
+
+            // Render acoustic pulses
+            for (let i = pulses.length - 1; i >= 0; i--) {
+                const p = pulses[i];
+                p.r += 2.2;
+                p.alpha -= 0.02;
+                if (p.alpha <= 0 || p.r > 120) {
+                    pulses.splice(i, 1);
+                    continue;
+                }
+                rCtx.strokeStyle = `rgba(217, 35, 35, ${p.alpha})`;
+                rCtx.lineWidth = 1.2;
+                rCtx.beginPath();
+                rCtx.arc(p.x, p.y, p.r, -Math.PI * 0.8, -Math.PI * 0.2);
+                rCtx.stroke();
+            }
+
+            requestAnimationFrame(drawRiver);
+        }
+        requestAnimationFrame(drawRiver);
+
+        /* ----------------------------------------------------------------------
+           2. PROTOCOL 07 VELOCITY SIMULATOR
+           ---------------------------------------------------------------------- */
+        function updateVelocity(val) {
+            document.getElementById('vValue').textContent = `${val} m/s`;
+            const pZero = (1 / val).toFixed(4);
+            const formula = document.querySelector('.protocol-formula');
+            if (formula) {
+                formula.innerHTML = `<span class="vec">v</span><sub>run</sub> = ${val} m/s &nbsp; &#x27F9; &nbsp; <strong>lim<sub>&Delta;t &rarr; 0</sub> &#x2119;(Window(wife) = Reflection) &asymp; ${pZero} &rarr; 0</strong>`;
+            }
+        }
+
+        function sprint() {
+            const slider = document.getElementById('vSlider');
+            let cur = parseInt(slider.value, 10);
+            cur = Math.min(60, cur + 10);
+            slider.value = cur;
+            updateVelocity(cur);
+        }
+
+        /* ----------------------------------------------------------------------
+           3. ENTITY TOKEN INGESTION
+           ---------------------------------------------------------------------- */
+        let thirst = 38.0;
+        function ingestToken(token) {
+            const row = document.getElementById(`row-${token}`);
+            const btn = row.querySelector('button');
+            btn.disabled = true;
+            btn.textContent = 'Ingested';
+
+            const tokenCell = row.children[0];
+            tokenCell.innerHTML = `<del>${tokenCell.textContent}</del>`;
+
+            thirst = Math.min(100, thirst + 15.5);
+            document.getElementById('thirstFill').style.width = `${thirst}%`;
+            document.getElementById('thirstText').textContent = `${thirst.toFixed(1)}%`;
+        }
+
+        /* ----------------------------------------------------------------------
+           4. DIGGING SANDBOX
+           ---------------------------------------------------------------------- */
+        function excavate(el) {
+            el.classList.toggle('excavated');
+        }
+
+        /* ----------------------------------------------------------------------
+           5. POEM STRIP TEARING
+           ---------------------------------------------------------------------- */
+        function tearStrip(index) {
+            const item = document.getElementById(`strip-${index}`);
+            if (item) {
+                item.classList.add('torn');
+                item.querySelector('button').disabled = true;
+            }
+        }
+
+        /* ----------------------------------------------------------------------
+           6. ASYMPTOTE PLOTTER (FIGURE 1.3)
+           ---------------------------------------------------------------------- */
+        const asyCanvas = document.getElementById('asymptote-canvas');
+        const aCtx = asyCanvas.getContext('2d');
+
+        function drawAsymptote() {
+            const rect = asyCanvas.parentElement.getBoundingClientRect();
+            asyCanvas.width = rect.width * window.devicePixelRatio;
+            asyCanvas.height = 220 * window.devicePixelRatio;
+            aCtx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+            const w = rect.width;
+            const h = 220;
+
+            aCtx.fillStyle = '#ffffff';
+            aCtx.fillRect(0, 0, w, h);
+
+            // Subtle grid
+            aCtx.strokeStyle = '#f4f4f4';
+            aCtx.lineWidth = 1;
+            for (let x = 0; x < w; x += 40) {
+                aCtx.beginPath();
+                aCtx.moveTo(x, 0);
+                aCtx.lineTo(x, h);
+                aCtx.stroke();
+            }
+
+            // Axes
+            aCtx.strokeStyle = '#000000';
+            aCtx.lineWidth = 1.2;
+            aCtx.beginPath();
+            aCtx.moveTo(40, 20);
+            aCtx.lineTo(40, h - 30);
+            aCtx.lineTo(w - 30, h - 30);
+            aCtx.stroke();
+
+            // Arrowheads
+            aCtx.fillStyle = '#000';
+            aCtx.beginPath();
+            aCtx.moveTo(w - 30, h - 30);
+            aCtx.lineTo(w - 38, h - 34);
+            aCtx.lineTo(w - 38, h - 26);
+            aCtx.closePath();
+            aCtx.fill();
+
+            aCtx.beginPath();
+            aCtx.moveTo(40, 20);
+            aCtx.lineTo(36, 28);
+            aCtx.lineTo(44, 28);
+            aCtx.closePath();
+            aCtx.fill();
+
+            // Labels
+            aCtx.font = '10px ui-monospace, monospace';
+            aCtx.fillStyle = '#000';
+            aCtx.fillText('Time in fire (t)', w - 120, h - 14);
+            aCtx.fillText('Cognitive Magnitude', 48, 28);
+
+            // Curve 1: Thought of returning -> 0 (Black Line)
+            aCtx.strokeStyle = '#000';
+            aCtx.lineWidth = 1.8;
+            aCtx.beginPath();
+            aCtx.moveTo(45, 45);
+            aCtx.bezierCurveTo(w * 0.35, h - 32, w * 0.55, h - 31, w * 0.75, h - 31);
+            aCtx.stroke();
+            aCtx.fillText('Thought of returning → 0', w * 0.24, 75);
+
+            // Fire Point F
+            const fireX = w * 0.36;
+            const fireY = h - 33;
+            aCtx.beginPath();
+            aCtx.arc(fireX, fireY, 3.5, 0, Math.PI * 2);
+            aCtx.fillStyle = '#000';
+            aCtx.fill();
+            aCtx.fillText('F (Fire ignited)', fireX - 35, fireY - 10);
+
+            // Curve 2: Loneliness -> inf (Red dashed line)
+            const singX = w * 0.72;
+            aCtx.strokeStyle = '#d92323';
+            aCtx.lineWidth = 1.8;
+            aCtx.setLineDash([4, 4]);
+            aCtx.beginPath();
+            aCtx.moveTo(fireX, fireY);
+            aCtx.bezierCurveTo(w * 0.52, h - 32, singX - 20, h * 0.5, singX, 30);
+            aCtx.stroke();
+            aCtx.setLineDash([]);
+
+            // Singularity vertical line
+            aCtx.strokeStyle = '#999';
+            aCtx.setLineDash([2, 3]);
+            aCtx.beginPath();
+            aCtx.moveTo(singX, 20);
+            aCtx.lineTo(singX, h - 30);
+            aCtx.stroke();
+            aCtx.setLineDash([]);
+
+            aCtx.fillStyle = '#d92323';
+            aCtx.fillText('Loneliness(t) → ∞', singX - 110, 42);
+
+            aCtx.fillStyle = '#555';
+            aCtx.fillText('SINGULARITY', singX - 30, h - 38);
+        }
+        window.addEventListener('resize', drawAsymptote);
+        drawAsymptote();
+
+        /* ----------------------------------------------------------------------
+           7. EPILOGUE VOID TRIGGER & FLUID DISSOLUTION ANIMATION
+           ---------------------------------------------------------------------- */
+        const dissolveCanvas = document.getElementById('dissolve-canvas');
+        const dCtx = dissolveCanvas.getContext('2d');
+        let dissolveParticles = [];
+        let dissolveAnimId = null;
+
+        const POEM_FRAGMENTS = [
+            'valley', 'river', 'twists', 'barks', 'sky', 'clouds', 'hungry', 'moon',
+            'language', 'bundle', 'faster', 'house', 'window', 'wife', 'light',
+            'murderer', 'pardon', 'teeth', 'name', 'darkness', 'chew', 'city', 'son',
+            'blood', 'foam', 'rabid', 'thirst', 'ground', 'hind legs', 'claws',
+            'dig(x,y)', 'poems', 'tear', 'soot', 'fire', 'ash', 'thought', 'returning',
+            'loneliest', 'person', 'life', 'lone', 'l o n e', '0.00g', '∅', '∇', 'lim', '∞'
+        ];
+
+        function initDissolveParticles() {
+            const dpr = window.devicePixelRatio || 1;
+            dissolveCanvas.width = window.innerWidth * dpr;
+            dissolveCanvas.height = window.innerHeight * dpr;
+            dCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            dissolveCanvas.style.display = 'block';
+
+            dissolveParticles = [];
+            const count = 180;
+
+            for (let i = 0; i < count; i++) {
+                const isWord = Math.random() > 0.3;
+                dissolveParticles.push({
+                    x: Math.random() * window.innerWidth,
+                    y: window.innerHeight * 0.1 + Math.random() * (window.innerHeight * 0.8),
+                    vx: (Math.random() - 0.5) * 5.0,
+                    vy: -Math.random() * 5.5 - 2.5,
+                    text: isWord ? POEM_FRAGMENTS[Math.floor(Math.random() * POEM_FRAGMENTS.length)] : null,
+                    size: isWord ? (12 + Math.random() * 6) : (6 + Math.random() * 10),
+                    rotation: Math.random() * Math.PI * 2,
+                    rotSpeed: (Math.random() - 0.5) * 0.09,
+                    alpha: 1.0,
+                    decay: 0.007 + Math.random() * 0.005,
+                    flutter: Math.random() * Math.PI * 2,
+                    flutterSpeed: 0.04 + Math.random() * 0.05
+                });
+            }
+        }
+
+        function runDissolveLoop() {
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+            dCtx.clearRect(0, 0, w, h);
+
+            let alive = 0;
+            for (let p of dissolveParticles) {
+                if (p.alpha <= 0) continue;
+                alive++;
+
+                p.x += p.vx + Math.sin(p.flutter) * 1.8;
+                p.y += p.vy;
+                p.vy -= 0.03; // upward acceleration
+                p.flutter += p.flutterSpeed;
+                p.rotation += p.rotSpeed;
+                p.alpha -= p.decay;
+
+                dCtx.save();
+                dCtx.translate(p.x, p.y);
+                dCtx.rotate(p.rotation);
+                dCtx.globalAlpha = Math.max(0, p.alpha);
+                dCtx.fillStyle = '#000000';
+
+                if (p.text) {
+                    dCtx.font = `${p.size}px ui-monospace, monospace`;
+                    dCtx.fillText(p.text, -dCtx.measureText(p.text).width / 2, 0);
+                } else {
+                    // Small floating ink / paper scrap
+                    dCtx.fillRect(-p.size / 2, -p.size / 4, p.size, p.size / 2);
+                }
+                dCtx.restore();
+            }
+
+            if (alive > 0) {
+                dissolveAnimId = requestAnimationFrame(runDissolveLoop);
+            } else {
+                dissolveCanvas.style.display = 'none';
+            }
+        }
+
+        function triggerVoid() {
+            document.body.classList.add('void-active');
+            initDissolveParticles();
+            runDissolveLoop();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        if (window.location.hash === '#animate') {
+            triggerVoid();
+        } else if (window.location.hash === '#void') {
+            document.body.classList.add('void-active');
+        }
+    </script>
+</body>
+</html>

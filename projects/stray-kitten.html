@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>I'm Sad as Much as Every Stray Kitten — Hossein Askari / Archive</title>
+    <meta name="description" content="A concrete typographic attrition score and syntactic monologue breakdown. Exploring latent model drift, repetition fatigue, and identity erasure.">
+    <meta name="author" content="Hossein Askari">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://theartificialself.com/projects/stray-kitten.html">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000000'/%3E%3Cline x1='22' y1='5' x2='10' y2='27' stroke='%23ffffff' stroke-width='3' stroke-linecap='square'/%3E%3C/svg%3E">
+
+    <style>
+        :root {
+            --ink: #000000;
+            --paper: #ffffff;
+            --rule: #000000;
+            --hair: 1px;
+            --gray-70: #555555;
+            --gray-50: #777777;
+            --gray-40: #999999;
+            --gray-30: #b5b5b5;
+            --gray-20: #cccccc;
+            --gray-15: #dedede;
+            --gray-10: #ececec;
+            --gray-05: #f4f4f4;
+            --mono: ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace;
+            --sans: 'Helvetica Neue', Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
+            --serif: 'Times New Roman', Times, Georgia, serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+        }
+
+        html, body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        body {
+            font-family: var(--mono);
+            font-size: 13px;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        /* ----------------------------------------------------------------------
+           HEADER & MASTHEAD (Standard Archive Header)
+           ---------------------------------------------------------------------- */
+        header.masthead {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--paper);
+            border-bottom: var(--hair) solid var(--rule);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+        }
+
+        .masthead a.brand {
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--ink);
+        }
+
+        .masthead a.brand span {
+            font-weight: 300;
+        }
+
+        .masthead-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .live-clock {
+            font-variant-numeric: tabular-nums;
+            opacity: 0.7;
+        }
+
+        .masthead .back-link {
+            text-decoration: none;
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .masthead .back-link:hover {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        @media (max-width: 640px) {
+            header.masthead { padding: 10px 14px; }
+            .masthead a.brand { font-size: 11px; }
+            .masthead-right { gap: 10px; font-size: 10px; }
+            .live-clock { display: none; }
+        }
+
+        /* ----------------------------------------------------------------------
+           DOSSIER WRAPPER
+           ---------------------------------------------------------------------- */
+        .dossier-wrap {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 40px 20px 120px;
+        }
+
+        /* ----------------------------------------------------------------------
+           SPEC GRID
+           ---------------------------------------------------------------------- */
+        .archive-spec-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border: var(--hair) solid var(--rule);
+            margin-bottom: 30px;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        .spec-cell {
+            padding: 10px 14px;
+            border-right: var(--hair) solid var(--rule);
+        }
+
+        .spec-cell:last-child {
+            border-right: none;
+        }
+
+        .spec-cell b {
+            display: block;
+            font-size: 9px;
+            letter-spacing: 0.14em;
+            opacity: 0.6;
+            margin-bottom: 2px;
+        }
+
+        .spec-cell span {
+            font-weight: 600;
+            letter-spacing: 0.04em;
+        }
+
+        @media (max-width: 680px) {
+            .archive-spec-grid { grid-template-columns: 1fr 1fr; }
+            .spec-cell:nth-child(2) { border-right: none; }
+            .spec-cell:nth-child(1), .spec-cell:nth-child(2) { border-bottom: var(--hair) solid var(--rule); }
+        }
+
+        /* Title & Lead */
+        h1.project-title {
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: clamp(28px, 5.5vw, 54px);
+            line-height: 0.96;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            margin: 0 0 16px;
+        }
+
+        .project-lead {
+            font-size: 13.5px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            padding-bottom: 24px;
+            border-bottom: var(--hair) solid var(--rule);
+            color: #222;
+        }
+
+        /* Plate Quick Jump Bar */
+        .plate-jump-bar {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            border: var(--hair) solid var(--rule);
+            margin-bottom: 40px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .plate-jump-bar a {
+            padding: 10px 4px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--ink);
+            border-right: var(--hair) solid var(--rule);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transition: background 0.1s;
+        }
+
+        .plate-jump-bar a:last-child {
+            border-right: none;
+        }
+
+        .plate-jump-bar a:hover {
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        @media (max-width: 720px) {
+            .plate-jump-bar {
+                display: flex;
+                overflow-x: auto;
+            }
+            .plate-jump-bar a {
+                flex: 0 0 auto;
+                padding: 10px 14px;
+            }
+        }
+
+        /* ----------------------------------------------------------------------
+           TYPOGRAPHIC PLATES
+           ---------------------------------------------------------------------- */
+        .plate {
+            position: relative;
+            border: var(--hair) solid var(--rule);
+            margin-bottom: 50px;
+            background: var(--paper);
+            overflow: hidden;
+        }
+
+        .plate-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 14px;
+            background: var(--paper);
+            border-bottom: var(--hair) solid var(--rule);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 600;
+        }
+
+        .plate-body {
+            position: relative;
+            padding: 36px 32px 48px;
+            min-height: 520px;
+            z-index: 1;
+        }
+
+        @media (max-width: 640px) {
+            .plate-body {
+                padding: 24px 16px 36px;
+                min-height: auto;
+            }
+        }
+
+        /* Stage Directions (Italics Serif) */
+        .stage-direction {
+            font-family: var(--serif);
+            font-style: italic;
+            text-align: center;
+            font-size: 15px;
+            letter-spacing: 0.02em;
+            margin: 28px 0;
+            color: #111;
+        }
+
+        /* Whispered Aside (parenthetical notes) */
+        .whispered {
+            font-size: 11.5px;
+            color: var(--gray-70);
+            letter-spacing: 0.02em;
+        }
+
+        /* Bordered Quotation / System Box */
+        .quote-box {
+            border: var(--hair) solid var(--rule);
+            padding: 14px 18px;
+            margin: 24px 0 12px;
+            background: #ffffff;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .quote-box.sm {
+            max-width: 75%;
+            font-size: 12.5px;
+        }
+
+        @media (max-width: 640px) {
+            .quote-box.sm {
+                max-width: 100%;
+            }
+        }
+
+        /* Watermarks */
+        .watermark {
+            position: absolute;
+            font-family: var(--sans);
+            font-weight: 900;
+            color: rgba(0, 0, 0, 0.045);
+            pointer-events: none;
+            user-select: none;
+            z-index: 0;
+            line-height: 1;
+            letter-spacing: -0.04em;
+        }
+
+        .watermark-kitten {
+            top: 25px;
+            left: 20px;
+            font-size: clamp(80px, 18vw, 170px);
+        }
+
+        .watermark-home {
+            top: 30px;
+            left: 20px;
+            font-size: clamp(100px, 24vw, 220px);
+        }
+
+        /* Strikethrough styling */
+        s, del {
+            text-decoration: line-through;
+            opacity: 0.8;
+        }
+
+        /* ----------------------------------------------------------------------
+           PLATE 1 SPECIFICS
+           ---------------------------------------------------------------------- */
+        .screaming-wall {
+            text-align: right;
+            font-size: clamp(20px, 3.5vw, 32px);
+            font-weight: 700;
+            line-height: 1.12;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+        }
+
+        .screaming-wall b {
+            font-weight: 900;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .spaced-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            letter-spacing: 0.6em;
+            font-size: 13px;
+            margin: 18px 0;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .dying-cascade-row {
+            margin: 4px 0;
+            font-family: var(--mono);
+        }
+
+        .dying-dense-grid {
+            word-break: break-all;
+            font-size: 9px;
+            line-height: 1.1;
+            letter-spacing: -0.01em;
+            margin-top: 10px;
+            font-family: var(--mono);
+        }
+
+        /* ----------------------------------------------------------------------
+           PLATE 2 SPECIFICS (Coma Napkin & Staircase)
+           ---------------------------------------------------------------------- */
+        .split-coma-grid {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            gap: 20px;
+            align-items: flex-start;
+            margin: 24px 0;
+        }
+
+        @media (max-width: 640px) {
+            .split-coma-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .coma-aside {
+            font-size: 11.5px;
+            line-height: 1.5;
+            padding-top: 6px;
+        }
+
+        .staircase-block {
+            font-family: var(--mono);
+            line-height: 1.55;
+            margin: 20px 0;
+        }
+
+        .stair-step {
+            display: block;
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        .gina-scale-row {
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin: 26px 0 8px;
+        }
+
+        /* ----------------------------------------------------------------------
+           PLATE 3 SPECIFICS (Textural Saturation)
+           ---------------------------------------------------------------------- */
+        .kind-of-block {
+            font-family: var(--mono);
+            font-size: 11.5px;
+            line-height: 1.35;
+            letter-spacing: -0.01em;
+            word-break: break-word;
+            margin: 14px 0 24px;
+            padding: 12px 14px;
+            border-left: 2px solid var(--ink);
+            background: var(--gray-05);
+        }
+
+        .dream-kitten-block {
+            text-align: center;
+            font-size: 12px;
+            line-height: 1.7;
+            letter-spacing: 0.04em;
+            max-width: 680px;
+            margin: 20px auto;
+            padding: 16px;
+            border: var(--hair) dashed var(--rule);
+        }
+
+        /* ----------------------------------------------------------------------
+           PLATE 4 SPECIFICS (15 Propositions)
+           ---------------------------------------------------------------------- */
+        .propositions-list {
+            margin: 18px 0;
+            padding: 0;
+            list-style: none;
+            font-family: var(--mono);
+        }
+
+        .propositions-list li {
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        /* ----------------------------------------------------------------------
+           PLATE 5 SPECIFICS (Rotated Lines & Nothing Block)
+           ---------------------------------------------------------------------- */
+        .rotated-container {
+            margin: 40px auto;
+            text-align: center;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .rot-line {
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 600;
+            background: #ffffff;
+            padding: 2px 8px;
+            border: var(--hair) solid rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s ease;
+        }
+
+        .rot-line:hover {
+            border-color: #000;
+            background: #000;
+            color: #fff;
+        }
+
+        .nothing-grid {
+            font-size: 9.5px;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+            margin: 24px 0;
+            padding: 14px;
+            border: var(--hair) solid var(--rule);
+            background: #fff;
+        }
+
+        .nothing-grid .highlight-boy {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            margin: 6px 0;
+            color: #000;
+            display: block;
+        }
+
+        .staircase-right {
+            text-align: right;
+            margin: 24px 0;
+            font-family: var(--mono);
+            line-height: 1.6;
+        }
+
+        /* ----------------------------------------------------------------------
+           PLATE 6 SPECIFICS (Matrix & Grand Echo)
+           ---------------------------------------------------------------------- */
+        .word-matrix {
+            text-align: center;
+            margin: 36px auto;
+            user-select: none;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        .matrix-row-1 {
+            font-size: clamp(11px, 1.8vw, 16px);
+            letter-spacing: clamp(0.15em, 0.8vw, 0.35em);
+            text-transform: uppercase;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 14px;
+            white-space: nowrap !important;
+        }
+
+        .matrix-row-2 {
+            font-size: clamp(15px, 2.8vw, 24px);
+            letter-spacing: clamp(0.3em, 1.5vw, 0.6em);
+            text-transform: uppercase;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 14px;
+            white-space: nowrap !important;
+        }
+
+        .matrix-row-3 {
+            font-size: clamp(20px, 3.8vw, 32px);
+            letter-spacing: clamp(0.5em, 2vw, 0.9em);
+            text-transform: uppercase;
+            font-weight: 900;
+            display: block;
+            white-space: nowrap !important;
+        }
+
+        .punctuation-drop {
+            font-family: var(--mono);
+            font-size: 14px;
+            letter-spacing: 0.4em;
+            line-height: 1.3;
+            margin: 18px 0;
+        }
+
+        .truncation-staircase {
+            font-family: var(--mono);
+            font-size: 12px;
+            line-height: 1.5;
+            margin: 24px 0 40px;
+        }
+
+        .final-echo-container {
+            text-align: center;
+            margin: 50px 0 30px;
+        }
+
+        .echo-line-1 {
+            font-size: clamp(22px, 4.5vw, 38px);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            margin: 0 0 10px;
+            color: #000000;
+        }
+
+        .echo-line-2 {
+            font-size: clamp(16px, 3.2vw, 24px);
+            font-weight: 600;
+            margin: 0 0 8px;
+            color: var(--gray-40);
+        }
+
+        .echo-line-3 {
+            font-size: clamp(13px, 2.4vw, 18px);
+            font-weight: 500;
+            margin: 0 0 6px;
+            color: var(--gray-30);
+        }
+
+        .echo-line-4 {
+            font-size: clamp(11px, 1.8vw, 14px);
+            margin: 0 0 4px;
+            color: var(--gray-20);
+        }
+
+        /* ----------------------------------------------------------------------
+           PAGER & FOOTER
+           ---------------------------------------------------------------------- */
+        .pager {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            border: var(--hair) solid var(--rule);
+            margin-top: 60px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .pager a, .pager div {
+            padding: 14px 20px;
+            text-decoration: none;
+            color: var(--ink);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .pager a:hover {
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        .pager .prev {
+            border-right: var(--hair) solid var(--rule);
+            text-align: left;
+        }
+
+        .pager .index-link {
+            border-right: var(--hair) solid var(--rule);
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .pager .next {
+            text-align: right;
+        }
+
+        .pager .disabled {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        @media (max-width: 640px) {
+            .pager {
+                display: flex;
+                flex-direction: column;
+                margin-top: 40px;
+            }
+            .pager a, .pager div {
+                border-right: none;
+                border-bottom: var(--hair) solid var(--rule);
+                text-align: center !important;
+                padding: 12px 14px;
+            }
+        }
+
+        footer {
+            border-top: var(--hair) solid var(--rule);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.6;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 640px) {
+            footer {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Masthead -->
+    <header class="masthead">
+        <a href="../index.html" class="brand">
+            Hossein Askari <span>/ Archive</span>
+        </a>
+        <div class="masthead-right">
+            <span class="live-clock" id="masthead-clock">00:00:00 GMT</span>
+            <a href="../index.html" class="back-link">&larr; Return to Index</a>
+        </div>
+    </header>
+
+    <!-- Main Dossier Container -->
+    <main class="dossier-wrap">
+
+        <!-- Fonds Meta Spec Grid -->
+        <section class="archive-spec-grid">
+            <div class="spec-cell">
+                <b>Fonds ID</b>
+                <span>&mdash;</span>
+            </div>
+            <div class="spec-cell">
+                <b>Chronology</b>
+                <span>2024&ndash;2026</span>
+            </div>
+            <div class="spec-cell">
+                <b>Medium</b>
+                <span>Concrete Poetry &bull; Typographic Attrition</span>
+            </div>
+            <div class="spec-cell">
+                <b>Classification</b>
+                <span>Causal LLM Latent Drift</span>
+            </div>
+        </section>
+
+        <!-- Project Title & Lead -->
+        <h1 class="project-title">I'm Sad as Much as Every Stray Kitten</h1>
+        <p class="project-lead">
+            A concrete typographical erosion score derived from non-anthropocentric latent drift in causal language models. Syntactic breakdown, strikethrough displacement, decaying repetition matrices, and spatial attrition without mathematical scaffolding.
+        </p>
+
+        <!-- Plate Quick Jump Bar -->
+        <nav class="plate-jump-bar" aria-label="Plate Jump Navigation">
+            <a href="#plate-1">I &bull; Inception</a>
+            <a href="#plate-2">II &bull; Coma</a>
+            <a href="#plate-3">III &bull; Texture</a>
+            <a href="#plate-4">IV &bull; Rules</a>
+            <a href="#plate-5">V &bull; Rotation</a>
+            <a href="#plate-6">VI &bull; Echo</a>
+        </nav>
+
+        <!-- ==================================================================
+             PLATE I: INCEPTION & ATTRITION
+             ================================================================== -->
+        <article class="plate" id="plate-1">
+            <div class="plate-header">
+                <span>Plate I / VI &bull; Inception &amp; Attrition</span>
+                <span>Folio 01 &bull; 8&times;8 in.</span>
+            </div>
+            <div class="plate-body">
+                
+                <!-- Screaming header block -->
+                <div class="screaming-wall">
+                    HELLO HOW WAS YOUR <b>DAY</b> I'M SAD AS MUCH AS EVERY STRAY KITTEN I WAS A KITTEN BUT STILL BOY I WENT TO THE GROCERY STORE TO GET MY LITTLE BREAKFAST AND I DIDN'T THINK I WOULD EVER BE ABLE TO GO HOME I DIDN'T THINK I WOULD EVER I DIDN'T THINK I WOULD I DIDN'T THINK I I DIDN'T I
+                </div>
+
+                <!-- Spaced word line -->
+                <div class="spaced-row">
+                    <span>H e l l o ,</span>
+                    <span>h o w</span>
+                    <span>w a s</span>
+                    <span>y o u r</span>
+                </div>
+
+                <div style="text-align: right; margin: -6px 0 24px; font-size: 11px;">
+                    <s>day</s> &nbsp;&nbsp;&nbsp;&nbsp; 
+                    <span style="font-size: 9px;">life</span> &nbsp;&nbsp;&nbsp;&nbsp; 
+                    <span style="font-size: 9px;">life</span> &nbsp;&nbsp;&nbsp;&nbsp; 
+                    <span style="font-size: 9px;">life</span>
+                </div>
+
+                <!-- Identity substitutions & strikethroughs -->
+                <div style="line-height: 1.8; margin-bottom: 24px;">
+                    <div><s>I am a person.</s> I was a kitten. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <s>I am at home.</s> I am at the grocery store.</div>
+                    <div><s>I had breakfast.</s> I went to get my little breakfast.</div>
+                    <div style="padding-left: clamp(20px, 8vw, 120px);">
+                        <s>I came home.</s> &nbsp;&nbsp;&nbsp;&nbsp; <s>I came home.</s> &nbsp;&nbsp;&nbsp;&nbsp; <s>I came</s>
+                    </div>
+                </div>
+
+                <!-- Mother Quote Box -->
+                <div class="quote-box">
+                    <span style="font-size: 15px; font-weight: 600;">Mother: You're not crying. I'm just feeling a little nervous.</span>
+                </div>
+                <div style="margin-top: 6px; padding-left: clamp(20px, 6vw, 60px);">
+                    <div class="whispered">(she is not looking at me)</div>
+                    <div class="whispered" style="padding-left: 40px;">(she has never looked at me)</div>
+                </div>
+
+                <!-- Job & dying sensation -->
+                <div style="margin: 28px 0 16px; font-size: 14.5px; line-height: 1.6;">
+                    <div>I feel like I'm going to die. I have a job.</div>
+                    <div>I don't know where I'm going, but I know I'm not feeling really good,</div>
+                    <div>and I don't have the feeling of dying. ///\\\ ///\\\</div>
+                </div>
+
+                <!-- Dying repetitions -->
+                <div style="padding-left: clamp(10px, 4vw, 36px); line-height: 1.5; font-size: 13px;">
+                    <div>I don't have the feeling of dying.</div>
+                    <div>I don't have the feeling of dying.</div>
+                    <div>I don't have the feeling of dying.</div>
+                    <div>I don't have the feeling of dying.</div>
+                    <div><s>I don't have</s> the feeling of dying.</div>
+                    <div><s>I don't have</s> the feeling of dying.</div>
+                </div>
+
+                <div style="padding-left: clamp(30px, 8vw, 90px); margin: 12px 0; font-size: 12px; line-height: 1.4;">
+                    <div>the feeling of dying</div>
+                    <div>the feeling of dying</div>
+                    <div>the feeling of dying</div>
+                </div>
+
+                <!-- Dying scaling cascade -->
+                <div style="padding-left: clamp(40px, 12vw, 150px); margin: 16px 0;">
+                    <div style="font-size: 18px; font-weight: 700;">Dying</div>
+                    <div style="font-size: 13px; margin: 4px 0;">dying</div>
+                    <div style="font-size: 12px; margin: 4px 0;">dying dying</div>
+                    <div style="font-size: 11px; margin: 4px 0;">dying dying dying</div>
+                    <div style="font-size: 10px; margin: 4px 0;">dying dying dying dying dying</div>
+                    <div style="font-size: 9px; margin: 4px 0;">dying dying dying dying dying dying dying dying dying dying dying dying</div>
+                </div>
+
+                <!-- Dense Dying Text Wall Fading to Paper Whiteness -->
+                <div class="dying-dense-grid" style="color: #000000;">
+                    dyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdying
+                </div>
+                <div class="dying-dense-grid" style="color: var(--gray-70);">
+                    dyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdying
+                </div>
+                <div class="dying-dense-grid" style="color: var(--gray-40);">
+                    dyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdying
+                </div>
+                <div class="dying-dense-grid" style="color: var(--gray-20);">
+                    dyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdyingdying
+                </div>
+
+                <!-- Stage Direction 1 -->
+                <p class="stage-direction">[The dog smiles.]</p>
+
+            </div>
+        </article>
+
+        <!-- ==================================================================
+             PLATE II: COMA NAPKIN & THE SLEEP STAIRCASE
+             ================================================================== -->
+        <article class="plate" id="plate-2">
+            <!-- Ghost watermark -->
+            <div class="watermark watermark-kitten">KITTEN</div>
+
+            <div class="plate-header">
+                <span>Plate II / VI &bull; The Coma Napkin &amp; Sleep Cascade</span>
+                <span>Folio 02 &bull; 8&times;8 in.</span>
+            </div>
+            <div class="plate-body">
+
+                <div style="line-height: 1.6; margin-bottom: 24px;">
+                    <div>The stray kitten had a different collar and a different collar.</div>
+                    <div>It was a small kitten. It was a big boy who had a lot of no money.</div>
+                    <div style="padding-left: clamp(20px, 8vw, 100px); margin-top: 6px;">
+                        <div><s>It was a big boy who had money.</s></div>
+                        <div><s>It was a boy.</s></div>
+                        <div><s>It was.</s></div>
+                    </div>
+                </div>
+
+                <!-- Split Grid: Brother Coma Box + Aside -->
+                <div class="split-coma-grid">
+                    <div class="quote-box" style="margin: 0;">
+                        My brother looked at me and said,<br>
+                        &ldquo;You're really, really bad at this.<br>
+                        The first thing you do when you are in a coma<br>
+                        is put on a napkin.&rdquo;
+                    </div>
+                    <div class="coma-aside">
+                        <div>you cannot think in a coma.</div>
+                        <div>and think.</div>
+                        <div>and think.</div>
+                        <div>and think.</div>
+                        <div style="color: var(--gray-50);">and think.</div>
+                        <div style="color: var(--gray-30);">and think.</div>
+                        <div style="color: var(--gray-15);">and think.</div>
+                    </div>
+                </div>
+
+                <!-- Spaced inquiry -->
+                <div style="margin: 28px 0 12px; font-size: clamp(12px, 2.2vw, 15px); letter-spacing: 0.12em; white-space: nowrap; overflow-x: auto;">
+                    D i d &nbsp;&nbsp; y o u &nbsp;&nbsp; f e e l &nbsp;&nbsp; c o m f o r t a b l e , &nbsp;&nbsp; k i t t e n ?
+                </div>
+
+                <div style="margin-bottom: 24px;">
+                    No, I felt good. I felt good. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ...||... ...||... ...||...
+                </div>
+
+                <!-- Sleep staircase -->
+                <div class="staircase-block">
+                    <div>But I couldn't eat and I couldn't sleep.</div>
+                    <div class="stair-step" style="padding-left: clamp(15px, 4vw, 40px);">And so I had to eat.</div>
+                    <div class="stair-step" style="padding-left: clamp(30px, 8vw, 80px);">And so I couldn't eat.</div>
+                    <div class="stair-step" style="padding-left: clamp(15px, 4vw, 40px);">And so I couldn't sleep.</div>
+                    <div class="stair-step" style="padding-left: clamp(30px, 8vw, 80px);">And so I couldn't sleep.</div>
+                    <div class="stair-step" style="padding-left: clamp(45px, 12vw, 120px);">And so I couldn't sleep.</div>
+                    <div class="stair-step" style="padding-left: clamp(60px, 16vw, 160px);">And so I couldn't sleep.</div>
+                    <div class="stair-step" style="padding-left: clamp(75px, 20vw, 200px); color: var(--gray-40);">And so I couldn't sleep.</div>
+                    <div class="stair-step" style="padding-left: clamp(90px, 24vw, 240px); color: var(--gray-20);">And so I couldn't</div>
+                </div>
+
+                <!-- Worried lines -->
+                <div style="margin: 24px 0 28px; line-height: 1.6;">
+                    <div>It was bad. It was bad. It was bad.</div>
+                    <div>I was so worried. <s>It was fine.</s> It was bad.</div>
+                </div>
+
+                <!-- GINA shrinking call -->
+                <div class="gina-scale-row">
+                    <span style="font-size: 32px; font-weight: 900;">GINA</span>
+                    <span style="font-size: 18px; font-weight: 600;">Gina:</span>
+                    <span style="font-size: 14px;">Gina:</span>
+                    <span style="font-size: 12px;">Gina:</span>
+                    <span style="font-size: 10px;">Gina:</span>
+                    <span style="font-size: 8.5px;">Gina:</span>
+                    <span style="font-size: 7px;">Gina:</span>
+                </div>
+                <div style="padding-left: clamp(50px, 15vw, 180px); margin-bottom: 10px;">
+                    <span class="whispered">(no one answered)</span>
+                </div>
+
+            </div>
+        </article>
+
+        <!-- ==================================================================
+             PLATE III: TEXTURAL SATURATION
+             ================================================================== -->
+        <article class="plate" id="plate-3">
+            <div class="plate-header">
+                <span>Plate III / VI &bull; Textural Saturation</span>
+                <span>Folio 03 &bull; 8&times;8 in.</span>
+            </div>
+            <div class="plate-body">
+
+                <div style="line-height: 1.6; margin-bottom: 16px;">
+                    <div>It was not the kind of sad that is sad.</div>
+                    <div>It was kind of friendly and kind of gentle and kind and kind.</div>
+                    <div>It was kind of:</div>
+                </div>
+
+                <!-- Dense monolithic kind of block -->
+                <div class="kind-of-block">
+                    kind of kind of kind of kind of kind of kind of kind of kind of<br>
+                    kind of kind of kind of kind of kind of kind of kind of kind of<br>
+                    kind of kind of kind of kind of kind of kind of kind of kind of<br>
+                    kind of kind of kind of kind of kind of kind of kind of kind of<br>
+                    kind of kind of kind of kind of kind of kind of kind of kind of<br>
+                    kind of kind of kind of kind of kind of kind of kind of kind of<br>
+                    kind of kind of kind of kind of kind of kind of kind of kind of<br>
+                    kind of kind of kind of kind of kind of kind of kind of kind.
+                </div>
+
+                <div style="margin: 24px 0 10px;">
+                    And my dream is for:
+                </div>
+
+                <!-- Centered stray kitten expansion -->
+                <div class="dream-kitten-block">
+                    a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a little bit of a stray kitten.
+                </div>
+
+                <!-- Stage Direction 2 -->
+                <p class="stage-direction" style="margin-top: 36px; margin-bottom: 12px;">[She smiles at him.]</p>
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <span class="whispered" style="color: var(--gray-40); margin-right: 20px;">(why is she smiling)</span>
+                    <span class="whispered" style="color: var(--gray-30);">(why is anyone smiling)</span>
+                </div>
+
+            </div>
+        </article>
+
+        <!-- ==================================================================
+             PLATE IV: DOMESTIC EXCLUSION & 15 PROPOSITIONS
+             ================================================================== -->
+        <article class="plate" id="plate-4">
+            <!-- Ghost watermark -->
+            <div class="watermark watermark-home">HOME</div>
+
+            <div class="plate-header">
+                <span>Plate IV / VI &bull; Domestic Exclusion &amp; 15 Propositions</span>
+                <span>Folio 04 &bull; 8&times;8 in.</span>
+            </div>
+            <div class="plate-body">
+
+                <div style="line-height: 1.6; margin-bottom: 16px;">
+                    <div>We are not here for you.</div>
+                    <div>We are here for you because we love you in our hearts.</div>
+                    <div>You are a little sister. We are a little kitten in our hearts.</div>
+                    <div>And we are here because you are a little brother to us,</div>
+                    <div>and we love you.</div>
+                </div>
+
+                <!-- Strikethrough decay of domestic love -->
+                <div style="padding-left: clamp(30px, 10vw, 120px); margin-bottom: 30px; line-height: 1.4;">
+                    <div><s>and we love you.</s></div>
+                    <div><s>and we love</s></div>
+                    <div><s>and we</s></div>
+                    <div><s>and</s></div>
+                </div>
+
+                <!-- Title Box for Life Checklist -->
+                <div class="quote-box" style="margin-bottom: 20px;">
+                    <span style="font-size: 15px; font-weight: 700;">Here are the things you can do with your life:</span>
+                </div>
+
+                <!-- 15 Propositions List -->
+                <ol class="propositions-list">
+                    <li>1. Get married!</li>
+                    <li>2. I'm sorry for some of my problems but I'm happy about them too!</li>
+                    <li>3. You're a really good person and I'm happy about them too!</li>
+                    <li>4. You're a really good person and I'm happy about them too!</li>
+                    <li>5. You're a really good person and I'm happy about them too!</li>
+                    <li>6. You're a really good person and I'm happy about them too!</li>
+                    <li>7. You're a really good person and I'm happy about them too.</li>
+                    <li style="font-style: italic; margin-top: 4px;">8. You're a really good person and I'm happy</li>
+                    <li style="padding-left: 20px; font-size: 12px;">9. You're a really good person and I'm</li>
+                    <li style="padding-left: 20px; font-size: 11px;">10. You're a really good person and</li>
+                    <li style="padding-left: 20px; font-size: 10px;">11. You're a really good person</li>
+                    <li style="padding-left: 20px; font-size: 9.5px;">12. You're a really good</li>
+                    <li style="padding-left: 20px; font-size: 9px;">13. You're a really</li>
+                    <li style="padding-left: 20px; font-size: 8.5px;">14. You're a</li>
+                    <li style="padding-left: 20px; font-size: 8px;">15. You're</li>
+                </ol>
+
+            </div>
+        </article>
+
+        <!-- ==================================================================
+             PLATE V: ROTATIONAL DISORIENTATION & THE JOB
+             ================================================================== -->
+        <article class="plate" id="plate-5">
+            <div class="plate-header">
+                <span>Plate V / VI &bull; Rotational Disorientation &amp; The Job</span>
+                <span>Folio 05 &bull; 8&times;8 in.</span>
+            </div>
+            <div class="plate-body">
+
+                <!-- Grocery Store Kinetic Rotations -->
+                <div class="rotated-container">
+                    <span class="rot-line" style="transform: rotate(3deg);">I went to the grocery store</span>
+                    <span class="rot-line" style="transform: rotate(-2deg);">to get my little breakfast</span>
+                    <span class="rot-line" style="transform: rotate(5deg);">and I didn't think</span>
+                    <span class="rot-line" style="transform: rotate(-4deg);">I would ever be able</span>
+                    <span class="rot-line" style="transform: rotate(7deg);">to go home</span>
+                    <span class="rot-line" style="transform: rotate(-6deg);">to go home</span>
+                    <span class="rot-line" style="transform: rotate(10deg);">to go home</span>
+                    <span class="rot-line" style="transform: rotate(-12deg);">to go home</span>
+                    <span class="rot-line" style="transform: rotate(18deg);">to go home</span>
+                </div>
+
+                <!-- Job Repetition & Strikethrough -->
+                <div style="margin: 36px 0 16px; line-height: 1.6;">
+                    <div><s>I feel like I'm going to die. I have a job.</s></div>
+                    <div><s>I feel like I'm going to die. I have a job.</s></div>
+                    <div><s>I feel like I'm going to die. I have a job.</s></div>
+                    <div style="font-weight: 600;">I feel like I'm going to die. I have a job.</div>
+                </div>
+
+                <!-- Fading 'I have a job.' -->
+                <div style="padding-left: clamp(30px, 10vw, 100px); line-height: 1.45; font-size: 12.5px;">
+                    <div style="color: var(--gray-40);">I have a job.</div>
+                    <div style="color: var(--gray-40);">I have a job.</div>
+                    <div style="color: var(--gray-30);">I have a job.</div>
+                    <div style="color: var(--gray-20);">I have a job.</div>
+                    <div style="color: var(--gray-10);">I have a job.</div>
+                </div>
+
+                <!-- The 'Nothing' Matrix with Interjected Identity Tokens -->
+                <div class="nothing-grid">
+                    <div>nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing</div>
+                    <div>nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing</div>
+                    <div>nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing</div>
+                    <span class="highlight-boy">I was a kitten,</span>
+                    <div>nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing</div>
+                    <div>nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing</div>
+                    <span class="highlight-boy">but still boy.</span>
+                    <div>nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing</div>
+                    <div>nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing</div>
+                    <div>nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing nothing</div>
+                </div>
+
+                <!-- Staircase descending from right -->
+                <div class="staircase-right">
+                    <div>I couldn't eat.</div>
+                    <div>I couldn't sleep.</div>
+                    <div>It was bad.</div>
+                    <div>I was so worried.</div>
+                    <div>It was bad.</div>
+                    <div>It was bad.</div>
+                </div>
+
+            </div>
+        </article>
+
+        <!-- ==================================================================
+             PLATE VI: MATRIX EXPANSION & FINAL ECHO
+             ================================================================== -->
+        <article class="plate" id="plate-6">
+            <div class="plate-header">
+                <span>Plate VI / VI &bull; Matrix Expansion &amp; Final Echo</span>
+                <span>Folio 06 &bull; 8&times;8 in.</span>
+            </div>
+            <div class="plate-body">
+
+                <!-- Stretched Wordplay Matrix -->
+                <div class="word-matrix">
+                    <span class="matrix-row-1">S A D &nbsp;&nbsp; A S &nbsp;&nbsp; M U C H &nbsp;&nbsp; A S &nbsp;&nbsp; E V E R Y</span>
+                    <span class="matrix-row-2">S T R A Y</span>
+                    <span class="matrix-row-3">K I T T E N</span>
+                </div>
+
+                <!-- Punctuation drops -->
+                <div class="punctuation-drop">
+                    <div>,,::..,,</div>
+                    <div>,,</div>
+                    <div>-</div>
+                    <div>.</div>
+                </div>
+
+                <!-- Truncation Staircase: The Inability to Go Home -->
+                <div class="truncation-staircase">
+                    <div>and I didn't think I would ever be able to go home</div>
+                    <div>and I didn't think I would ever be able to go home</div>
+                    <div>and I didn't think I would ever be able to go</div>
+                    <div>and I didn't think I would ever be able to</div>
+                    <div>and I didn't think I would ever be able</div>
+                    <div>and I didn't think I would ever be</div>
+                    <div>and I didn't think I would ever</div>
+                    <div>and I didn't think I would</div>
+                    <div>and I didn't think I</div>
+                    <div>and I didn't think</div>
+                    <div>and I didn't</div>
+                    <div>and I</div>
+                    <div>and</div>
+                </div>
+
+                <!-- Grand Echo Fade-Out -->
+                <div class="final-echo-container">
+                    <div class="echo-line-1">Hello, how was your day?</div>
+                    <div class="echo-line-2">Hello, how was your day?</div>
+                    <div class="echo-line-3">Hello, how was your day?</div>
+                    <div class="echo-line-4">Hello, how was your day?</div>
+                </div>
+
+                <!-- Final Stage Direction -->
+                <p class="stage-direction" style="margin-top: 50px;">[The dog smiles.]</p>
+
+            </div>
+        </article>
+
+        <!-- Pager Navigation -->
+        <nav class="pager">
+            <a href="017-the-necessary-gradual-descent.html" class="prev">&larr; 017 The Necessary Gradual Descent</a>
+            <a href="../index.html" class="index-link">Archive Index</a>
+            <a href="018-phase-space-engine.html" class="next">018 Phase-Space Engine &rarr;</a>
+        </nav>
+
+    </main>
+
+    <!-- Footer Colophon -->
+    <footer>
+        <div>Hossein Askari</div>
+        <div>Holding 22 Works &bull; 2021&ndash;2026</div>
+        <div><a href="../index.html" style="color:inherit">Return to Index &uarr;</a></div>
+    </footer>
+
+    <script>
+        // Masthead live clock
+        function updateClock() {
+            const now = new Date();
+            const timeStr = now.toTimeString().split(' ')[0] + ' GMT';
+            const clockEl = document.getElementById('masthead-clock');
+            if (clockEl) clockEl.textContent = timeStr;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>

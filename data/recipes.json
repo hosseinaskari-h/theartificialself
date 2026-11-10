@@ -966,5 +966,93 @@
         "blend": "difference"
       }
     ]
+  },
+  "stray-kitten": {
+    "palette": [
+      "#000",
+      "#f5f5f5"
+    ],
+    "layers": [
+      {
+        "kind": "stripes",
+        "ang": 0,
+        "width": 2,
+        "gap": 14,
+        "opacity": 0.85
+      },
+      {
+        "kind": "rings",
+        "cx": 320,
+        "cy": 300,
+        "count": 20,
+        "spacing": 14,
+        "opacity": 0.75
+      },
+      {
+        "kind": "dots",
+        "dot": 3,
+        "spacing": 12,
+        "inset": [
+          60,
+          60,
+          60,
+          60
+        ],
+        "opacity": 0.9
+      },
+      {
+        "kind": "disc",
+        "cx": 180,
+        "cy": 400,
+        "r": 210,
+        "opacity": 0.8,
+        "blend": "difference"
+      }
+    ],
+    "numbered": false
+  },
+  "down-in-the-valley": {
+    "palette": [
+      "#d92323",
+      "#0d0d0d"
+    ],
+    "layers": [
+      {
+        "kind": "rings",
+        "cx": 280,
+        "cy": 260,
+        "count": 26,
+        "spacing": 11,
+        "opacity": 0.9
+      },
+      {
+        "kind": "stripes",
+        "ang": 135,
+        "width": 2.5,
+        "gap": 24,
+        "opacity": 0.7
+      },
+      {
+        "kind": "dots",
+        "dot": 4,
+        "spacing": 16,
+        "inset": [
+          80,
+          80,
+          80,
+          80
+        ],
+        "opacity": 0.85
+      },
+      {
+        "kind": "disc",
+        "cx": 420,
+        "cy": 380,
+        "r": 190,
+        "opacity": 0.85,
+        "blend": "difference"
+      }
+    ],
+    "numbered": false
   }
 }
