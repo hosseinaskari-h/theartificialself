@@ -299,7 +299,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 24px 20px;
+            padding: 30px 36px;
             overflow: hidden;
             box-sizing: border-box;
             z-index: 5;
@@ -307,18 +307,18 @@
 
         .preview-card {
             width: 100%;
-            max-width: 360px;
+            max-width: 440px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 16px;
         }
 
         .artifact {
             position: relative;
             aspect-ratio: 1 / 1;
             width: 100%;
-            max-width: min(280px, 36vh);
+            max-width: 420px;
             margin: 0 auto;
             border: var(--hair) solid var(--rule);
             overflow: hidden;
@@ -378,20 +378,20 @@
 
         .caption {
             border-top: var(--hair) solid var(--rule);
-            padding-top: 14px;
+            padding-top: 16px;
             display: flex;
             flex-direction: column;
             gap: 10px;
             width: 100%;
-            max-width: min(340px, 94%);
+            max-width: 420px;
             margin: 0 auto;
         }
         .caption .pt {
             font-family: var(--sans);
             font-weight: 700;
-            font-size: 20px;
+            font-size: 22px;
             letter-spacing: -0.02em;
-            line-height: 1.25;
+            line-height: 1.22;
             text-transform: uppercase;
             margin: 2px 0 0 0;
         }
@@ -409,15 +409,17 @@
         }
 
         .dossier-action-btn {
-            display: inline-block;
-            margin-top: 4px;
-            padding: 11px 18px;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 6px;
+            padding: 13px 20px;
             border: var(--hair) solid var(--rule);
             text-align: center;
             font-family: var(--mono);
             font-size: 11px;
             font-weight: 700;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
             text-decoration: none;
             color: var(--paper);
